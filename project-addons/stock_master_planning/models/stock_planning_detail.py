@@ -28,6 +28,7 @@ class StockPlanningDetail(models.Model):
         self.incoming_qty = prod.incoming_qty
         # outgoing qty in planning period
         self.outgoing_qty = prod.outgoing_qty
+
         demand_ids = demand_obj.search(
             [('product_id', '=', self.product_id.id),
              ('period_id', '=', self.period_id.id),
@@ -129,7 +130,7 @@ class StockPlanningDetail(models.Model):
                                 compute='_get_product_info_location',
                                 digits_compute=
                                 dp.get_precision('Product Unit of Measure'))
-    needed_qty = fields.Float("Needed qty.", readonly=True, multi=True,
+    needed_qty = fields.Float("Needed qty.", readonly=False, multi=True,
                               compute='_get_product_info_location',
                               digits_compute=
                               dp.get_precision('Product Unit of Measure'))
