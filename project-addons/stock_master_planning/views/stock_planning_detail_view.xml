@@ -23,7 +23,8 @@
             <field name="name">stock.planning.detail.tree.view</field>
             <field name="model">stock.planning.detail</field>
             <field name="arch" type="xml">
-                <tree string="Stock Planning Details" create="0" delete="0">
+                <tree string="Stock Planning Details" create="0"
+                 delete="0" colors="red:needed_qty>0" edtitable="top">
                     <field name="product_id"/>
                     <field name="period_id"/>
                     <field name="location_id"/>
@@ -33,6 +34,8 @@
                     <field name="demand_qty"/>
                     <field name="expected_qty"/>
                     <field name="needed_qty"/>
+                    <button name="%(stock_master_planning.action_procurement_request)d" string="Execute" 
+                    type="action" icon="gtk-go-forward" />
                     <field name="category_id" invisible="1"/>
                 </tree>
             </field>
