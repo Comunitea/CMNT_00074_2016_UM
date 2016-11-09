@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 Comunitea
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+    <data>
+
+        <template id="custom_website_sale_page" inherit_id="website_sale.products">
+            <xpath expr="//div[@class='products_pager']" position="replace">
+                  <div class="container website_theme">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h1 class="text-center">
+                            Title
+                        </h1>
+                        <h3 class="text-muted text-center">Subtitle</h3>
+                      </div>
+                    </div>
+                  </div>
+            </xpath>
+        </template>
+
+
+    </data>
+</openerp>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 Comunitea
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+    <data>
+
+        <template id="option_pattern_pattern_bamboo" name="option_pattern_pattern_bamboo" inherit_id="theme_louma.styles_compiled" active="False" customize_show="False">
+            <xpath expr="." position="inside">
+                <link href="/website_custom/static/src/css/patterns/bamboo.css" rel="stylesheet" type="text/css" />
+            </xpath>
+        </template>
+
+        <template id="customize_modal_box_add_bamboo" inherit_id="theme_louma.customize_modal">
+            <xpath expr="//table[@name='pattern']/tr[1]" position="inside">
+                <td>
+                    <label>
+                        <img src="/website_custom/static/src/images/patterns/pattern_bamboo.jpg" style="width: 30px;height: 30px" alt="bamboo" />
+                        <input name="pattern" type="radio" data-xmlid="website_custom.option_pattern_pattern_bamboo"/>
+                    </label>
+                </td>
+            </xpath>
+        </template>
+    </data>
+</openerp>
