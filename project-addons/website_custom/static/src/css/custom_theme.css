@@ -1,0 +1,37 @@
+td.oe_product form{
+    border: 4px solid #002749 !important;
+}
+
+.js_sale{
+    background-color: white;
+}
+
+.s_center_tittle{
+    background-color: #002749;
+}
+.s_center_tittle h1{
+    font-family: Oswald;
+    color: white;
+}
+
+.website_cmnt_theme h1,
+.website_cmnt_theme h2,
+.website_cmnt_theme h3,
+.website_cmnt_theme h4,
+.website_cmnt_theme h5{
+    font-family: Oswald !important;
+    color: #002749 !important;
+}
+
+.website_cmnt_theme p{
+    font-family: "Myriad Pro" !important;
+    color: #002749 !important;
+}
+
+.eq-height .col{
+    border: 4px solid #002749 !important;
+}
+
+.eq-height{
+    margin-top: 20px !important;
+}
