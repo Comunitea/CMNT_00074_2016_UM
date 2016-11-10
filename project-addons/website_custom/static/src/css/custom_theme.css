@@ -5,6 +5,9 @@ td.oe_product form{
 .js_sale{
     background-color: white;
 }
+#wrapwrap{
+    background-color: white;
+}
 
 .s_center_tittle{
     background-color: #002749;
@@ -34,4 +37,12 @@ td.oe_product form{
 
 .eq-height{
     margin-top: 20px !important;
+}
+
+.footer{
+ border-bottom: 1px solid black;
+}
+
+.footer, .subfooter{
+    background-color: #cedcbb !important;
 }
