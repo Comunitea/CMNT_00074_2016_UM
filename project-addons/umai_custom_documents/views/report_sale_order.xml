@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+    <template id="report_sale_order_document_custom" inherit_id="cmnt_custom_reports.report_sale_order_document_custom">
+            
+<!--             <xpath expr="//h2" position="replace">
+                <div class="col-xs-6">
+                    <h2>
+                        <span t-if="o.state not in ['draft','sent']">Order N° </span>
+                        <span t-if="o.state in ['draft','sent']">Quotation N° </span>
+                        <span t-field="o.name"/>
+                    </h2>
+                </div>
+                <div class="col-xs-6">
+                    <h3>
+                        <span>Date Ordered:</span>
+                        <span t-field="o.date_order"/>
+                    </h3>
+                </div>
+
+            </xpath>
+ -->
+            <xpath expr="//div[@id='informations']" position="replace">
+                <div class="row mt32 mb32" id="informations">
+                     <div class="col-xs-2" t-if="o.partner_id.commercial_partner_id.ref">
+                        <strong>Customer Code:</strong>
+                        <p t-field="o.partner_id.commercial_partner_id.ref"/>
+                    </div>
+     <!--                <div t-if="o.client_order_ref" class="col-xs-2">
+                        <strong>Your Reference:</strong>
+                        <p t-field="o.client_order_ref"/>
+                    </div> -->
+                    <div t-if="o.date_order" class="col-xs-3">
+                        <strong t-if="o.state not in ['draft','sent']">Date Ordered:</strong>
+                        <strong t-if="o.state in ['draft','sent']">Quotation Date:</strong>
+                        <p t-field="o.date_order"/>
+                    </div>
+                </div>
+            </xpath>
+
+            <xpath expr="//table[@class='table table-condensed']" position="replace">
+                <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th class="text-right">Quantity</th>
+                    </tr>
+               </thead>
+               <tbody class="sale_tbody">
+                    <tr t-foreach="o.order_line" t-as="l">
+                        <td>
+                           <span t-field="l.name"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="l.product_uom_qty"/>
+                            <span groups="product.group_uom" t-field="l.product_uom"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </xpath>
+
+            <xpath expr="//div[@class='row'][2]" position="replace">
+            </xpath>
+
+            <xpath expr="//p[@t-if='o.payment_term.note']" position="replace">
+            </xpath>
+
+
+    </template>
+
+  </data>
+</openerp>
