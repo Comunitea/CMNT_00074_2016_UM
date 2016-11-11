@@ -5,10 +5,26 @@ td.oe_product form{
 .js_sale{
     background-color: white;
 }
+#wrapwrap{
+    background-color: white;
+}
 
-.s_center_tittle{
+@media screen and (min-width: 1200px){
+	.s_center_tittle > .container{
+		width:1126px; 
+	}
+	.s_center_tittle{
+		padding-left: 22px; 
+	}
+}
+
+.s_center_tittle > .container{ 
     background-color: #002749;
 }
+
+
+
+
 .s_center_tittle h1{
     font-family: Oswald;
     color: white;
@@ -34,4 +50,12 @@ td.oe_product form{
 
 .eq-height{
     margin-top: 20px !important;
+}
+
+.footer{
+ border-bottom: 1px solid black;
+}
+
+.footer, .subfooter{
+    background-color: #cedcbb !important;
 }
