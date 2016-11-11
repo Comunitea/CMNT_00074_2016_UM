@@ -3,6 +3,12 @@
   <data>
 
     <template id="report_invoice_document_custom" inherit_id="cmnt_custom_reports.report_invoice_document_custom">
+            <!-- NIF sin ES delante -->
+            <xpath expr="//span[@t-if='o.partner_id.commercial_partner_id.vat']" position="replace">
+                <span t-if="o.partner_id.vat">TIN: <span t-esc="o.partner_id.commercial_partner_id.vat.replace('ES','')"/></span>
+            </xpath>
+
+            <!-- Nombre factura y fecha al lado -->
              <xpath expr="//h2" position="replace">
                 <div class="row">
                     <div class="col-xs-6">
@@ -62,7 +68,8 @@
             <xpath expr="//div[@t-if='o.tax_line']" position="replace">
             </xpath>
 
-             <xpath expr="//span[@t-if='ml.date_maturity']" position="replace">
+            <!-- Quito el importe de los vencimientos -->
+            <xpath expr="//span[@t-if='ml.date_maturity']" position="replace">
                 <span t-if="ml.date_maturity">
                     <span t-field="ml.date_maturity"/>
                 </span>  
