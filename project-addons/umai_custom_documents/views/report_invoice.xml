@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+    <template id="report_invoice_document_custom" inherit_id="cmnt_custom_reports.report_invoice_document_custom">
+            <!-- Pongo IVA 10% nen lugar de impuestos -->
+            <xpath expr="//div[@class='col-xs-4 pull-right']/table/tr[2]" position="replace">
+                <tr>
+                    <td>IVA 10 %</td>
+                    <td class="text-right">
+                        <span t-field="o.amount_tax" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                    </td>
+                </tr>
+            </xpath>
+
+            <!-- Elimino el desglose de impuestos -->
+            <xpath expr="//div[@t-if='o.tax_line']" position="replace">
+            </xpath>
+    </template>
+
+  </data>
+</openerp>
