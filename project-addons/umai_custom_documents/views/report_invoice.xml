@@ -6,7 +6,7 @@
             <!-- Pongo IVA 10% nen lugar de impuestos -->
             <xpath expr="//div[@class='col-xs-4 pull-right']/table/tr[2]" position="replace">
                 <tr>
-                    <td>IVA 10 %</td>
+                    <td>TAX 10 %</td>
                     <td class="text-right">
                         <span t-field="o.amount_tax" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
                     </td>
