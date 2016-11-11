@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 Comunitea
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+    <data>
+        <template id="custom_footer_UM" inherit_id="website.footer_default"  name="UM footer" active="False" customize_show="True">
+            <xpath expr="//footer" position="after">
+                <footer id="footer" class="light">
+                    <div class="scrollToTop"><i class="fa fa-angle-up"></i></div>
+                    <div class="footer">
+                        <div class="container">
+                            <div class="row">
+                                <img src="" alt="footer logo"/>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="footer-content">
+                                        <ul class="list-icons">
+                                            <li><i class="fa fa-map-marker pr-10"></i> <span t-field="res_company.street"/> <br/> <span t-field="res_company.city"/> <span t-field="res_company.country_id"/></li>
+                                            <li t-if="res_company.phone"><i class="fa fa-phone pr-10"></i><span t-field="res_company.phone"></span></li>
+                                            <li t-if="res_company.fax"><i class="fa fa-fax pr-10"></i><span t-field="res_company.fax"></span></li>
+                                            <li  t-if="res_company.email"><i class="fa fa-envelope-o pr-10"></i> <span t-field="res_company.email"></span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-2 col-lg-2">
+                                    <div class="footer-content">
+                                        <h2 class="mt0">Links</h2>
+                                        <nav>
+                                            <ul class="nav nav-pills nav-stacked">
+                                                <li><a href="#">Home</a></li>
+                                                <li><a href="#">Pages</a></li>
+                                                <li><a href="#">Portfolio</a></li>
+                                                <li><a href="#">Blog</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <p>Follow us on:</p>
+                                    <ul class="cmnt-social-links">
+                                        <li><a target="_blank" t-att-href="website.social_facebook" t-if="website.social_facebook"><img src="/website_custom/static/src/images/ico_facebook.jpg" alt="facebook"/></a></li>
+                                        <li><a target="_blank" t-att-href="website.social_twitter" t-if="website.social_twitter"><img src="/website_custom/static/src/images/ico_twitter.jpg" alt="twitter"/></a></li>
+                                        <li><a target="_blank" t-att-href="website.social_instagram" t-if="website.social_instagram"><img src="/website_custom/static/src/images/ico_instagram.jpg" alt="instagram"/></a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3 bottom_right_div">
+                                    <img src="" alt="img" class="bottom_right"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subfooter">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Copyright ©2016 <span t-field="res_company.name"/>. All Rights Reserved</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </xpath>
+        </template>
+    </data>
+</openerp>

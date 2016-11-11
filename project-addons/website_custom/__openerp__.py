@@ -19,6 +19,8 @@
     'data': [
         'views/eshop_page.xml',
         'views/assets.xml',
-        'views/customize_modal.xml'
+        'views/customize_modal.xml',
+        'views/footer.xml',
+        'views/website.xml'
     ],
 }
