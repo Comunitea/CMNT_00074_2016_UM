@@ -102,3 +102,29 @@ td.oe_product form{
 .s_three_col_img_2 div[class="col-md-4"] > div:nth-last-child(1) {
 	border-bottom: 4px solid #002749 !important;
 }
+
+.cmnt-social-links{
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.cmnt-social-links li{
+    margin-right: 7px;
+    float: left;
+}
+
+.subfooter{
+    padding-top: 0px !important;
+}
+
+.bottom_right{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.bottom_right_div{
+    min-height: 30px !important;
+}

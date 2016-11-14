@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 Comunitea
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+    <data>
+
+        <record id="view_website_add_instragram_form" model="ir.ui.view">
+            <field name="name">website.form</field>
+            <field name="model">website</field>
+            <field name="inherit_id" ref="website.view_website_form"/>
+            <field name="arch" type="xml">
+                <field name="social_facebook" position="after">
+                    <field name="social_instagram" placeholder="https://www.instagram.com/xxx/"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_website_settings_add_instragram_form" model="ir.ui.view">
+            <field name="name">Website settings</field>
+            <field name="model">website.config.settings</field>
+            <field name="inherit_id" ref="website.view_website_config_settings"/>
+            <field name="arch" type="xml">
+                <div name="social_facebook" position="after">
+                    <label for="social_instagram"/>
+                    <div name="social_instagram">
+                        <div class="oe_inline">
+                            <field name="social_instagram" placeholder="https://www.instagram.com/xxx/"/>
+                        </div>
+                    </div>
+                </div>
+            </field>
+        </record>
+
+    </data>
+</openerp>
