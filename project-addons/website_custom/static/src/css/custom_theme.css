@@ -6,7 +6,7 @@ td.oe_product form{
     background-color: white;
 }
 #wrapwrap{
-    background-color: white;
+    background-color: white !important;
 }
 
 @media screen and (min-width: 1200px){
@@ -68,49 +68,6 @@ td.oe_product form{
 
 .footer, .subfooter{
     background-color: #cedcbb !important;
-}
-
-.s_three_col_img_2 {
-	background-color: #fff; 
-	padding-bottom: 45px; 
-}
-.s_three_col_img_2 p, .s_three_col_img_2 h4{
-	text-align: center;
-}
-.s_three_col_img_2 span{
-	font-weight: bold;
-}
-.s_three_col_img_2 h4{
-	font-weight: normal;
-}
-.s_three_col_img_2 img{
-	margin: auto;
-}
-
-.s_three_col_img_2 div[class="col-md-4"] > div {
-	border-left: 4px solid #002749 !important;
-	border-top: 4px solid #002749 !important;
-	border-right: 4px solid #002749 !important;
-	padding: 5px; 
-	display: flex;
-	flex-flow: column; 
-}
-.c1{
-	height: 30%; 
-}
-.c2{
-	height: 12%; 
-}
-.c3{
-	height: 11%; 
-}
-.c4{
-	height: 5%; 
-}
-
-
-.s_three_col_img_2 div[class="col-md-4"] > div:nth-last-child(1) {
-	border-bottom: 4px solid #002749 !important;
 }
 
 .cmnt-social-links{
