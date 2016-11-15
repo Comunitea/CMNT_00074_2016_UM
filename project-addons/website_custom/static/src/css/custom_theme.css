@@ -6,19 +6,19 @@ td.oe_product form{
     background-color: white;
 }
 #wrapwrap{
-    background-color: white;
+    background-color: white !important;
 }
 
 @media screen and (min-width: 1200px){
-	.s_center_tittle > .container{
-		width:1126px; 
-	}
-	.s_center_tittle{
-		padding-left: 22px; 
-	}
+    .s_center_tittle > .container{
+        width:1126px;
+    }
+    .s_center_tittle{
+        padding-left: 22px;
+    }
 }
 
-.s_center_tittle > .container{ 
+.s_center_tittle > .container{
     background-color: #002749;
 }
 
@@ -34,13 +34,19 @@ td.oe_product form{
 .website_cmnt_theme h2,
 .website_cmnt_theme h3,
 .website_cmnt_theme h4,
-.website_cmnt_theme h5{
+.website_cmnt_theme h5,
+.listing-item-body .title a{
     font-family: Oswald !important;
     color: #002749 !important;
 }
 
 .website_cmnt_theme p{
-    font-family: "Myriad Pro" !important;
+    font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    color: #002749 !important;
+}
+
+.website_cmnt_theme .nrml_text{
+    font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     color: #002749 !important;
 }
 
@@ -53,7 +59,11 @@ td.oe_product form{
 }
 
 .footer{
- border-bottom: 1px solid black;
+    border-bottom: 1px solid #002749 !important;
+}
+
+.fa-heart-o{
+    color: red !important;
 }
 
 .footer, .subfooter{
@@ -84,4 +94,18 @@ td.oe_product form{
 
 .bottom_right_div{
     min-height: 30px !important;
+}
+
+.masonry-grid-item.product-item .listing-item .overlay-container{
+    max-height: none !important;
+}
+
+b.price span{
+    font-weight: bold;
+    color:  #002749;
+}
+
+.listing-item-body .title a{
+    font-size: 20px;
+    font-weight: 900 !important;
 }

@@ -21,6 +21,7 @@
         'views/assets.xml',
         'views/customize_modal.xml',
         'views/footer.xml',
+        'views/menu.xml',
         'views/website.xml'
     ],
 }

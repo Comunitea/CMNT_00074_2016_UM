@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 Comunitea
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+    <data>
+        <template id="custom_navbar_add_instagram" inherit_id="theme_louma.custom_navbar">
+            <xpath expr="//ul[@class='social-links clearfix hidden-xs']" position="inside">
+                <li t-if="website.social_instagram" class="instagram"><a target="_blank" t-att-href="website.social_instagram" ><i class="fa fa-instagram"></i></a></li>
+            </xpath>
+            <xpath expr="//div[@class='social-links hidden-lg hidden-md hidden-sm']/div/ul" position="inside">
+                <li class="instagram" t-if="website.social_instagram"><a target="_blank" t-att-href="website.social_instagram"><i class="fa fa-instagram"></i></a></li>
+            </xpath>
+        </template>
+    </data>
+</openerp>
