@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <h2>
-                            <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Invoice</span>
+                            <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Invoice: </span>
                             <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
                             <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
                             <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
@@ -24,34 +24,44 @@
                         </h2>
                     </div>
                     <div class="col-xs-6">
-                        <h3>
-                            <span> Invoice Date:</span>
+                        <h2>
+                            <span>Date:</span>
                             <span t-field="o.date_invoice"/>
-                        </h3>
+                        </h2>
                     </div>
                 </div>
             </xpath>
 
-            <!-- El código del cliente que sea el del commercial_partner_id y al principio -->
+            <!-- El código del cliente que sea el del commercial_partner_id y al principio quito origen -->
             <xpath expr="//div[@class='row mt32 mb32']" position="replace">
                 <div class="row">
                      <div class="col-xs-3" t-if="o.partner_id.commercial_partner_id.ref">
-                        <strong>Customer Code:</strong>
+                        <strong>Customer:</strong>
                         <p t-field="o.partner_id.commercial_partner_id.ref"/>
                     </div>
                     <div class="col-xs-3" t-if="o.name">
                         <strong>Description:</strong>
                         <p t-field="o.name"/>
                     </div>
-                    <div class="col-xs-3" t-if="o.origin">
-                        <strong>Source:</strong>
-                        <p t-field="o.origin"/>
-                    </div>
                     <div class="col-xs-3" t-if="o.reference">
                         <strong>Reference:</strong>
                         <p t-field="o.reference"/>
                     </div>
                 </div>
+            </xpath>
+
+            <!-- Quito unidad de medida y alineo cantidad a la derecha-->
+            <xpath expr="//table[1]/tbody/tr/td[2]" position="replace">
+                <td class="text-right" > 
+                    <span t-field="l.quantity"/>
+                </td>
+            </xpath>
+
+            <!-- Quito colunba impuestos -->
+            <xpath expr="//table[1]/thead/tr/th[5]" position="replace">
+            </xpath>
+
+            <xpath expr="//table[1]/tbody/tr/td[5]" position="replace">
             </xpath>
 
             <!-- Pongo IVA 10% nen lugar de impuestos -->
@@ -64,6 +74,11 @@
                 </tr>
             </xpath>
 
+            <!-- Pongo Total Invoice -->
+            <xpath expr="//div[@class='col-xs-4 pull-right']/table/tr[3]/td[1]" position="replace">
+                <td><strong>Total Invoice</strong></td>
+            </xpath>
+
             <!-- Elimino el desglose de impuestos -->
             <xpath expr="//div[@t-if='o.tax_line']" position="replace">
             </xpath>
@@ -74,7 +89,11 @@
                     <span t-field="ml.date_maturity"/>
                 </span>  
             </xpath>
-    </template>
 
+            <!-- Vencimientos en singular -->
+            <xpath expr="//p[@t-if='o.move_id']/strong[1]" position="replace">
+                <strong>Due:</strong>
+            </xpath>
+        </template>
   </data>
 </openerp>

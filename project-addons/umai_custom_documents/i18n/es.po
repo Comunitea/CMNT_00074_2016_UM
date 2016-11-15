@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-14 09:04+0000\n"
-"PO-Revision-Date: 2016-11-14 09:04+0000\n"
+"POT-Creation-Date: 2016-11-15 12:11+0000\n"
+"PO-Revision-Date: 2016-11-15 12:11+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,15 +21,24 @@ msgid "Cancelled Invoice"
 msgstr "Factura cancelada"
 
 #. module: umai_custom_documents
-#: view:website:account.report_invoice_document
 #: view:website:sale.report_saleorder_document
 msgid "Customer Code:"
 msgstr "Código de cliente"
 
 #. module: umai_custom_documents
+#: view:website:account.report_invoice_document
+msgid "Customer:"
+msgstr "Cliente:"
+
+#. module: umai_custom_documents
 #: view:website:sale.report_saleorder_document
 msgid "Date order:"
 msgstr "Fecha pedido:"
+
+#. module: umai_custom_documents
+#: view:website:account.report_invoice_document
+msgid "Date:"
+msgstr "Fecha:"
 
 #. module: umai_custom_documents
 #: view:website:sale.report_saleorder_document
@@ -48,13 +57,8 @@ msgstr "Factura borrador"
 
 #. module: umai_custom_documents
 #: view:website:account.report_invoice_document
-msgid "Invoice"
-msgstr "Factura"
-
-#. module: umai_custom_documents
-#: view:website:account.report_invoice_document
-msgid "Invoice Date:"
-msgstr "Fecha de factura:"
+msgid "Due:"
+msgstr "Vencimiento:"
 
 #. module: umai_custom_documents
 #: view:website:sale.report_saleorder_document
@@ -65,6 +69,11 @@ msgstr "Dirección de facturación:"
 #: view:website:sale.report_saleorder_document
 msgid "Invoice and shipping address:"
 msgstr "Dirección de facturación y de envío:"
+
+#. module: umai_custom_documents
+#: view:website:account.report_invoice_document
+msgid "Invoice:"
+msgstr "Factura:"
 
 #. module: umai_custom_documents
 #: view:website:sale.report_saleorder_document
@@ -103,11 +112,6 @@ msgstr "Dirección de envío:"
 
 #. module: umai_custom_documents
 #: view:website:account.report_invoice_document
-msgid "Source:"
-msgstr "Origen:"
-
-#. module: umai_custom_documents
-#: view:website:account.report_invoice_document
 msgid "Supplier Invoice"
 msgstr "Factura de proveedor"
 
@@ -125,6 +129,11 @@ msgstr "IVA 10 %"
 #: view:website:account.report_invoice_document
 msgid "TIN:"
 msgstr "NIF:"
+
+#. module: umai_custom_documents
+#: view:website:account.report_invoice_document
+msgid "Total Invoice"
+msgstr "Total factura"
 
 #. module: umai_custom_documents
 #: view:website:sale.report_saleorder_document
