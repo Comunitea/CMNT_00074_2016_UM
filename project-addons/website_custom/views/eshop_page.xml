@@ -27,18 +27,63 @@
             <xpath expr="//div[@class='masonry-grid-item product-item']" position="attributes">
                 <attribute name="class">website_cmnt_theme</attribute>
             </xpath>
+
+            <xpath expr="//ol[@class='breadcrumb']/../../../.." position="replace"></xpath>
+            <xpath expr="//h1" position="attributes">
+                <attribute name="class">page-title margin-top-clear text-center</attribute>
+                <attribute name="id">product_name</attribute>
+            </xpath>
+
+            <xpath expr="//div[@class='tab-content padding-top-clear padding-bottom-clear']/.." position="replace">
+                <div class="tabs-style-2">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist" t-if="product.description_website and product.feature_website">
+                        <li class="active"><a href="#h2tab1" role="tab" data-toggle="tab"><i class="pr-5"></i>Description</a></li>
+                        <li><a href="#h2tab2" role="tab" data-toggle="tab"><i class="pr-5"></i>Features</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content padding-top-clear padding-bottom-clear">
+                        <div t-att-class="'tab-pane fade' + (product.description_website and ' in active' or '')"
+                            id="h2tab1">
+                            <t t-if="product.description_website">
+                                <p t-field="product.description_website" class="mt16"/>
+                            </t>
+                        </div>
+                        <div t-att-class="'tab-pane fade' + (product.feature_website and not product.description_website and ' in active' or '')"
+                             id="h2tab2">
+                            <t t-if="product.feature_website">
+                                <p t-field="product.feature_website" class="mt16"/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+
+            </xpath>
+
+            <xpath expr="//span[@itemprop='offers']//b[@t-field='product.price']" position="before">
+                <span>PVP:</span>
+                <!--t t-if="product.price.is_integer()">
+                    <b class="oe_price" style="white-space: nowrap;"
+                                        t-esc="int(product.price)"
+                                        t-esc-options='{
+                                           "widget": "monetary",
+                                           "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                                       }'/>
+                </t>
+                <t t-if="not product.price.is_integer()">
+                    <b class="oe_price" style="white-space: nowrap;"
+                                        t-field="product.price"
+                                        t-field-options='{
+                                           "widget": "monetary",
+                                           "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                                       }'/>
+                </t-->
+
+            </xpath>
+            <xpath expr="//ul[@class='nav nav-pills white space-top']" position="replace"></xpath>
+
         </template>
-    
-    
-		<!-- elimina miga de pan, centra titulo: -->
-		<template id="custom_website_sale_product_2" inherit_id="theme_louma.custom_website_sale_product">
-			<xpath expr="//ol[@class='breadcrumb']/../../../.." position="replace">				
-			</xpath>
-			<xpath expr="//h1" position="attributes">
-                 <attribute name="class">page-title margin-top-clear text-center</attribute>
-             </xpath>	
-		</template>
-    
-    
+
+
     </data>
 </openerp>

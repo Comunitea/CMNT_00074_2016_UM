@@ -24,6 +24,7 @@
         'views/footer.xml',
         'views/menu.xml',
         'views/page_contact.xml',
+        'views/product.xml',
         'views/website.xml'
     ],
 }

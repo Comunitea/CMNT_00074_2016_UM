@@ -9,6 +9,19 @@ td.oe_product form{
     background-color: white !important;
 }
 
+.header{
+    border: None !important;
+}
+
+.header li a{
+    font-family: Oswald !important;
+    color: #002749 !important;
+}
+
+.header li.active>a{
+    color: #7A94B1 !important;
+}
+
 @media screen and (min-width: 1200px){
     .s_center_tittle > .container{
         width:1126px;
@@ -127,4 +140,9 @@ b.price span{
 #product-images img{
     display: block;
     margin: 0 auto 0 auto;
+}
+
+
+#product_name{
+    margin-bottom: 30px;
 }
