@@ -28,5 +28,17 @@
                 <attribute name="class">website_cmnt_theme</attribute>
             </xpath>
         </template>
+    
+    
+		<!-- elimina miga de pan, centra titulo: -->
+		<template id="custom_website_sale_product_2" inherit_id="theme_louma.custom_website_sale_product">
+			<xpath expr="//ol[@class='breadcrumb']/../../../.." position="replace">				
+			</xpath>
+			<xpath expr="//h1" position="attributes">
+                 <attribute name="class">page-title margin-top-clear text-center</attribute>
+             </xpath>	
+		</template>
+    
+    
     </data>
 </openerp>

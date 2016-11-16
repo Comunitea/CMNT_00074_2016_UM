@@ -22,9 +22,6 @@ td.oe_product form{
     background-color: #002749;
 }
 
-
-
-
 .s_center_tittle h1{
     font-family: Oswald;
     color: white;
@@ -110,3 +107,13 @@ b.price span{
     font-size: 20px;
     font-weight: 900 !important;
 }
+
+#product-images{
+	border: 4px solid #002749 !important;
+}
+
+#product-images img{
+	display: block;
+	margin: 0 auto 0 auto; 
+}
+
