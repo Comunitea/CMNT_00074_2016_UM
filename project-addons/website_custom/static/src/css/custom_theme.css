@@ -142,7 +142,34 @@ b.price span{
     margin: 0 auto 0 auto;
 }
 
+#product_name span{
+    color: #002749 !important;
+}
 
 #product_name{
     margin-bottom: 30px;
+}
+
+#product_features li a{
+    font-weight: bold;
+    color: #002749;
+}
+
+#product_features li.active a,
+#product_features li a:hover{
+    color: white !important;
+}
+
+#product_features li{
+    background-color: #CACACA;
+    margin-left: 3px;
+
+}
+
+#product_features li.active{
+    background-color: #002749;
+}
+
+.tabs-style-2 .nav-tabs{
+    border-bottom: 0 !important;
 }

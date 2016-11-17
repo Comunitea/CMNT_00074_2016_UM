@@ -27,7 +27,11 @@
             <xpath expr="//div[@class='masonry-grid-item product-item']" position="attributes">
                 <attribute name="class">website_cmnt_theme</attribute>
             </xpath>
+        </template>
 
+
+        <!-- elimina miga de pan, centra titulo: -->
+        <template id="custom_website_sale_product_2" inherit_id="theme_louma.custom_website_sale_product">
             <xpath expr="//ol[@class='breadcrumb']/../../../.." position="replace"></xpath>
             <xpath expr="//h1" position="attributes">
                 <attribute name="class">page-title margin-top-clear text-center</attribute>
@@ -37,7 +41,7 @@
             <xpath expr="//div[@class='tab-content padding-top-clear padding-bottom-clear']/.." position="replace">
                 <div class="tabs-style-2">
                     <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist" t-if="product.description_website and product.feature_website">
+                    <ul class="nav nav-tabs" role="tablist" t-if="product.description_website and product.feature_website"  id="product_features">
                         <li class="active"><a href="#h2tab1" role="tab" data-toggle="tab"><i class="pr-5"></i>Description</a></li>
                         <li><a href="#h2tab2" role="tab" data-toggle="tab"><i class="pr-5"></i>Features</a></li>
                     </ul>
