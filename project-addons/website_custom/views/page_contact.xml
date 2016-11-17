@@ -24,7 +24,6 @@
 
         <template id="contactus_UM" inherit_id="theme_louma.custom_contactus_form">
             <xpath expr="//div[@id='visit_us']" position="replace"></xpath>
-            <xpath expr="//div[@class='g-recaptcha']" position="replace"></xpath>
             <xpath expr="//input[@name='phone']/../.." position="replace"></xpath>
             <xpath expr="//input[@name='partner_name']/../.." position="replace"></xpath>
             <xpath expr="//span[@class='text-danger small']" position="replace"></xpath>
