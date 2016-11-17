@@ -173,3 +173,29 @@ b.price span{
 .tabs-style-2 .nav-tabs{
     border-bottom: 0 !important;
 }
+
+.c4 div,
+.c4 strong{
+    color: #002749;
+}
+
+.product_add_remove,
+.js_add_cart_variants,
+#add_to_cart,
+.css_quantity,
+span.price{
+    float: left;
+}
+#add_to_cart, .css_quantity{
+    margin-left: 23px;
+    margin-top: 0px !important;
+}
+
+#add_to_wishlist,
+#product_detail hr{
+    border: 0 !important;
+}
+
+.css_quantity a{
+    color: white !important;
+}
