@@ -26,13 +26,13 @@
                                 </div>
                                 <div class="col-sm-6 col-md-2 col-lg-2">
                                     <div class="footer-content">
-                                        <h2 class="mt0">Links</h2>
                                         <nav>
                                             <ul class="nav nav-pills nav-stacked">
-                                                <li><a href="#">Home</a></li>
-                                                <li><a href="#">Pages</a></li>
-                                                <li><a href="#">Portfolio</a></li>
-                                                <li><a href="#">Blog</a></li>
+                                                <li><a href="#">Sobre Umaicha</a></li>
+                                                <li><a href="//page/nuestras-bebidas">Nuestras bebidas</a></li>
+                                                <li><a href="#">FAQ's</a></li>
+                                                <li><a href="#">Contacto</a></li>
+                                                <li><a href="#">E-Shop</a></li>
                                             </ul>
                                         </nav>
                                     </div>

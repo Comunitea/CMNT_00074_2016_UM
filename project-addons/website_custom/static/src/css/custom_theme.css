@@ -22,15 +22,6 @@ td.oe_product form{
     color: #7A94B1 !important;
 }
 
-@media screen and (min-width: 1200px){
-    .s_center_tittle > .container{
-        width:1126px;
-    }
-    .s_center_tittle{
-        padding-left: 22px;
-    }
-}
-
 .s_center_tittle > .container{
     background-color: #002749;
 }
@@ -74,6 +65,7 @@ td.oe_product form{
 
 .footer{
     border-bottom: 1px solid #002749 !important;
+    padding-left: 20px !important;
 }
 
 .fa-heart-o{
@@ -206,4 +198,33 @@ span.price{
 
 .red{
     color: red !important;
+}
+
+div[class='col-md-3 bottom_right_div'] > img{
+        margin-right: 30px;
+}
+
+@media screen and (min-width: 768px){
+    .s_center_tittle > .container{
+        width:750px;
+    }
+    div[class='col-md-3 bottom_right_div']{
+        height: 200px !important;
+    }
+    div[class='col-md-3 bottom_right_div'] > img{
+        margin-right: 50px;
+    }
+}
+@media screen and (min-width: 992px){
+    .s_center_tittle > .container{
+        width:910px;
+    }
+}
+@media screen and (min-width: 1200px){
+    .s_center_tittle > .container{
+        width:1110px;
+    }
+    div[class='col-md-3 bottom_right_div'] > img{
+        margin-right: 70px;
+    }
 }
