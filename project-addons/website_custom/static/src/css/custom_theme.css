@@ -228,3 +228,15 @@ div[class='col-md-3 bottom_right_div'] > img{
         margin-right: 70px;
     }
 }
+
+
+footer span,
+footer a,
+footer p{
+    color: #002749 !important;
+
+}
+
+.carousel-caption{
+    text-shadow: none !important;
+}
