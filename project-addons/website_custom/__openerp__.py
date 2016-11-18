@@ -14,7 +14,8 @@
     'depends': [
         'base',
         'website',
-        'website_cmnt_custom_snippet'
+        'website_cmnt_custom_snippet',
+        'theme_louma'
     ],
     'data': [
         'views/eshop_page.xml',
@@ -22,6 +23,8 @@
         'views/customize_modal.xml',
         'views/footer.xml',
         'views/menu.xml',
+        'views/page_contact.xml',
+        'views/product.xml',
         'views/website.xml'
     ],
 }

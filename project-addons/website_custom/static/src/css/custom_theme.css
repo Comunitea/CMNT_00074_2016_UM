@@ -9,6 +9,19 @@ td.oe_product form{
     background-color: white !important;
 }
 
+.header{
+    border: None !important;
+}
+
+.header li a{
+    font-family: Oswald !important;
+    color: #002749 !important;
+}
+
+.header li.active>a{
+    color: #7A94B1 !important;
+}
+
 @media screen and (min-width: 1200px){
     .s_center_tittle > .container{
         width:1126px;
@@ -22,9 +35,6 @@ td.oe_product form{
     background-color: #002749;
 }
 
-
-
-
 .s_center_tittle h1{
     font-family: Oswald;
     color: white;
@@ -35,12 +45,15 @@ td.oe_product form{
 .website_cmnt_theme h3,
 .website_cmnt_theme h4,
 .website_cmnt_theme h5,
+.contactus_box h2,
 .listing-item-body .title a{
     font-family: Oswald !important;
     color: #002749 !important;
 }
 
-.website_cmnt_theme p{
+.website_cmnt_theme p,
+.contactus_box p,
+.contactus_box label{
     font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     color: #002749 !important;
 }
@@ -50,8 +63,9 @@ td.oe_product form{
     color: #002749 !important;
 }
 
-.eq-height .col{
+.eq-height .col div{
     border: 4px solid #002749 !important;
+    padding: 7px;
 }
 
 .eq-height{
@@ -108,4 +122,80 @@ b.price span{
 .listing-item-body .title a{
     font-size: 20px;
     font-weight: 900 !important;
+}
+
+.contactus_box {
+    border: 4px solid #002749;
+    background-color: #E8E6E7;
+}
+
+.form-block{
+    background-color: #E8E6E7 !important;
+}
+
+#product-images{
+    border: 4px solid #002749 !important;
+}
+
+#product-images img{
+    display: block;
+    margin: 0 auto 0 auto;
+}
+
+#product_name span{
+    color: #002749 !important;
+}
+
+#product_name{
+    margin-bottom: 30px;
+}
+
+#product_features li a{
+    font-weight: bold;
+    color: #002749;
+}
+
+#product_features li.active a,
+#product_features li a:hover{
+    color: white !important;
+}
+
+#product_features li{
+    background-color: #CACACA;
+    margin-left: 3px;
+
+}
+
+#product_features li.active{
+    background-color: #002749;
+}
+
+.tabs-style-2 .nav-tabs{
+    border-bottom: 0 !important;
+}
+
+.c4 div,
+.c4 strong{
+    color: #002749;
+}
+
+.product_add_remove,
+.js_add_cart_variants,
+#add_to_cart,
+.css_quantity,
+span.price{
+    float: left;
+}
+#add_to_cart, .css_quantity{
+    margin-left: 23px;
+    margin-top: 0px !important;
+}
+
+#add_to_wishlist,
+#product_detail hr{
+    border: 0 !important;
+}
+
+.css_quantity a{
+    color: white !important;
 }

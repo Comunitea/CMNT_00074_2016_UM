@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 Comunitea
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+
+    <data noupdate="1">
+        <template id="custom_contactus_add_banner" inherit_id="theme_louma.custom_contactus_delete">
+            <xpath expr="//div[@class='col-md-8']" position="after">
+                <section class="oe_dark s_big_picture">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img alt="Img" class="img img-responsive o_animate" src="" style="margin-top: 50px;"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </xpath>
+        </template>
+    </data>
+
+    <data>
+
+        <template id="contactus_UM" inherit_id="theme_louma.custom_contactus_form">
+            <xpath expr="//div[@id='visit_us']" position="replace"></xpath>
+            <xpath expr="//input[@name='phone']/../.." position="replace"></xpath>
+            <xpath expr="//input[@name='partner_name']/../.." position="replace"></xpath>
+            <xpath expr="//span[@class='text-danger small']" position="replace"></xpath>
+            <xpath expr="//span[@class='text-danger small']" position="replace"></xpath>
+            <xpath expr="//span[@class='text-danger small']" position="replace"></xpath>
+            <xpath expr="//span[@class='text-danger small']" position="replace"></xpath>
+            <xpath expr="//div[@class='col-md-8']" position="before">
+                <section class="website_cmnt_theme">
+                    <div class="container">
+                        <h1 class="text-center">Title</h1>
+                        <p class="text-center">subtitle</p>
+                    </div>
+                </section>
+            </xpath>
+        </template>
+
+        <template id="custom_contactus_delete_UM" inherit_id="theme_louma.custom_contactus_delete">
+            <xpath expr="//div[@class='col-md-8']/h2[@class='mt7vw']" position="attributes">
+                <attribute name="class">mt7vw text-center</attribute>
+            </xpath>
+            <xpath expr="//div[@class='col-md-8']" position="attributes">
+                <attribute name="class">col-md-10 col-md-offset-1 contactus_box</attribute>
+            </xpath>
+            <xpath expr="//div[@class='form-block center-block']" position="attributes">
+                <attribute name="class"></attribute>
+            </xpath>
+            <xpath expr="//button/.." position="attributes">
+                <attribute name="class">col-md-12</attribute>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>
