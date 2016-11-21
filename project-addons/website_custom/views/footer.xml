@@ -17,7 +17,7 @@
                                 <div class="col-md-4">
                                     <div class="footer-content">
                                         <ul class="list-icons">
-                                            <li><i class="fa fa-map-marker pr-10"></i> <span t-field="res_company.street"/> <br/> <span t-field="res_company.city"/> <span t-field="res_company.country_id"/></li>
+                                            <li><i class="fa fa-map-marker pr-10"></i> <span t-field="res_company.street"/> <br/><i class="fa pr-10"></i> <span t-field="res_company.city"/> <span t-field="res_company.country_id"/></li>
                                             <li t-if="res_company.phone"><i class="fa fa-phone pr-10"></i><span t-field="res_company.phone"></span></li>
                                             <li t-if="res_company.fax"><i class="fa fa-fax pr-10"></i><span t-field="res_company.fax"></span></li>
                                             <li  t-if="res_company.email"><i class="fa fa-envelope-o pr-10"></i> <span t-field="res_company.email"></span></li>
@@ -37,7 +37,7 @@
                                         </nav>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-3">
+                                <div class="col-sm-6 col-md-2 col-md-offset-1">
                                     <p>Follow us on:</p>
                                     <ul class="cmnt-social-links">
                                         <li><a target="_blank" t-att-href="website.social_facebook" t-if="website.social_facebook"><img src="/website_custom/static/src/images/ico_facebook.jpg" alt="facebook"/></a></li>
