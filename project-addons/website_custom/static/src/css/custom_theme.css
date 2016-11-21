@@ -43,6 +43,7 @@ td.oe_product form{
 }
 
 .website_cmnt_theme p,
+.website_cmnt_theme ul,
 .contactus_box p,
 .contactus_box label{
     font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
