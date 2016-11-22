@@ -230,7 +230,6 @@ div[class='col-md-3 bottom_right_div'] > img{
     }
 }
 
-
 footer span,
 footer a,
 footer p{
@@ -240,4 +239,20 @@ footer p{
 
 .carousel-caption{
     text-shadow: none !important;
+}
+
+
+@media screen and (min-width: 768px){
+    .c1{
+        height: 8%;
+    }
+    .c2{
+        height: 16%;
+    }
+    .c3{
+        height: 10%;
+    }
+    .c4{
+        height: 18%;
+    }
 }
