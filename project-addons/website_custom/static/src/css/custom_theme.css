@@ -204,6 +204,17 @@ span.price{
 div[class='col-md-3 bottom_right_div'] > img{
         margin-right: 30px;
 }
+footer span,
+footer a,
+footer p{
+    color: #002749 !important;
+
+}
+
+.carousel-caption{
+    text-shadow: none !important;
+}
+
 
 @media screen and (min-width: 768px){
     .s_center_tittle > .container{
@@ -220,6 +231,18 @@ div[class='col-md-3 bottom_right_div'] > img{
     .s_center_tittle > .container{
         width:910px;
     }
+    .c1{
+        height: 10%;
+    }
+    .c2{
+        height: 22%;
+    }
+    .c3{
+        height: 12%;
+    }
+    .c4{
+        height: 22%;
+    }
 }
 @media screen and (min-width: 1200px){
     .s_center_tittle > .container{
@@ -228,26 +251,11 @@ div[class='col-md-3 bottom_right_div'] > img{
     div[class='col-md-3 bottom_right_div'] > img{
         margin-right: 70px;
     }
-}
-
-footer span,
-footer a,
-footer p{
-    color: #002749 !important;
-
-}
-
-.carousel-caption{
-    text-shadow: none !important;
-}
-
-
-@media screen and (min-width: 768px){
     .c1{
         height: 8%;
     }
     .c2{
-        height: 16%;
+        height: 18%;
     }
     .c3{
         height: 10%;
@@ -256,3 +264,4 @@ footer p{
         height: 18%;
     }
 }
+
