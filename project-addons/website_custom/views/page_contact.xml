@@ -34,7 +34,7 @@
                 <section class="website_cmnt_theme">
                     <div class="container">
                         <h1 class="text-center">Title</h1>
-                        <p class="text-center">subtitle</p>
+                        <h4 class="text-center">subtitle</h4>
                     </div>
                 </section>
             </xpath>
