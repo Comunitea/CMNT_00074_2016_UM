@@ -15,6 +15,19 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+
+#. module: website_custom
+#: view:website:website.contactus
+#: field:website.menu.style,name:0
+msgid "Name"
+msgstr "Nombre"
+
+
+#. module: website_custom
+#: view:website:website.contactus
+msgid "Comment"
+msgstr "Comentario"
+
 #. module: website_custom
 #: view:website:website.layout
 msgid ". All Rights Reserved"

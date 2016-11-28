@@ -38,6 +38,12 @@
                     </div>
                 </section>
             </xpath>
+            <xpath expr="//label[@for='contact_name']" position="replace">
+                <label class="col-md-3 col-sm-4 control-label" for="contact_name">Name</label>
+            </xpath>
+            <xpath expr="//label[@for='description']" position="replace">
+                <label class="col-md-3 col-sm-4 control-label" for="description">Comment</label>
+            </xpath>
         </template>
 
         <template id="custom_contactus_delete_UM" inherit_id="theme_louma.custom_contactus_delete">
