@@ -55,7 +55,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <p>Copyright ©2016 <span t-field="res_company.name"/>. All Rights Reserved</p>
+                                    <p>Copyright ©2016 <span t-field="res_company.name"/>. All Rights Reserved <span>- <a href="/page/privacy">Privacy policy</a></span> - <a href="/page/legal">Legal advice</a> - <a href="/page/terms">Terms of use</a></p>
                                 </div>
                             </div>
                         </div>
