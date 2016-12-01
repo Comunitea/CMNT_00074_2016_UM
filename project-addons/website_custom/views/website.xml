@@ -5,6 +5,10 @@
 <openerp>
     <data>
 
+        <delete model="ir.ui.view" id="website.aboutus"/>
+        <delete model="ir.ui.view" id="website.show_website_info"/>
+        <delete model="ir.ui.view" id="website.info"/>
+
         <record id="view_website_add_instragram_form" model="ir.ui.view">
             <field name="name">website.form</field>
             <field name="model">website</field>
@@ -29,6 +33,17 @@
                         </div>
                     </div>
                 </div>
+            </field>
+        </record>
+
+        <record id="view_website_menu_add_style" model="ir.ui.view">
+            <field name="name">website.menu</field>
+            <field name="model">website.menu</field>
+            <field name="inherit_id" ref="website.menu_tree"/>
+            <field name="arch" type="xml">
+                <field name="sequence" position="before">
+                    <field name="style"/>
+                </field>
             </field>
         </record>
 

@@ -24,7 +24,6 @@
 
         <template id="contactus_UM" inherit_id="theme_louma.custom_contactus_form">
             <xpath expr="//div[@id='visit_us']" position="replace"></xpath>
-            <xpath expr="//div[@class='g-recaptcha']" position="replace"></xpath>
             <xpath expr="//input[@name='phone']/../.." position="replace"></xpath>
             <xpath expr="//input[@name='partner_name']/../.." position="replace"></xpath>
             <xpath expr="//span[@class='text-danger small']" position="replace"></xpath>
@@ -35,9 +34,15 @@
                 <section class="website_cmnt_theme">
                     <div class="container">
                         <h1 class="text-center">Title</h1>
-                        <p class="text-center">subtitle</p>
+                        <h4 class="text-center">subtitle</h4>
                     </div>
                 </section>
+            </xpath>
+            <xpath expr="//label[@for='contact_name']" position="replace">
+                <label class="col-md-3 col-sm-4 control-label" for="contact_name">Name</label>
+            </xpath>
+            <xpath expr="//label[@for='description']" position="replace">
+                <label class="col-md-3 col-sm-4 control-label" for="description">Comment</label>
             </xpath>
         </template>
 

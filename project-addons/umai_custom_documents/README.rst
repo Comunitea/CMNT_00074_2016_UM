@@ -3,7 +3,7 @@
    :alt: License: AGPL-3
 
 ==================
-CMNT Custom Reports
+UMAI Custom Reports
 ==================
 
 Customizations for UMAI. Depends on cmnt_custom_reports and removes taxes table

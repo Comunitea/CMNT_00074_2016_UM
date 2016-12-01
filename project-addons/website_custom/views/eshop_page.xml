@@ -27,7 +27,14 @@
             <xpath expr="//div[@class='masonry-grid-item product-item']" position="attributes">
                 <attribute name="class">website_cmnt_theme</attribute>
             </xpath>
+            <xpath expr="//span[@itemprop='image']" position="attributes">
+                <attribute name="t-field">product.image_list</attribute>
+            </xpath>
+        </template>
 
+
+        <!-- elimina miga de pan, centra titulo: -->
+        <template id="custom_website_sale_product_2" inherit_id="theme_louma.custom_website_sale_product">
             <xpath expr="//ol[@class='breadcrumb']/../../../.." position="replace"></xpath>
             <xpath expr="//h1" position="attributes">
                 <attribute name="class">page-title margin-top-clear text-center</attribute>
@@ -37,7 +44,7 @@
             <xpath expr="//div[@class='tab-content padding-top-clear padding-bottom-clear']/.." position="replace">
                 <div class="tabs-style-2">
                     <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist" t-if="product.description_website and product.feature_website">
+                    <ul class="nav nav-tabs" role="tablist" t-if="product.description_website and product.feature_website"  id="product_features">
                         <li class="active"><a href="#h2tab1" role="tab" data-toggle="tab"><i class="pr-5"></i>Description</a></li>
                         <li><a href="#h2tab2" role="tab" data-toggle="tab"><i class="pr-5"></i>Features</a></li>
                     </ul>
@@ -46,13 +53,17 @@
                         <div t-att-class="'tab-pane fade' + (product.description_website and ' in active' or '')"
                             id="h2tab1">
                             <t t-if="product.description_website">
+                                <div class="website_cmnt_theme">
                                 <p t-field="product.description_website" class="mt16"/>
+                                </div>
                             </t>
                         </div>
                         <div t-att-class="'tab-pane fade' + (product.feature_website and not product.description_website and ' in active' or '')"
                              id="h2tab2">
                             <t t-if="product.feature_website">
+                                <div class="website_cmnt_theme">
                                 <p t-field="product.feature_website" class="mt16"/>
+                                </div>
                             </t>
                         </div>
                     </div>
@@ -81,7 +92,22 @@
 
             </xpath>
             <xpath expr="//ul[@class='nav nav-pills white space-top']" position="replace"></xpath>
-
+            <!-- engade formulario a continuación do precio: -->
+            <xpath expr="//form[@class='js_add_cart_variants']" position="replace"></xpath>
+            <xpath expr="//span[@itemprop='offers']/.." position="after">
+                <form t-att-action="keep('/shop/cart/update')" class="js_add_cart_variants" t-att-data-attribute_value_ids="product.product_variant_ids.ids" method="POST">
+                    <div class="js_product" id="product_add_remove">
+                        <t t-placeholder="select">
+                            <input type="hidden" class="product_id" name="product_id" t-att-value="int(product.product_variant_ids[0]) if len(product.product_variant_ids) == 1 else '0'"/>
+                            <t t-call="website_sale.variants">
+                                <t t-set="ul_class" t-value="'nav-stacked'"/>
+                            </t>
+                        </t>
+                        <p t-if="len(product.product_variant_ids) > 1" class="css_not_available_msg bg-danger" style="padding: 15px;">Product not available</p>
+                        <a id="add_to_cart" class="btn btn-default mt8 js_check_product a-submit" href="#"><i class="fa fa-cart-plus"></i> Add to Cart</a>
+                    </div>
+                </form>
+            </xpath>
         </template>
 
 

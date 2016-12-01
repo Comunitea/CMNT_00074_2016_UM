@@ -33,7 +33,7 @@
             <!-- Ver solo la direccion fiscal en la factura-->
             <xpath expr="//address[@t-field='o.partner_id']" position="replace">
             </xpath>
-            
+
             <!-- Nombre factura y fecha al lado -->
              <xpath expr="//h2" position="replace">
                 <div class="row">
@@ -72,6 +72,10 @@
                     <div class="col-xs-3" t-if="o.reference">
                         <strong>Reference:</strong>
                         <p t-field="o.reference"/>
+                    </div>
+                    <div class="col-xs-3" t-if="o.origin">
+                        <strong>Order:</strong>
+                        <p t-field="o.origin"/>
                     </div>
                 </div>
             </xpath>
