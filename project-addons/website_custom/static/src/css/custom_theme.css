@@ -214,15 +214,8 @@ footer p{
 .carousel-caption{
     text-shadow: none !important;
 }
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-	color: #fff !important;
-	background-color: #2c5fb3 !important;
-	border-color: #2c5fb3 !important;
-}
-#nuestras-hojas-te {
-	display: block; 
-	visibility: hidden;
-}
+
+
 @media screen and (min-width: 768px){
     .s_center_tittle > .container{
         width:750px;
@@ -233,10 +226,6 @@ footer p{
     div[class='col-md-3 bottom_right_div'] > img{
         margin-right: 50px;
     }
-	#nuestras-hojas-te {
-		height: 150px; 
-		margin-top: -150px;
-	}
 }
 @media screen and (min-width: 992px){
     .s_center_tittle > .container{
@@ -274,6 +263,5 @@ footer p{
     .c4{
         height: 18%;
     }
-
 }
 
