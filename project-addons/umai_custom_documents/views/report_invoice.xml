@@ -2,10 +2,36 @@
 <openerp>
   <data>
 
+    <!--necesito saber cuando el widget esta en el header o no is_header=true -->
+    <template id="umai_custom_header" inherit_id="report.external_layout_header">
+        <xpath expr="//div[@t-field='company.partner_id']" position="replace">
+            <div t-field="company.partner_id"
+                    t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true, "is_header": true}'
+                    style="border-bottom: 1px solid black;"
+                    class="pull-left"
+                />
+        </xpath>
+    </template>
+
+    <template id="contact" inherit_id="base.contact">
+        <xpath expr="//span[@itemprop='email']/.." position="after">
+            <div t-if="options.get('is_header') and options.get('vat_in_header')" class='css_editable_mode_hidden'>
+                <i t-if="not options.get('no_marker')" class='fa fa-file-text-o'/>
+                <span>TIN: <span itemprop="vatID" t-esc="formated_vat"/></span>
+            </div>
+        </xpath>
+    </template>
+
+
+
     <template id="report_invoice_document_custom" inherit_id="cmnt_custom_reports.report_invoice_document_custom">
-            <!-- NIF sin ES delante -->
+            <!-- NIF sin ES delante y con guion antes de la letra-->
             <xpath expr="//span[@t-if='o.partner_id.commercial_partner_id.vat']" position="replace">
-                <span t-if="o.partner_id.vat">TIN: <span t-esc="o.partner_id.commercial_partner_id.vat.replace('ES','')"/></span>
+                <span t-if="o.partner_id.vat">TIN: <span t-esc="o.partner_id.formated_vat()"/></span>
+            </xpath>
+
+            <!-- Ver solo la direccion fiscal en la factura-->
+            <xpath expr="//address[@t-field='o.partner_id']" position="replace">
             </xpath>
 
             <!-- Nombre factura y fecha al lado -->
@@ -104,7 +130,7 @@
                 <div class="col-xs-5 col-xs-offset-7">
                     <address t-field="o.partner_id.commercial_partner_id"
                             t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
-                        <span t-if="o.partner_id.commercial_partner_id.vat">TIN: <span t-field="o.partner_id.commercial_partner_id.vat"/></span>
+                        <span t-if="o.partner_id.commercial_partner_id.vat">TIN: <span t-field="o.partner_id.commercial_partner_id.formated_vat()"/></span>
                 </div>
             </xpath>
         </template>
