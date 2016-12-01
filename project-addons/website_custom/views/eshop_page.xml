@@ -27,6 +27,9 @@
             <xpath expr="//div[@class='masonry-grid-item product-item']" position="attributes">
                 <attribute name="class">website_cmnt_theme</attribute>
             </xpath>
+            <xpath expr="//span[@itemprop='image']" position="attributes">
+                <attribute name="t-field">product.image_list</attribute>
+            </xpath>
         </template>
 
 

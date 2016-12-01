@@ -10,5 +10,13 @@
                 <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"/>
             </xpath>
         </template>
+
+        <template id="UM_layout" inherit_id="website.layout" name="UM layout" priority="17">
+            <xpath expr="//head//link" position="after">
+                <link rel="shortcut icon" href="/website_custom/static/src/images/favicon.ico" type="image/x-icon"/>
+            </xpath>
+        </template>
+
+
     </data>
 </openerp>

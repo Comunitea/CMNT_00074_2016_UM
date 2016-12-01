@@ -11,3 +11,4 @@ class ProductTemplate(models.Model):
 
     description_website = fields.Html()
     feature_website = fields.Html()
+    image_list = fields.Binary()

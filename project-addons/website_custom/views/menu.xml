@@ -12,5 +12,11 @@
                 <li class="instagram" t-if="website.social_instagram"><a target="_blank" t-att-href="website.social_instagram"><i class="fa fa-instagram"></i></a></li>
             </xpath>
         </template>
+
+        <template id="menu_add_style" inherit_id="website.submenu">
+            <xpath expr="//span[@t-field='submenu.name']" position="attributes">
+                <attribute name="t-att-class">submenu.style and submenu.style.css_class or ''</attribute>
+            </xpath>
+        </template>
     </data>
 </openerp>
