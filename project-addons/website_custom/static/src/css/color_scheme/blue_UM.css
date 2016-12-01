@@ -104,14 +104,14 @@ mark,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
     color: #fff !important;
-    background-color: #7f3a9a;
-    border-color: #7f3a9a;
+    background-color: #2c5fb3;
+    border-color: #2c5fb3;
 }
 .btn-primary.disabled,
 .btn-primary[disabled],
 fieldset[disabled] .btn-primary {
-    background-color: #7f3a9a;
-    border-color: #7f3a9a;
+    background-color: #2c5fb3;
+    border-color: #2c5fb3;
 }
 
 /* Default Buttons */
