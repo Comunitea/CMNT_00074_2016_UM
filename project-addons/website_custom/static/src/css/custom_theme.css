@@ -217,6 +217,9 @@ footer p{
 
 
 @media screen and (min-width: 768px){
+    .fixed-header-on main{
+		padding-top: 450px;
+    }
     .s_center_tittle > .container{
         width:750px;
     }
@@ -228,6 +231,9 @@ footer p{
     }
 }
 @media screen and (min-width: 992px){
+    .fixed-header-on main{
+		padding-top: 350px;
+    }
     .s_center_tittle > .container{
         width:910px;
     }
