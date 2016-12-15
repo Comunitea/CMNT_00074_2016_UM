@@ -3,7 +3,7 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 
 <openerp>
-    <data>
+    <data noupdate="1">
 
         <template id="custom_website_sale_page" inherit_id="website_sale.products">
             <xpath expr="//div[@class='products_pager']" position="replace">
@@ -19,6 +19,9 @@
                   </div>
             </xpath>
         </template>
+
+    </data>
+    <data>
 
         <template id="custom_shop" inherit_id="theme_louma.custom_website_sale_products">
             <xpath expr="//div[@class='banner']/div[@class='fixed-image section dark-translucent-bg parallax-bg-shop']" position="replace">
