@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_sale_create_green_point">
+            <field name="name">sale.order.green.point</field>
+            <field name="model">sale.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <button name="action_cancel" position="before">
+                    <button name="create_green_point_line" type="object" states="draft" string="Create Grenn Point"/>
+                </button>
+            </field>
+        </record>
+    </data>
+</openerp>
