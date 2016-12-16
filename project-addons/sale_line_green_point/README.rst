@@ -7,7 +7,8 @@ Sale line green point
 =====================
 
 Adds a line in sale order with a green point product, with the total
-contribution to ecoembes
+contribution to ecoembes. Only products with checked with green point mark
+will be considered.
 
 
 Credits

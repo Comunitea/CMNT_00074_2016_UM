@@ -28,17 +28,16 @@ class SaleOrder(models.Model):
                     'name': _('Green Point contribution'),
                     'product_uom_qty': qty,
                     'price_unit': prod.lst_price,
-                    'promotion_line': True,
                     'product_uom': prod.uom_id.id,
                     'tax_id': [(6, 0, [x.id for x in prod.taxes_id])]
                 }
                 self.env['sale.order.line'].create(vals)
         return
 
-    # @api.multi
-    # def write(self, vals):
-    #     # Recalculate green point qty if order lines modified
-    #     res = super(SaleOrder, self).write(vals)
-    #     if 'order_line' in vals:
-    #         self.create_green_point_line()
-    #     return res
+    @api.multi
+    def write(self, vals):
+        # Recalculate green point qty if order lines modified
+        res = super(SaleOrder, self).write(vals)
+        if 'order_line' in vals:
+            self.create_green_point_line()
+        return res
