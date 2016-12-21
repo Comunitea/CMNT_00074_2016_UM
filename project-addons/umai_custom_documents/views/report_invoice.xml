@@ -120,6 +120,14 @@
                 </span>
             </xpath>
 
+
+            <xpath expr="//span[@t-foreach='o.move_id.line_id']" position="attributes">
+                <attribute name="groups">base.group_user</attribute>
+            </xpath>
+            <xpath expr="//p[@t-if='o.fiscal_position.note']" position="attributes">
+                <attribute name="groups">base.group_user</attribute>
+            </xpath>
+
             <!-- Vencimientos en singular -->
             <xpath expr="//p[@t-if='o.move_id']/strong[1]" position="replace">
                 <strong>Due:</strong>
