@@ -10,7 +10,6 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     def formated_vat(self):
-
         formated_vat = ''
         if self.vat:
             if "ES" in self.vat:
@@ -51,7 +50,6 @@ class Contact(models.AbstractModel):
             return None
         value_rec = value_rec.sudo().with_context(show_address=True)
         value = value_rec.name_get()[0][1]
-
         val = {
             'name': value.split("\n")[0],
             'address': escape("\n".join(value.split("\n")[1:])),

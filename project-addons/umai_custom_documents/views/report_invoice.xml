@@ -82,7 +82,7 @@
 
             <!-- Quito unidad de medida y alineo cantidad a la derecha-->
             <xpath expr="//table[1]/tbody/tr/td[2]" position="replace">
-                <td class="text-right" > 
+                <td class="text-right" >
                     <span t-field="l.quantity"/>
                 </td>
             </xpath>
@@ -117,7 +117,7 @@
             <xpath expr="//span[@t-if='ml.date_maturity']" position="replace">
                 <span t-if="ml.date_maturity">
                     <span t-field="ml.date_maturity"/>
-                </span>  
+                </span>
             </xpath>
 
             <!-- Vencimientos en singular -->
@@ -130,7 +130,7 @@
                 <div class="col-xs-5 col-xs-offset-7">
                     <address t-field="o.partner_id.commercial_partner_id"
                             t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
-                        <span t-if="o.partner_id.commercial_partner_id.vat">TIN: <span t-field="o.partner_id.commercial_partner_id.formated_vat()"/></span>
+                        <span t-if="o.partner_id.commercial_partner_id.vat">TIN: <span t-esc="o.partner_id.commercial_partner_id.formated_vat()"/></span>
                 </div>
             </xpath>
         </template>
