@@ -4,3 +4,5 @@
 from . import website
 from . import product
 from . import res_users
+from . import res_partner
+from . import sale_order
