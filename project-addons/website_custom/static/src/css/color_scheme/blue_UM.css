@@ -19,7 +19,7 @@ mark,
 }
 .table > thead > tr > th {
     border-bottom: 1px solid #002749;
-    background-color: #002749;
+    background-color: #002749 !important;
     color: #fff;
 }
 .table-bordered {
