@@ -11,7 +11,6 @@ class ResUsers(models.Model):
 
     @api.model
     def _signup_create_user(self, values):
-        import ipdb; ipdb.set_trace()
         res = super(ResUsers, self)._signup_create_user(values)
         self.browse(res).partner_id.website_partner = True
         return res
