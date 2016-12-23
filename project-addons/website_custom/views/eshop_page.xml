@@ -33,6 +33,9 @@
             <xpath expr="//span[@itemprop='image']" position="attributes">
                 <attribute name="t-field">product.image_list</attribute>
             </xpath>
+            <xpath expr="//span[@itemprop='offers']" position="after">
+                <span>IVA incl.</span>
+            </xpath>
         </template>
 
 

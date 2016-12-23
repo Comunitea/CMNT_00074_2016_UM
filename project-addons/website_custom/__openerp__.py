@@ -25,6 +25,7 @@
         'views/menu.xml',
         'views/page_contact.xml',
         'views/product.xml',
+        'views/shipping_policy.xml',
         'views/website.xml',
         'views/res_partner.xml',
         'views/sale_order.xml',
