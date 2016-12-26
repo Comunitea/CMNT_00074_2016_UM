@@ -13,13 +13,20 @@ class SaleOrder(models.Model):
 
     @api.multi
     def _cart_update(self, product_id=None, line_id=None, add_qty=0, set_qty=0, **kwargs):
-        quantity = add_qty or set_qty
-        total = quantity
+        total = 0
         orig_qty = 0
+        new_line = True
         for line in self.order_line:
+            if not line.product_id or line.product_id.type == 'service':
+                continue
             if line.id == line_id:
+                new_line = False
                 orig_qty = line.product_uom_qty
-            total += line.product_uom_qty
+                total += set_qty or line.product_uom_qty + add_qty
+            else:
+                total += line.product_uom_qty
+        if new_line:
+            total += set_qty or add_qty
         if total > 6:
             res = {'line_id': line_id, 'quantity': orig_qty}
         else:
