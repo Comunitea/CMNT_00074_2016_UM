@@ -13,7 +13,6 @@ class SaleOrder(models.Model):
 
     @api.multi
     def _cart_update(self, product_id=None, line_id=None, add_qty=0, set_qty=0, **kwargs):
-        import ipdb; ipdb.set_trace()
         quantity = add_qty or set_qty
         total = quantity
         orig_qty = 0
