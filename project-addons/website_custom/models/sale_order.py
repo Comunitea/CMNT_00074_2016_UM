@@ -22,7 +22,7 @@ class SaleOrder(models.Model):
             if line.id == line_id:
                 new_line = False
                 orig_qty = line.product_uom_qty
-                total += set_qty or line.product_uom_qty + add_qty
+                total += set_qty or line.product_uom_qty + (add_qty or 0)
             else:
                 total += line.product_uom_qty
         if new_line:

@@ -15,6 +15,7 @@
         'base',
         'website',
         'website_cmnt_custom_snippet',
+        'website_signup_legal_page_required',
         'theme_louma'
     ],
     'data': [
@@ -29,6 +30,7 @@
         'views/website.xml',
         'views/res_partner.xml',
         'views/sale_order.xml',
+        'views/signup.xml',
         'security/ir.model.access.csv'
     ],
 }

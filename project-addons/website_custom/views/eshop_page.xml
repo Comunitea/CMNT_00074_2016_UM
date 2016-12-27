@@ -23,6 +23,12 @@
     </data>
     <data>
 
+        <template id="total_modify_taxes" inherit_id="website_sale.total">
+            <xpath expr="//tr[@id='order_total_taxes']//abbr" position="replace">
+                <abbr title="Taxes may be updated after providing shipping address">VAT:</abbr>
+            </xpath>
+        </template>
+
         <template id="custom_shop" inherit_id="theme_louma.custom_website_sale_products">
             <xpath expr="//div[@class='banner']/div[@class='fixed-image section dark-translucent-bg parallax-bg-shop']" position="replace">
 
@@ -113,6 +119,7 @@
                         <a id="add_to_cart" class="btn btn-default mt8 js_check_product a-submit" href="#"><i class="fa fa-cart-plus"></i> Add to Cart</a>
                     </div>
                 </form>
+                <p>Max purchase: 6 boxes</p>
             </xpath>
         </template>
 

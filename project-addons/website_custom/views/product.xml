@@ -11,6 +11,8 @@
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
                 <field name="description_sale" position="after">
+                    <separator string="Website bottom"/>
+                    <field name="website_description"/>
                     <separator string="List image"/>
                     <field name="image_list" widget="image"/>
                     <separator string="Website description"/>

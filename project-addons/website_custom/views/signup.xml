@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 Comunitea
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+    <data>
+
+        <template id="signup_modify_terms" inherit_id="website_signup_legal_page_required.signup_view">
+            <xpath expr="//div[@class='form-group field-accepted_legal_terms']" position="replace">
+                <label for="accepted_legal_terms" class="control-label">
+                <input type="checkbox"
+                       name="accepted_legal_terms"
+                       id="accepted_legal_terms"
+                       required="required"/>
+                I accept the <a href="/page/privacy">privacy policy</a> of this website.
+            </label>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>
