@@ -2,17 +2,19 @@
 # © 2016 Comunitea
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api, exceptions, _
+from openerp import models, fields, api
 
 
 class SaleOrder(models.Model):
 
     _inherit = 'sale.order'
 
-    website_sale = fields.Boolean('Website sale', related='partner_id.website_partner')
+    website_sale = fields.Boolean('Website sale',
+                                  related='partner_id.website_partner')
 
     @api.multi
-    def _cart_update(self, product_id=None, line_id=None, add_qty=0, set_qty=0, **kwargs):
+    def _cart_update(self, product_id=None, line_id=None, add_qty=0,
+                     set_qty=0, **kwargs):
         total = 0
         orig_qty = 0
         new_line = True
@@ -30,5 +32,24 @@ class SaleOrder(models.Model):
         if total > 6:
             res = {'line_id': line_id, 'quantity': orig_qty}
         else:
-            res = super(SaleOrder, self)._cart_update(product_id, line_id, add_qty, set_qty, **kwargs)
+            res = super(SaleOrder, self)._cart_update(product_id, line_id,
+                                                      add_qty, set_qty,
+                                                      **kwargs)
         return res
+
+
+class SaleOrderLine(models.Model):
+
+    _inherit = 'sale.order.line'
+
+    original_price_unit = fields.Float(compute='_get_original_price_unit')
+
+    @api.multi
+    def _get_original_price_unit(self):
+        for line in self:
+            pricelist = line.order_id.partner_id.property_product_pricelist
+            line.original_price_unit = pricelist.with_context(
+                date=line.order_id.date_order,
+                uom=line.product_uom.id).price_get(
+                line.product_id.id, line.product_uom_qty,
+                line.order_id.partner_id)[pricelist.id]
