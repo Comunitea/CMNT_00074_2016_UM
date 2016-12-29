@@ -103,6 +103,7 @@
 
             </xpath>
             <xpath expr="//ul[@class='nav nav-pills white space-top']" position="replace"></xpath>
+
             <!-- engade formulario a continuación do precio: -->
             <xpath expr="//form[@class='js_add_cart_variants']" position="replace"></xpath>
             <xpath expr="//span[@itemprop='offers']/.." position="after">
@@ -118,8 +119,17 @@
                         <a id="add_to_cart" class="btn btn-default mt8 js_check_product a-submit" href="#"><i class="fa fa-cart-plus"></i> Add to Cart</a>
                     </div>
                 </form>
-                <p>IVA Incluido</p>
+                <p style="padding-top: 20px;">IVA Incluido</p>
                 <p>Max purchase: 6 boxes</p>
+            </xpath>
+        </template>
+
+        <template id="custom_quantity_select" inherit_id="website_sale.product_quantity">
+            <xpath expr="//input[@name='add_qty']" position="attributes">
+                <attribute name="data-max">6</attribute>
+                <attribute name="max">6</attribute>
+                <attribute name="maxlength">1</attribute>
+                <attribute name="size">1</attribute>
             </xpath>
         </template>
 
@@ -134,6 +144,7 @@
             </xpath>
         </template>
 
+        <delete id="theme_louma.custom_website_sale_reduction_code" model="ir.ui.view"/>
         <delete id="website_sale.reduction_code" model="ir.ui.view"/>
 
         <template id="reduction_code" inherit_id="website_sale.cart" active="False" customize_show="True" name="Coupon Code">
@@ -151,6 +162,31 @@
                             </div>
                         </div>
                     </form>
+                </div>
+            </xpath>
+        </template>
+
+        <template id="fix_suggest_create_account" inherit_id="website_sale_suggest_create_account.cart">
+            <xpath expr="//a[@href='/web/login?redirect=/shop/checkout']" position="attributes">
+                <attribute name="class">btn btn-primary pull-right-lg mb32</attribute>
+            </xpath>
+
+            <xpath expr="//a[@href='/web/signup?redirect=/shop/checkout']" position="attributes">
+                <attribute name="class">btn btn-primary pull-right-lg mb32</attribute>
+            </xpath>
+        </template>
+
+        <template id="custom_checkout" inherit_id="website_sale.checkout">
+            <xpath expr="//input[@name='street2']/.." position="after">
+                <div t-attf-class="form-group #{error.get('mobile') and 'has-error' or ''} col-lg-6">
+                    <label class="control-label" for="mobile">Mobile</label>
+                    <input type="text" name="mobile" class="form-control" t-att-value="checkout.get('mobile')"/>
+                </div>
+            </xpath>
+            <xpath expr="//input[@name='shipping_street']/.." position="after">
+                <div t-attf-class="form-group #{error.get('shipping_mobile') and 'has-error' or ''} col-lg-6">
+                    <label class="control-label" for="shipping_mobile">Mobile</label>
+                    <input type="text" name="shipping_mobile" class="form-control" t-att-value="checkout.get('shipping_mobile')"/>
                 </div>
             </xpath>
         </template>

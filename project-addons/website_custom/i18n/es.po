@@ -22,6 +22,10 @@ msgstr ""
 msgid "Name"
 msgstr "Nombre"
 
+#. module: website_custom
+#: view:website:website_sale.checkout
+msgid "Mobile"
+msgstr "Móvil"
 
 #. module: website_custom
 #: view:website:website_sale.product

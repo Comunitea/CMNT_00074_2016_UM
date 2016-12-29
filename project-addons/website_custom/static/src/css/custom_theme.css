@@ -180,10 +180,7 @@ b.price span{
 span.price{
     float: left;
 }
-#add_to_cart, .css_quantity{
-    margin-left: 23px;
-    margin-top: 0px !important;
-}
+
 
 #add_to_wishlist,
 #product_detail hr{
@@ -228,7 +225,16 @@ footer p{
     div[class='col-md-3 bottom_right_div'] > img{
         margin-right: 50px;
     }
+
 }
+
+@media screen and (min-width: 360px){
+    #add_to_cart, .css_quantity{
+        margin-left: 23px;
+        margin-top: 0px !important;
+    }
+}
+
 @media screen and (min-width: 992px){
     .s_center_tittle > .container{
         width:910px;
@@ -264,5 +270,8 @@ footer p{
     }
     .c4{
         height: 18%;
+    }
+    .pull-right-lg {
+        float: right;
     }
 }

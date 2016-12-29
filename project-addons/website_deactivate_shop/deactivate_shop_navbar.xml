@@ -7,7 +7,7 @@
 
         <template id="deactivate_shop_menu" inherit_id="theme_louma.custom_navbar">
             <xpath expr="//a[@href='/web/signup']" position="replace"></xpath>
-            <xpath expr="//a[@t-attf-href='/shop/view_my_wishlist/']" position="replace"></xpath>
+            <!--xpath expr="//a[@t-attf-href='/shop/view_my_wishlist/']" position="replace"></xpath-->
             <xpath expr="//i[@class='fa fa-shopping-cart']/.." position="replace"></xpath>
             <xpath expr="//input[@id='search']/../../../../.." position="replace"></xpath>
         </template>
