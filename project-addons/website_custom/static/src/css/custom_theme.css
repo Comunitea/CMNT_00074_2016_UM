@@ -228,10 +228,15 @@ footer p{
 
 }
 
-@media screen and (min-width: 360px){
+@media screen and (min-width: 338px){
     #add_to_cart, .css_quantity{
         margin-left: 23px;
         margin-top: 0px !important;
+    }
+}
+@media screen and (max-width: 337px){
+    #add_to_cart, .css_quantity{
+        width: 159px;
     }
 }
 

@@ -119,8 +119,8 @@
                         <a id="add_to_cart" class="btn btn-default mt8 js_check_product a-submit" href="#"><i class="fa fa-cart-plus"></i> Add to Cart</a>
                     </div>
                 </form>
-                <p style="padding-top: 20px;">IVA Incluido</p>
-                <p>Max purchase: 6 boxes</p>
+                <div class="clearfix"/>
+                <p>IVA Incluido <br/> Max purchase: 6 boxes</p>
             </xpath>
         </template>
 
@@ -188,6 +188,15 @@
                     <label class="control-label" for="shipping_mobile">Mobile</label>
                     <input type="text" name="shipping_mobile" class="form-control" t-att-value="checkout.get('shipping_mobile')"/>
                 </div>
+            </xpath>
+        </template>
+
+        <delete id="auth_signup.login" model="ir.ui.view"/>
+
+        <template id="auth_signup.login" inherit_id="web.login" name="Sign up - Reset Password">
+            <xpath expr="//button[@type='submit']" position="after">
+                <a t-if="signup_enabled" t-attf-href="/web/signup?{{ keep_query() }}" class="btn btn-link">Sign up</a>
+                <a t-if="reset_password_enabled" t-attf-href="/web/reset_password?{{ keep_query() }}" class="btn btn-link">Reset Password</a>
             </xpath>
         </template>
     </data>
