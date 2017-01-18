@@ -24,6 +24,16 @@ msgstr "Nombre"
 
 #. module: website_custom
 #: view:website:website_sale.checkout
+msgid "Lastname"
+msgstr "Apellidos"
+
+#. module: website_custom
+#: view:website:website_sale.checkout
+msgid "Firstname"
+msgstr "Nombre"
+
+#. module: website_custom
+#: view:website:website_sale.checkout
 msgid "Mobile"
 msgstr "Móvil"
 

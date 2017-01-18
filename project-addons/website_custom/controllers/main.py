@@ -12,6 +12,10 @@ class website_sale_custom_fields(website_sale):
         if not data.get('phone') and not data.get('mobile'):
             res['phone'] = 'missing'
             res['mobile'] = 'missing'
+        if not data.get('firstname'):
+            res['firstname'] = 'missing'
+        if not data.get('lastname'):
+            res['lastname'] = 'missing'
         if data.get("shipping_id") == -1:
             if not data.get('shipping_phone') and not data.get('shipping_mobile'):
                 res['shipping_phone'] = 'missing'
@@ -20,7 +24,7 @@ class website_sale_custom_fields(website_sale):
 
     def _get_mandatory_billing_fields(self):
         res = super(website_sale_custom_fields, self)._get_mandatory_billing_fields()
-        return [x for x in res if x != 'phone']
+        return [x for x in res if x not in  ('name', 'phone')] + ['firstname', 'lastname']
 
     def _get_optional_billing_fields(self):
         return super(

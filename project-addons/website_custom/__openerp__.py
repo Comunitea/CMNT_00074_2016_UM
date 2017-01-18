@@ -16,7 +16,8 @@
         'website',
         'website_cmnt_custom_snippet',
         'website_signup_legal_page_required',
-        'theme_louma'
+        'theme_louma',
+        'partner_firstname'
     ],
     'data': [
         'views/eshop_page.xml',
