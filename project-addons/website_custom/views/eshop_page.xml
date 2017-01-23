@@ -184,7 +184,7 @@
                 </div>
             </xpath>
             <xpath expr="//input[@name='street2']/../label" position="replace">
-                    <label class="control-label" for="street">Dirección (Calle, Número, Piso, puerta)</label>
+                <label class="control-label" for="street">Dirección (Calle, Número, Piso, puerta)</label>
             </xpath>
             <xpath expr="//input[@name='name']/.." position="replace">
                 <div t-attf-class="form-group #{error.get('firstname') and 'has-error' or ''} col-lg-6">
@@ -204,7 +204,7 @@
                 </div>
             </xpath>
             <xpath expr="//input[@name='shipping_street']/../label" position="replace">
-                    <label class="control-label" for="street">Dirección (Calle, Número, Piso, puerta)</label>
+                <label class="control-label" for="street">Dirección (Calle, Número, Piso, puerta)</label>
             </xpath>
         </template>
 

@@ -3,21 +3,21 @@
   <data>
 
     <template id="report_sale_order_document_custom" inherit_id="cmnt_custom_reports.report_sale_order_document_custom">
-            
+
             <!-- NIF quitando ES y del commercial_partner_id, tuve que heredar el bloque xpath no referecia el otro nif si tienes uno -->
             <xpath expr="//div[@class='col-xs-6'][1]" position="replace">
                 <div class="col-xs-6">
                         <strong t-if="o.partner_shipping_id == o.partner_invoice_id">Invoice and shipping address:</strong>
                         <strong t-if="o.partner_shipping_id != o.partner_invoice_id">Invoice address:</strong>
-                        <div t-field="o.partner_invoice_id" 
+                        <div t-field="o.partner_invoice_id"
                             t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
                         <p t-if="o.partner_id.vat">VAT:  <span t-esc="o.partner_id.commercial_partner_id.formated_vat()"/></p>
                         <div t-if="o.partner_shipping_id != o.partner_invoice_id" class="mt8">
                             <strong>Shipping address:</strong>
-                            <div t-field="o.partner_shipping_id" 
+                            <div t-field="o.partner_shipping_id"
                                 t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
-                        <p t-if="o.partner_id.vat">VAT: <span t-esc="o.partner_id.commercial_partner_id.vat.formated_vat()"/></p>
-                        </div>                        
+                        <p t-if="o.partner_id.vat">VAT: <span t-esc="o.partner_id.commercial_partner_id.formated_vat()"/></p>
+                        </div>
                 </div>
             </xpath>
 
