@@ -23,4 +23,6 @@ class ResUsers(models.Model):
         if self.id == template_user_id:
             res.property_product_pricelist = self.property_product_pricelist
             res.property_account_position = self.property_account_position
+            res.firstname = default['name']
+            res.lastname = False
         return res
