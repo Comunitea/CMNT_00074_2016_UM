@@ -42,22 +42,28 @@ class SaleOrder(models.Model):
             self.create_green_point_line()
         return res
 
+    @api.model
+    def create(self, vals):
+        res = super(SaleOrder, self).create(vals)
+        res.create_green_point_line()
+        return res
+
 
 class SaleOrderLine(models.Model):
 
     _inherit = 'sale.order.line'
 
-    # @api.multi
-    # def invoice_line_create(self):
-    #     """
-    #     No Facturar el servicio punto verde, se hará al crear la factura el
-    #     cálculo de nuevo
-    #     """
-    #     lines_record = self.env['sale.order.line']
-    #     prod = self.env.ref('sale_line_green_point.product_green_point')
-    #     for l in self:
-    #         if l.product_id and l.product_id.id == prod.id:
-    #             continue
-    #         lines_record += l
-    #     res = super(SaleOrderLine, lines_record).invoice_line_create()
-    #     return res
+    @api.multi
+    def invoice_line_create(self):
+        """
+        No Facturar el servicio punto verde, se hará al crear la factura el
+        cálculo de nuevo
+        """
+        lines_record = self.env['sale.order.line']
+        prod = self.env.ref('sale_line_green_point.product_green_point')
+        for l in self:
+            if l.product_id and l.product_id.id == prod.id:
+                continue
+            lines_record += l
+        res = super(SaleOrderLine, lines_record).invoice_line_create()
+        return res
