@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-18 09:28+0000\n"
-"PO-Revision-Date: 2016-11-18 09:28+0000\n"
+"POT-Creation-Date: 2017-01-26 10:49+0000\n"
+"PO-Revision-Date: 2017-01-26 10:49+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -76,6 +76,12 @@ msgid "Invoice:"
 msgstr "Factura:"
 
 #. module: umai_custom_documents
+#: view:website:account.report_invoice_document
+#: view:website:base.contact
+msgid "NIF:"
+msgstr "NIF:"
+
+#. module: umai_custom_documents
 #: view:website:sale.report_saleorder_document
 msgid "Order N°"
 msgstr "Pedido Nº"
@@ -89,6 +95,16 @@ msgstr "Pedido:"
 #: view:website:account.report_invoice_document
 msgid "PRO-FORMA"
 msgstr "PRO-FORMA"
+
+#. module: umai_custom_documents
+#: model:ir.model,name:umai_custom_documents.model_res_partner
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: umai_custom_documents
+#: view:website:account.report_invoice_document
+msgid "Price net"
+msgstr "Precio neto"
 
 #. module: umai_custom_documents
 #: view:website:sale.report_saleorder_document
@@ -144,4 +160,9 @@ msgstr "Total factura"
 #: view:website:sale.report_saleorder_document
 msgid "VAT:"
 msgstr "NIF:"
+
+#. module: umai_custom_documents
+#: view:website:account.report_invoice_document
+msgid "base.group_user"
+msgstr "base.group_user"
 

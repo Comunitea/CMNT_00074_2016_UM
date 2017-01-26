@@ -87,11 +87,15 @@
                 </td>
             </xpath>
 
-            <!-- Quito colunba impuestos -->
+            <!-- Quito colunba impuestos y pongo el precio neto -->
             <xpath expr="//table[1]/thead/tr/th[5]" position="replace">
+                <th class="text-right">Price net</th>
             </xpath>
 
             <xpath expr="//table[1]/tbody/tr/td[5]" position="replace">
+                <td class="text-right">
+                    <span t-field="l.net_price_unit"/>
+                </td>
             </xpath>
 
             <!-- Pongo IVA 10% nen lugar de impuestos -->
