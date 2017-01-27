@@ -10,14 +10,18 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     def formated_vat(self):
+        """
+        Si es código ES, se quita el ES se pone letra-numero
+        Pero si no es ES, se poner FR-númeroLetra
+        """
         formated_vat = ''
         if self.vat:
             if "ES" in self.vat:
-                formated_vat= ("%s-%s")%(self.vat[3:12],self.vat[2:3])
+                formated_vat = ("%s-%s") % (self.vat[-1], self.vat[2:10])
             else:
-                formated_vat = self.vat
-
+                formated_vat = ("%s-%s") % (self.vat[0:2], self.vat[2:11])
         return formated_vat
+
 
 class Contact(models.AbstractModel):
     _inherit = 'ir.qweb.field.contact'
