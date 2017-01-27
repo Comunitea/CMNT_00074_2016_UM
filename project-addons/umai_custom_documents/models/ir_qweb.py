@@ -12,7 +12,8 @@ class ResPartner(models.Model):
     def formated_vat(self):
         """
         Si es código ES, se quita el ES se pone letra-numero
-        Pero si no es ES, se poner FR-númeroLetra
+        Pero si no es ES, se poner FR-númeroLetra.
+        si es españa de L-NNNNNNN, sino FR-NNNNNNNL
         """
         formated_vat = ''
         if self.vat:
