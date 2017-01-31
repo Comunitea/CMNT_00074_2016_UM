@@ -17,7 +17,7 @@
         <xpath expr="//span[@itemprop='email']/.." position="after">
             <div t-if="options.get('is_header') and options.get('vat_in_header')" class='css_editable_mode_hidden'>
                 <i t-if="not options.get('no_marker')" class='fa fa-file-text-o'/>
-                <span>TIN: <span itemprop="vatID" t-esc="formated_vat"/></span>
+                <span>NIF: <span itemprop="vatID" t-esc="formated_vat"/></span>
             </div>
         </xpath>
     </template>
@@ -27,7 +27,7 @@
     <template id="report_invoice_document_custom" inherit_id="cmnt_custom_reports.report_invoice_document_custom">
             <!-- NIF sin ES delante y con guion antes de la letra-->
             <xpath expr="//span[@t-if='o.partner_id.commercial_partner_id.vat']" position="replace">
-                <span t-if="o.partner_id.vat">TIN: <span t-esc="o.partner_id.formated_vat()"/></span>
+                <span t-if="o.partner_id.vat">NIF: <span t-esc="o.partner_id.formated_vat()"/></span>
             </xpath>
 
             <!-- Ver solo la direccion fiscal en la factura-->
@@ -87,11 +87,15 @@
                 </td>
             </xpath>
 
-            <!-- Quito colunba impuestos -->
+            <!-- Quito colunba impuestos y pongo el precio neto -->
             <xpath expr="//table[1]/thead/tr/th[5]" position="replace">
+                <th class="text-right">Price net</th>
             </xpath>
 
             <xpath expr="//table[1]/tbody/tr/td[5]" position="replace">
+                <td class="text-right">
+                    <span t-field="l.net_price_unit"/>
+                </td>
             </xpath>
 
             <!-- Pongo IVA 10% nen lugar de impuestos -->
@@ -115,7 +119,7 @@
 
             <!-- Quito el importe de los vencimientos -->
             <xpath expr="//span[@t-if='ml.date_maturity']" position="replace">
-                <span t-if="ml.date_maturity">
+                <span t-if="ml.date_maturity and not o.partner_id.website_partner">
                     <span t-field="ml.date_maturity"/>
                 </span>
             </xpath>
@@ -131,6 +135,11 @@
             <!-- Vencimientos en singular -->
             <xpath expr="//p[@t-if='o.move_id']/strong[1]" position="replace">
                 <strong>Due:</strong>
+            </xpath>
+
+            <!-- Vencimientos en singular -->
+            <xpath expr="//p[@t-if='o.move_id']" position="replace">
+                <p t-if="o.move_id and not o.partner_id.website_partner"/>
             </xpath>
 
 
