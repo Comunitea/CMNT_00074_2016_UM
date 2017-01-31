@@ -11,7 +11,8 @@
     'depends': [
         'base',
         'cmnt_custom_reports',
-        'price_unit_discount'
+        'price_unit_discount',
+        'website_custom',
     ],
     'contributors': [
         "Comunitea ",
