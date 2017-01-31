@@ -28,7 +28,7 @@ class ResPartner(models.Model):
                     number = self.vat[2:]
                 formated_vat = ("%s-%s") % (letter, number)
             else:
-                formated_vat = ("%s-%s") % (self.vat[0:2], self.vat[2:])
+                formated_vat = ("%s-%s") % (self.vat[0:2], self.vat[2:10])
         return formated_vat
 
 
