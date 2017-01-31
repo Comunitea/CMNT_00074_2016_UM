@@ -18,9 +18,9 @@ class ResPartner(models.Model):
         formated_vat = ''
         if self.vat:
             if "ES" in self.vat:
-                formated_vat = ("%s-%s") % (self.vat[-1], self.vat[2:10])
+                formated_vat = ("%s-%s") % (self.vat[2], self.vat[3:])
             else:
-                formated_vat = ("%s-%s") % (self.vat[0:2], self.vat[2:11])
+                formated_vat = ("%s-%s") % (self.vat[0:2], self.vat[2:])
         return formated_vat
 
 
