@@ -25,10 +25,10 @@ class ResPartner(models.Model):
                     number = self.vat[3:]
                 else:
                     letter = self.vat[-1]
-                    number = self.vat[2:]
+                    number = self.vat[2:10]
                 formated_vat = ("%s-%s") % (letter, number)
             else:
-                formated_vat = ("%s-%s") % (self.vat[0:2], self.vat[2:9])
+                formated_vat = ("%s-%s") % (self.vat[0:2], self.vat[2:])
         return formated_vat
 
 
