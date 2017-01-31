@@ -134,14 +134,8 @@
 
             <!-- Vencimientos en singular -->
             <xpath expr="//p[@t-if='o.move_id']/strong[1]" position="replace">
-                <strong>Due:</strong>
+                <strong t-if="not o.partner_id.website_partner">Due:</strong>
             </xpath>
-
-            <!-- Vencimientos en singular -->
-            <xpath expr="//p[@t-if='o.move_id']" position="replace">
-                <p t-if="o.move_id and not o.partner_id.website_partner"/>
-            </xpath>
-
 
             <xpath expr="//div[@class='row']" position="replace">
                 <div class="col-xs-5 col-xs-offset-7">
