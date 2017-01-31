@@ -16,5 +16,21 @@
             </field>
         </record>
 
+        <record id="res_partner_search_website" model="ir.ui.view">
+            <field name="name">res.partner.filter</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <filter name="supplier" position="after">
+                    <filter string="B2B" name="b2b" domain="[('website_partner','=', False)]"/>
+                    <filter string="B2C" name="b2c" domain="[('website_partner','=',1)]"/>
+                </filter>
+            </field>
+        </record>
+
+        <record id="base.action_partner_form" model="ir.actions.act_window">
+            <field name="context">{"search_default_b2b":1, "search_default_customer":1}</field>
+        </record>
+
     </data>
 </openerp>
