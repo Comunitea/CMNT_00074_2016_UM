@@ -20,7 +20,7 @@ class ResPartner(models.Model):
             letter = ''
             number = ''
             if "ES" in self.vat:
-                if not self.vat[-1].isdigit():
+                if self.vat[-1].isdigit():
                     letter = self.vat[2]
                     number = self.vat[3:]
                 else:
