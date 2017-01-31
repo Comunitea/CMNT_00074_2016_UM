@@ -13,6 +13,7 @@
         'cmnt_custom_reports',
         'price_unit_discount',
         'website_custom',
+        'picking_invoice_rel'
     ],
     'contributors': [
         "Comunitea ",
@@ -21,6 +22,7 @@
     "data": [
         "views/report_invoice.xml",
         "views/report_sale_order.xml",
+        "views/invoice_view.xml",
     ],
     "demo": [
     ],

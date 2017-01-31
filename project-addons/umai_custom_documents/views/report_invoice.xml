@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-xs-3" t-if="o.origin">
                         <strong>Order:</strong>
-                        <p t-field="o.origin"/>
+                        <p t-field="o.order_origin"/>
                     </div>
                 </div>
             </xpath>
