@@ -14,6 +14,7 @@ class AccountInvoiceLine(models.Model):
                  'product_id', 'invoice_id.partner_id',
                  'invoice_id.currency_id')
     def _compute_net(self):
+        self.net_price_unit = self.price_unit
         if self.discount:
             self.net_price_unit = \
                 self.price_unit * (1 - (self.discount or 0.0) / 100.0)
@@ -24,5 +25,5 @@ class AccountInvoiceLine(models.Model):
 
     net_price_unit = fields.Float(string='Price unit net',
                                   digits=dp.get_precision('Account'),
-                                  store=True,
+                                  store=False,
                                   readonly=True, compute='_compute_net')
