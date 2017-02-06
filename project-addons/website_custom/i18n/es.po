@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* website_custom
+#   * website_custom
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-06 11:10+0000\n"
-"PO-Revision-Date: 2017-02-06 11:10+0000\n"
+"POT-Creation-Date: 2016-11-16 16:27+0000\n"
+"PO-Revision-Date: 2016-11-16 16:27+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,51 +15,61 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: website_custom
-#: view:website:website_sale.cart
-msgid "&nbsp;"
-msgstr "&nbsp;"
 
 #. module: website_custom
-#: view:website:website.layout
-msgid ". All Rights Reserved"
-msgstr ". All Rights Reserved"
+#: view:website:website.contactus
+#: field:website.menu.style,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: website_custom
+#: model:ir.actions.act_window,name:website_custom.web_sales_list_action
+#: model:ir.ui.menu,name:website_custom.sales_from_website
+msgid "Sales from website"
+msgstr "Ventas web"
+
+
+#. module: website_custom
+#: view:sale.order:website_custom.web_sales_search_view
+msgid "Without payment transaction"
+msgstr "Sin transacción de pago"
+
+#. module: website_custom
+#: view:sale.order:website_custom.web_sales_search_view
+msgid "Payment transaction done"
+msgstr "Transacción de pago realizada"
+
+#. module: website_custom
+#: view:sale.order:website_custom.web_sales_search_view
+msgid "Payment transaction initiated"
+msgstr "Transacción de pago iniciada"
+
+
+#. module: website_custom
+#: view:website:website_sale.checkout
+msgid "Lastname"
+msgstr "Apellidos"
+
+#. module: website_custom
+#: view:website:website_sale.checkout
+msgid "Firstname"
+msgstr "Nombre"
+
+#. module: website_custom
+#: view:website:website_sale.checkout
+msgid "Mobile"
+msgstr "Móvil"
 
 #. module: website_custom
 #: view:website:website_sale.product
-msgid "Add to Cart"
-msgstr "Añadir al carro"
+msgid "Max purchase: 6 boxes"
+msgstr "Compra máxima: 6 cajas"
 
 #. module: website_custom
-#: view:website:website_sale.cart
-msgid "Apply"
-msgstr "Aplicar"
+#: view:website:website_sale.total
+msgid "VAT:"
+msgstr "IVA:"
 
-#. module: website_custom
-#: view:res.partner:website_custom.res_partner_search_website
-msgid "B2B"
-msgstr "B2B"
-
-#. module: website_custom
-#: view:res.partner:website_custom.res_partner_search_website
-msgid "B2C"
-msgstr "B2C"
-
-#. module: website_custom
-#: view:website:website_less.theme_customize
-msgid "Blue"
-msgstr "Blue"
-
-#. module: website_custom
-#: view:website:website_sale.products
-msgid "COMPRA UMAI CHA ONLINE"
-msgstr "COMPRA UMAI CHA ONLINE"
-
-#. module: website_custom
-#: field:res.partner,circulating_amount:0
-#: field:res.users,circulating_amount:0
-msgid "Circulating amount"
-msgstr "Importe en circulación"
 
 #. module: website_custom
 #: view:website:website.contactus
@@ -68,38 +78,23 @@ msgstr "Comentario"
 
 #. module: website_custom
 #: view:website:website.layout
-msgid "Contactanos"
-msgstr "Contactanos"
+msgid ". All Rights Reserved"
+msgstr ". All Rights Reserved"
+
+#. module: website_custom
+#: view:website:website.layout
+msgid "Blog"
+msgstr "Blog"
+
+#. module: website_custom
+#: view:website:website_less.theme_customize
+msgid "Blue"
+msgstr "Blue"
 
 #. module: website_custom
 #: view:website:website.layout
 msgid "Copyright ©2016"
 msgstr "Copyright ©2016"
-
-#. module: website_custom
-#: view:website:website_sale.cart
-msgid "Coupon Code"
-msgstr "Código de descuento"
-
-#. module: website_custom
-#: field:website.menu.style,create_uid:0
-msgid "Created by"
-msgstr "Created by"
-
-#. module: website_custom
-#: field:website.menu.style,create_date:0
-msgid "Created on"
-msgstr "Created on"
-
-#. module: website_custom
-#: field:website.menu.style,css_class:0
-msgid "Css class"
-msgstr "Css class"
-
-#. module: website_custom
-#: field:res.users,property_delivery_carrier:0
-msgid "Delivery Method"
-msgstr "Delivery Method"
 
 #. module: website_custom
 #: view:website:website_sale.product
@@ -117,26 +112,6 @@ msgid "Description website"
 msgstr "Descripción website"
 
 #. module: website_custom
-#: view:website:website_sale.checkout
-msgid "Dirección (Calle, Número, Piso, puerta)"
-msgstr "Dirección (Calle, Número, Piso, puerta)"
-
-#. module: website_custom
-#: field:website.menu.style,display_name:0
-msgid "Display Name"
-msgstr "Display Name"
-
-#. module: website_custom
-#: view:website:website.layout
-msgid "Donde encontrarnos"
-msgstr "Donde encontrarnos"
-
-#. module: website_custom
-#: view:website:website_sale.products
-msgid "Envío gratuito a toda la península"
-msgstr "Envío gratuito a toda la península"
-
-#. module: website_custom
 #: field:product.template,feature_website:0
 msgid "Feature website"
 msgstr "Características website"
@@ -152,49 +127,14 @@ msgid "Features for website shop"
 msgstr "Features for website shop"
 
 #. module: website_custom
-#: field:res.users,firstname:0
-msgid "First name"
-msgstr "First name"
-
-#. module: website_custom
-#: view:website:website_sale.checkout
-msgid "Firstname"
-msgstr "Nombre"
-
-#. module: website_custom
 #: view:website:website.layout
 msgid "Follow us on:"
 msgstr "Siguenos en:"
 
 #. module: website_custom
-#: view:website:website_sale.cart
-msgid "Have a coupon code? Fill in this field and apply."
-msgstr "¿Tiene un código de descuento? Rellénelo en este campo y aplíquelo."
-
-#. module: website_custom
-#: view:website:auth_signup.fields
-msgid "I accept the"
-msgstr "Acepto el"
-
-#. module: website_custom
-#: field:website.menu.style,id:0
-msgid "ID"
-msgstr "ID"
-
-#. module: website_custom
-#: view:website:website_sale.product
-msgid "IVA Incluido"
-msgstr "IVA Incluido"
-
-#. module: website_custom
-#: view:website:website_sale.products
-msgid "IVA incl."
-msgstr "IVA incl."
-
-#. module: website_custom
-#: field:product.template,image_list:0
-msgid "Image list"
-msgstr "Image list"
+#: view:website:website.layout
+msgid "Home"
+msgstr "Inicio"
 
 #. module: website_custom
 #: view:website:website.contactus
@@ -208,105 +148,19 @@ msgid "Instagram account"
 msgstr "Cuenta instagram"
 
 #. module: website_custom
-#: field:website.menu.style,__last_update:0
-msgid "Last Modified on"
-msgstr "Last Modified on"
-
-#. module: website_custom
-#: field:website.menu.style,write_uid:0
-msgid "Last Updated by"
-msgstr "Last Updated by"
-
-#. module: website_custom
-#: field:website.menu.style,write_date:0
-msgid "Last Updated on"
-msgstr "Last Updated on"
-
-#. module: website_custom
-#: field:res.users,lastname:0
-msgid "Last name"
-msgstr "Last name"
-
-#. module: website_custom
-#: view:website:website_sale.checkout
-msgid "Lastname"
-msgstr "Apellidos"
+#: view:website:website.layout
+msgid "Links"
+msgstr "Links"
 
 #. module: website_custom
 #: view:website:website.layout
-msgid "Legal advice"
-msgstr "Aviso Legal"
-
-#. module: website_custom
-#: view:product.template:website_custom.product_template_add_website_fields
-msgid "List image"
-msgstr "List image"
-
-#. module: website_custom
-#: view:website:website_sale.product
-msgid "Max purchase: 6 boxes"
-msgstr "Compra máxima: 6 cajas"
-
-#. module: website_custom
-#: view:website:website_sale.checkout
-msgid "Mobile"
-msgstr "Móvil"
-
-#. module: website_custom
-#: view:website:website.contactus
-#: field:website.menu.style,name:0
-msgid "Name"
-msgstr "Nombre"
+msgid "Pages"
+msgstr "Pages"
 
 #. module: website_custom
 #: view:website:website.layout
-msgid "Nuestros tés"
-msgstr "Nuestros tés"
-
-#. module: website_custom
-#: field:sale.order.line,original_price_unit:0
-msgid "Original price unit"
-msgstr "Original price unit"
-
-#. module: website_custom
-#: view:website:website_sale.product
-msgid "PVP:"
-msgstr "PVP:"
-
-#. module: website_custom
-#: model:ir.model,name:website_custom.model_res_partner
-msgid "Partner"
-msgstr "Empresa"
-
-#. module: website_custom
-#: view:sale.order:website_custom.web_sales_search_view
-msgid "Payment transaction done"
-msgstr "Transacción de pago realizada"
-
-#. module: website_custom
-#: view:sale.order:website_custom.web_sales_search_view
-msgid "Payment transaction initiated"
-msgstr "Transacción de pago iniciada"
-
-#. module: website_custom
-#: view:website:website.layout
-msgid "Política de envío y devoluciones"
-msgstr "Política de envío y devoluciones"
-
-#. module: website_custom
-#: view:website:website.contactus
-msgid "Ponte en contacto con nosotros ¡Estaremos encantados de ayudarte en lo que necesites!"
-msgstr "Ponte en contacto con nosotros ¡Estaremos encantados de ayudarte en lo que necesites!"
-
-#. module: website_custom
-#: view:website:website.layout
-msgid "Preguntas frecuentes"
-msgstr "Preguntas frecuentes"
-
-#. module: website_custom
-#: view:website:website.layout
-msgid "Privacy policy"
-msgstr "Política de Privacidad"
+msgid "Portfolio"
+msgstr "Portfolio"
 
 #. module: website_custom
 #: model:ir.model,name:website_custom.model_product_template
@@ -314,80 +168,19 @@ msgid "Product Template"
 msgstr "Plantilla de producto"
 
 #. module: website_custom
-#: view:website:website_sale.product
-msgid "Product not available"
-msgstr "Producto no disponible"
+#: view:website:website_sale.products
+msgid "Subtitle"
+msgstr "Subtítulo"
 
 #. module: website_custom
-#: model:ir.model,name:website_custom.model_sale_order
-msgid "Sales Order"
-msgstr "Pedido de venta"
-
-#. module: website_custom
-#: model:ir.model,name:website_custom.model_sale_order_line
-msgid "Sales Order Line"
-msgstr "Línea pedido de venta"
-
-#. module: website_custom
-#: model:ir.actions.act_window,name:website_custom.web_sales_list_action
-#: model:ir.ui.menu,name:website_custom.sales_from_website
-msgid "Sales from website"
-msgstr "Ventas web"
-
-#. module: website_custom
-#: view:website:website.layout
-msgid "Sobre nosotros"
-msgstr "Sobre nosotros"
-
-#. module: website_custom
-#: field:website.menu,style:0
-msgid "Style"
-msgstr "Style"
-
-#. module: website_custom
-#: view:website:website_sale.total
-msgid "Taxes may be updated after providing shipping address"
-msgstr "Los impuestos pueden ser modificados después de proporcionar la dirección de envío"
-
-#. module: website_custom
-#: view:website:website.layout
-msgid "Terms of use"
-msgstr "Términos de Uso"
-
-#. module: website_custom
-#: help:res.users,property_delivery_carrier:0
-msgid "This delivery method will be used when invoicing from picking."
-msgstr "This delivery method will be used when invoicing from picking."
-
-#. module: website_custom
-#: view:website:website.layout
-msgid "Umaicha"
-msgstr "Umaicha"
-
-#. module: website_custom
-#: model:ir.model,name:website_custom.model_res_users
-msgid "Users"
-msgstr "Usuarios"
-
-#. module: website_custom
-#: view:website:website_sale.total
-msgid "VAT:"
-msgstr "NIF:"
+#: view:website:website_sale.products
+msgid "Title"
+msgstr "Título"
 
 #. module: website_custom
 #: model:ir.model,name:website_custom.model_website
 msgid "Website"
 msgstr "Sitio web"
-
-#. module: website_custom
-#: model:ir.model,name:website_custom.model_website_menu
-msgid "Website Menu"
-msgstr "Menú del sitio web"
-
-#. module: website_custom
-#: view:product.template:website_custom.product_template_add_website_fields
-msgid "Website bottom"
-msgstr "Website bottom"
 
 #. module: website_custom
 #: view:product.template:website_custom.product_template_add_website_fields
@@ -400,35 +193,9 @@ msgid "Website feature"
 msgstr "Características sitio web"
 
 #. module: website_custom
-#: field:res.partner,website_partner:0
-#: field:res.users,website_partner:0
-msgid "Website partner"
-msgstr "Website partner"
-
-#. module: website_custom
-#: field:sale.order,website_sale:0
-msgid "Website sale"
-msgstr "Website sale"
-
-#. module: website_custom
-#: view:sale.order:website_custom.web_sales_search_view
-msgid "Without payment transaction"
-msgstr "Sin transacción de pago"
-
-#. module: website_custom
 #: view:website:website_less.theme_customize
 msgid "bamboo"
 msgstr "bamboo"
-
-#. module: website_custom
-#: view:website:website_sale.cart
-msgid "btn btn-primary pull-right-lg mb32"
-msgstr "btn btn-primary pull-right-lg mb32"
-
-#. module: website_custom
-#: view:website:website_sale.cart
-msgid "code..."
-msgstr "código..."
 
 #. module: website_custom
 #: view:website:website.contactus
@@ -472,34 +239,14 @@ msgid "mt7vw text-center"
 msgstr "mt7vw text-center"
 
 #. module: website_custom
-#: view:website:auth_signup.fields
-msgid "of this website."
-msgstr "de este sitio web."
-
-#. module: website_custom
 #: view:website:website_sale.product
 msgid "page-title margin-top-clear text-center"
 msgstr "page-title margin-top-clear text-center"
 
 #. module: website_custom
-#: view:website:auth_signup.fields
-msgid "privacy policy"
-msgstr "política de privacidad"
-
-#. module: website_custom
-#: view:website:website_sale.products
-msgid "product.image_list"
-msgstr "product.image_list"
-
-#. module: website_custom
-#: view:website:website_sale.product
-msgid "product_name"
-msgstr "product_name"
-
-#. module: website_custom
-#: view:website:website.submenu
-msgid "submenu.style and submenu.style.css_class or ''"
-msgstr "submenu.style and submenu.style.css_class or ''"
+#: view:website:website.contactus
+msgid "subtitle"
+msgstr "subtitle"
 
 #. module: website_custom
 #: view:website:website.layout
@@ -513,6 +260,5 @@ msgstr "website_cmnt_theme"
 
 #. module: website_custom
 #: view:website:website.contactus
-msgid "¿Quieres saber más sobre Umaicha?"
-msgstr "¿Quieres saber más sobre Umaicha?"
-
+msgid "¿QUIERES SABER MÁS SOBRE UMAI-CHA?"
+msgstr "¿QUIERES SABER MÁS SOBRE UMAI-CHA?"
