@@ -46,6 +46,40 @@
                 </field>
             </field>
         </record>
+        
+        <!-- para que no muestre en ventas-> presupuestos los que provienen de la web -->
+        <record model="ir.actions.act_window" id="sale.action_quotations">
+            <field name="domain">[('state','in',('draft','sent','cancel')),('website_sale','!=', True)]</field>
+        </record>
+                
+        <!-- vista SEARCH para añadir filtros-->               
+		<record id="web_sales_search_view" model="ir.ui.view">
+            <field name="name">web_sales_search_view</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+					<filter string="Without payment transaction" domain="[('payment_tx_id','not like','%')]" name="without_payment_transaction"/>
+                    <filter string="Payment transaction done" domain="[('payment_tx_id.state','=','done')]" name="payment_transaction_done"/>
+                    <filter string="Payment transaction initiated" domain="[('payment_tx_id.state','in',('pending','draft','error','cancel'))]" name="payment_transaction_initiated"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <!-- acción para listar ventas de la web -->
+        <record model="ir.actions.act_window" id="web_sales_list_action">
+			<field name="name">Sales from website</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="sale.view_quotation_tree"/>
+            <field name="view_mode">tree,form,calendar,graph</field>
+			<field name="domain">[('state','in',('draft','sent','cancel')),('website_sale','=', True)]</field>
+        </record>
+                
+        <!-- nuevo item de menú en ventas -->
+        <menuitem id="sales_from_website" parent="base.menu_sales" 
+			action="web_sales_list_action" name="Sales from website"/>
 
     </data>
 </openerp>

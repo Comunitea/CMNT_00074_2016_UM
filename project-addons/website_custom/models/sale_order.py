@@ -10,7 +10,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     website_sale = fields.Boolean('Website sale',
-                                  related='partner_id.website_partner')
+                                  related='partner_id.website_partner', store=True)
 
     @api.multi
     def _cart_update(self, product_id=None, line_id=None, add_qty=0,
