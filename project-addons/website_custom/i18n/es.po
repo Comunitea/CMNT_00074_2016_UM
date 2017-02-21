@@ -23,6 +23,29 @@ msgid "Name"
 msgstr "Nombre"
 
 #. module: website_custom
+#: model:ir.actions.act_window,name:website_custom.web_sales_list_action
+#: model:ir.ui.menu,name:website_custom.sales_from_website
+msgid "Sales from website"
+msgstr "Ventas web"
+
+
+#. module: website_custom
+#: view:sale.order:website_custom.web_sales_search_view
+msgid "Without payment transaction"
+msgstr "Sin transacción de pago"
+
+#. module: website_custom
+#: view:sale.order:website_custom.web_sales_search_view
+msgid "Payment transaction done"
+msgstr "Transacción de pago realizada"
+
+#. module: website_custom
+#: view:sale.order:website_custom.web_sales_search_view
+msgid "Payment transaction initiated"
+msgstr "Transacción de pago iniciada"
+
+
+#. module: website_custom
 #: view:website:website_sale.checkout
 msgid "Lastname"
 msgstr "Apellidos"
