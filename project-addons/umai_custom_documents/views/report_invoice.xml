@@ -83,7 +83,8 @@
             <!-- Quito unidad de medida y alineo cantidad a la derecha-->
             <xpath expr="//table[1]/tbody/tr/td[2]" position="replace">
                 <td class="text-right" >
-                    <span t-field="l.quantity"/>
+                    <!-- Sin decimales en la cantidad -->
+                    <span t-esc="int(round(l.quantity))"/>
                 </td>
             </xpath>
 
