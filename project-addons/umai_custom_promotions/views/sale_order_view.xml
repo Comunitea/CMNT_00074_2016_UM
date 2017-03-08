@@ -7,6 +7,17 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
+                <page string="Other Information" position="before">
+                    <page string="Promotion Discounts">
+                        <group>
+                            <field name="promo_discount1"/>
+                            <field name="promo_discount2"/>
+                            <field name="promo_discount3"/>
+                            <field name="promo_discount4"/>
+                        </group>
+                    </page>
+                </page>
+
                  <xpath expr="//field[@name='order_line']/form/group/group/div[@name='discount']" position="replace">
                     <group>
                         <field name="discount" invisible="1" groups="sale.group_discount_per_so_line"/>

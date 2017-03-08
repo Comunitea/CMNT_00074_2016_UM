@@ -19,7 +19,7 @@ class AccountInvoiceLine(models.Model):
                             default=0.0,
                             compute='_compute_discount',
                             store=True)
-    discount1 = fields.Float('Discount 1')
-    discount2 = fields.Float('Discount 2')
-    discount3 = fields.Float('Discount 3')
-    discount4 = fields.Float('Discount 4')
+    discount1 = fields.Float('Disc. 1')
+    discount2 = fields.Float('Disc. 2')
+    discount3 = fields.Float('Disc. 3')
+    discount4 = fields.Float('Disc. 4')

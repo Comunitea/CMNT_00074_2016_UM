@@ -5,6 +5,47 @@ from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
 
 
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+
+    promo_discount1 = fields.Many2one('promos.rules',
+                                      string='Promotion in Discount 1',
+                                      readonly=True, copy=False)
+    promo_discount2 = fields.Many2one('promos.rules',
+                                      string='Promotion in Discount 2',
+                                      readonly=True, copy=False)
+    promo_discount3 = fields.Many2one('promos.rules',
+                                      string='Promotion in Discount 3',
+                                      readonly=True, copy=False)
+    promo_discount4 = fields.Many2one('promos.rules',
+                                      string='Promotion in Discount 4',
+                                      readonly=True, copy=False)
+
+    @api.multi
+    def get_free_discount_field(self, promo):
+        self.ensure_one()
+        res = ''
+        if promo.id == self.promo_discount1 or not self.promo_discount1:
+            res = 'discount1'
+        elif promo.id == self.promo_discount2 or not self.promo_discount2:
+            res = 'discount2'
+        elif promo.id == self.promo_discount3 or not self.promo_discount3:
+            res = 'discount3'
+        elif promo.id == self.promo_discount4 or not self.promo_discount4:
+            res = 'discount4'
+        return res
+
+    @api.model
+    def clear_existing_promotion_lines(self, order_id):
+        res = super(SaleOrder, self).clear_existing_promotion_lines(order_id)
+        order = self.browse(order_id)
+        order.write({'promo_discount1': False,
+                     'promo_discount2': False,
+                     'promo_discount3': False,
+                     'promo_discount4': False})
+        return res
+
+
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
@@ -19,7 +60,7 @@ class SaleOrderLine(models.Model):
                             default=0.0,
                             compute='_compute_discount',
                             store=True)
-    discount1 = fields.Float('Discount 1')
-    discount2 = fields.Float('Discount 2')
-    discount3 = fields.Float('Discount 3')
-    discount4 = fields.Float('Discount 4')
+    discount1 = fields.Float('Disc. 1', copy=False)
+    discount2 = fields.Float('Disc. 2', copy=False)
+    discount3 = fields.Float('Disc. 3', copy=False)
+    discount4 = fields.Float('Disc. 4', copy=False)
