@@ -25,7 +25,7 @@
         'views/customize_modal.xml',
         'views/footer.xml',
         'views/menu.xml',
-        'views/page_contact.xml',
+        # 'views/page_contact.xml',
         'views/product.xml',
         'views/shipping_policy.xml',
         'views/website.xml',
