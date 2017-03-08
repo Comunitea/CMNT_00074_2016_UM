@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+        <record id="view_order_form_add_discounts" model="ir.ui.view">
+            <field name="name">view_order_form_add_discounts</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='order_line']/form/group/group/div[@name='discount']" position="replace">
+                    <group>
+                        <field name="discount" invisible="1" groups="sale.group_discount_per_so_line"/>
+                        <field name="discount1" groups="sale.group_discount_per_so_line"/>
+                        <field name="discount2" groups="sale.group_discount_per_so_line"/>
+                        <field name="discount3" groups="sale.group_discount_per_so_line"/>
+                        <field name="discount4"/>
+                    </group>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree/field[@name='discount']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='discount']" position="after">
+                    <field name="discount1" groups="sale.group_discount_per_so_line"/>
+                    <field name="discount2" groups="sale.group_discount_per_so_line"/>
+                    <field name="discount3" groups="sale.group_discount_per_so_line"/>
+                    <field name="discount4" groups="sale.group_discount_per_so_line"/>
+                </xpath>
+            </field>
+        </record>
+  </data>
+</openerp>
