@@ -64,3 +64,19 @@ class SaleOrderLine(models.Model):
     discount2 = fields.Float('Disc. 2', copy=False)
     discount3 = fields.Float('Disc. 3', copy=False)
     discount4 = fields.Float('Disc. 4', copy=False)
+
+    @api.model
+    def _prepare_order_line_invoice_line(self, line, account_id=False):
+        """
+        No Facturar el servicio punto verde, se hará al crear la factura el
+        cálculo de nuevo
+        """
+        res = super(SaleOrderLine, self).\
+            _prepare_order_line_invoice_line(line, account_id=False)
+        res.update({
+            'discount1': line.discount1,
+            'discount2': line.discount2,
+            'discount3': line.discount3,
+            'discount4': line.discount4,
+        })
+        return res

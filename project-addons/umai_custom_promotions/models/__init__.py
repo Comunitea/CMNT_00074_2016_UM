@@ -5,3 +5,4 @@
 from . import sale_order
 from . import invoice
 from . import rules
+from . import stock

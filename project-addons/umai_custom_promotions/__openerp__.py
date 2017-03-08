@@ -11,6 +11,7 @@
     'depends': [
         'base',
         'sale_promotions',
+        'stock_account'
     ],
     'contributors': [
         "Comunitea ",
