@@ -199,6 +199,10 @@ span.price{
     color: red !important;
 }
 
+.hidden{
+    display: none !important;
+}
+
 div[class='col-md-3 bottom_right_div'] > img{
         margin-right: 30px;
 }
