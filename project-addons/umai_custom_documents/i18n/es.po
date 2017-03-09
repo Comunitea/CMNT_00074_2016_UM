@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* umai_custom_documents
+#   * umai_custom_documents
 #
 msgid ""
 msgstr ""
@@ -14,6 +14,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: umai_custom_documents
+#: model:ir.actions.report.xml,name:umai_custom_documents.picking_xlsx
+msgid "Export logistic xlsx"
+msgstr "Exportar albarán logístico(xlsx)"
 
 #. module: umai_custom_documents
 #: view:website:account.report_invoice_document
@@ -205,4 +210,3 @@ msgstr "NIF:"
 #: view:website:account.report_invoice_document
 msgid "base.group_user"
 msgstr "base.group_user"
-

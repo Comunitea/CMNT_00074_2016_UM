@@ -6,7 +6,7 @@
     'name': 'UMAI Custom Documents',
     'version': '8.0.0.0.0',
     'author': 'Comunitea ',
-    "category": "Custom",
+    'category': 'Custom',
     'license': 'AGPL-3',
     'depends': [
         'base',
@@ -14,20 +14,22 @@
         'price_unit_discount',
         'website_custom',
         'picking_invoice_rel',
-        'umai_custom_promotions'
+        'umai_custom_promotions',
+        'report_xlsx'
     ],
     'contributors': [
-        "Comunitea ",
-        "Javier Colmenero <javier@comunitea.com>"
+        'Comunitea ',
+        'Javier Colmenero <javier@comunitea.com>'
     ],
-    "data": [
-        "views/report_invoice.xml",
-        "views/report_sale_order.xml",
-        "views/invoice_view.xml",
+    'data': [
+        'views/report_invoice.xml',
+        'views/report_sale_order.xml',
+        'views/invoice_view.xml',
+        'picking_xlsx_report.xml'
     ],
-    "demo": [
+    'demo': [
     ],
     'test': [
     ],
-    "installable": True
+    'installable': True
 }
