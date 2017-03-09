@@ -90,24 +90,23 @@
 
             <!-- Oculto la columna descuento y añado tanras columans decuento como tenga -->
             <xpath expr="//table[1]/thead/tr/th[4]" position="replace">
-                <t t-if="o.promo_discount1" groups="sale.group_discount_per_so_line">
-                    <th class="text-right">Disc1</th>
-                </t>
-                <t t-if="o.promo_discount2" groups="sale.group_discount_per_so_line">
-                    <th class="text-right">Disc2</th>
+
+                <th class="text-right" groups="sale.group_discount_per_so_line">Disc1</th>
+
+                <t t-if="o.promo_discount2">
+                    <th class="text-right" groups="sale.group_discount_per_so_line">Disc2</th>
                 </t>
                 <t t-if="o.promo_discount3" groups="sale.group_discount_per_so_line">
-                    <th class="text-right">Disc3</th>
+                    <th class="text-right groups="sale.group_discount_per_so_line"">Disc3</th>
                 </t>
                 <t t-if="o.promo_discount4" groups="sale.group_discount_per_so_line">
-                    <th class="text-right">Disc4</th>
+                    <th class="text-right" groups="sale.group_discount_per_so_line">Disc4</th>
                 </t>
             </xpath>
 
             <xpath expr="//table[1]/tbody/tr/td[4]" position="replace">
-                <t t-if="o.promo_discount1">
-                    <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount1"/></td>
-                </t>
+
+                <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount1"/></td>
                 <t t-if="o.promo_discount2">
                     <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount2"/></td>
                 </t>
