@@ -96,10 +96,10 @@
                 <t t-if="o.promo_discount2">
                     <th class="text-right" groups="sale.group_discount_per_so_line">Disc2</th>
                 </t>
-                <t t-if="o.promo_discount3" groups="sale.group_discount_per_so_line">
-                    <th class="text-right groups="sale.group_discount_per_so_line"">Disc3</th>
+                <t t-if="o.promo_discount3">
+                    <th class="text-right" groups="sale.group_discount_per_so_line">Disc3</th>
                 </t>
-                <t t-if="o.promo_discount4" groups="sale.group_discount_per_so_line">
+                <t t-if="o.promo_discount4">
                     <th class="text-right" groups="sale.group_discount_per_so_line">Disc4</th>
                 </t>
             </xpath>
