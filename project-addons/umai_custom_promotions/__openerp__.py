@@ -25,5 +25,6 @@
     ],
     'test': [
     ],
-    "installable": True
+    "installable": True,
+    "post_init_hook": "copy_discount_column",
 }
