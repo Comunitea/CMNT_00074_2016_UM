@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # © 2016 Comunitea - Javier Colmenero Fernández <javier@comunitea.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from openerp import models, fields, api
+from openerp import models, fields, api, _
 import openerp.addons.decimal_precision as dp
 
 
@@ -9,16 +9,16 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     promo_discount1 = fields.Many2one('promos.rules',
-                                      string='Promotion in Discount 1',
+                                      string='Comercial Discount 1',
                                       readonly=True, copy=False)
     promo_discount2 = fields.Many2one('promos.rules',
-                                      string='Promotion in Discount 2',
+                                      string='Comercial Discount 2',
                                       readonly=True, copy=False)
     promo_discount3 = fields.Many2one('promos.rules',
-                                      string='Promotion in Discount 3',
+                                      string='Comercial Discount 3',
                                       readonly=True, copy=False)
     promo_discount4 = fields.Many2one('promos.rules',
-                                      string='Promotion in Discount 4',
+                                      string='Comercial Discount 4',
                                       readonly=True, copy=False)
 
     @api.multi
@@ -43,6 +43,29 @@ class SaleOrder(models.Model):
                      'promo_discount2': False,
                      'promo_discount3': False,
                      'promo_discount4': False})
+        return res
+
+    @api.model
+    def _prepare_invoice(self, order, lines):
+        res = super(SaleOrder, self).\
+            _prepare_invoice(order, lines)
+
+        note = ''
+        if order.promo_discount1:
+            note += "\n" + _('Discount 1: ') + order.promo_discount1.name
+        if order.promo_discount2:
+            note += "\n" + _('Discount 2: ') + order.promo_discount2.name
+        if order.promo_discount3:
+            note += "\n" + _('Discount 3: ') + order.promo_discount3.name
+        if order.promo_discount4:
+            note += "\n" + _('Discount 4: ') + order.promo_discount4.name
+        res.update({
+            'promo_discount1': order.promo_discount1.id,
+            'promo_discount2': order.promo_discount2.id,
+            'promo_discount3': order.promo_discount3.id,
+            'promo_discount4': order.promo_discount4.id,
+            'comment': note
+        })
         return res
 
 

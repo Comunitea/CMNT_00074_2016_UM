@@ -5,6 +5,23 @@ from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
 
 
+class AccountInvoice(models.Model):
+    _inherit = 'account.invoice'
+
+    promo_discount1 = fields.Many2one('promos.rules',
+                                      string='Comercial Discount 1',
+                                      readonly=True, copy=False)
+    promo_discount2 = fields.Many2one('promos.rules',
+                                      string='Comercial Discount 2',
+                                      readonly=True, copy=False)
+    promo_discount3 = fields.Many2one('promos.rules',
+                                      string='Comercial Discount 3',
+                                      readonly=True, copy=False)
+    promo_discount4 = fields.Many2one('promos.rules',
+                                      string='Comercial Discount 4',
+                                      readonly=True, copy=False)
+
+
 class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
 

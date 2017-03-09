@@ -8,15 +8,28 @@
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
 
+                <page string="Other Info" position="after">
+                    <page string="Comercial Discounts" groups="sale.group_discount_per_so_line">
+                        <group>
+                            <field name="promo_discount1"/>
+                            <field name="promo_discount2"/>
+                            <field name="promo_discount3"/>
+                            <field name="promo_discount4"/>
+                        </group>
+                    </page>
+                </page>
+
                 <xpath expr="//field[@name='invoice_line']/tree/field[@name='discount']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                
                 <xpath expr="//field[@name='invoice_line']/tree/field[@name='discount']" position="after">
                     <field name="discount1" groups="sale.group_discount_per_so_line"/>
                     <field name="discount2" groups="sale.group_discount_per_so_line"/>
                     <field name="discount3" groups="sale.group_discount_per_so_line"/>
                     <field name="discount4" groups="sale.group_discount_per_so_line"/>
                 </xpath>
+
             </field>
         </record>
   </data>

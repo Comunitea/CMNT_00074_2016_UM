@@ -13,7 +13,8 @@
         'cmnt_custom_reports',
         'price_unit_discount',
         'website_custom',
-        'picking_invoice_rel'
+        'picking_invoice_rel',
+        'umai_custom_promotions'
     ],
     'contributors': [
         "Comunitea ",

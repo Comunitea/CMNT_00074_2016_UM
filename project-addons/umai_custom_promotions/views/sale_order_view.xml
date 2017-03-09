@@ -7,8 +7,8 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-                <page string="Other Information" position="before">
-                    <page string="Promotion Discounts">
+                <page string="Other Information" position="after">
+                    <page string="Comercial Discounts" groups="sale.group_discount_per_so_line">
                         <group>
                             <field name="promo_discount1"/>
                             <field name="promo_discount2"/>
