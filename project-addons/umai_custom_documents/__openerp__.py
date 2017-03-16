@@ -25,7 +25,8 @@
         'views/report_invoice.xml',
         'views/report_sale_order.xml',
         'views/invoice_view.xml',
-        'picking_xlsx_report.xml'
+        'picking_xlsx_report.xml',
+        'views/account.xml',
     ],
     'demo': [
     ],

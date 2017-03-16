@@ -5,3 +5,4 @@
 from . import ir_qweb
 from . import invoice
 from . import stock_picking_report
+from . import account

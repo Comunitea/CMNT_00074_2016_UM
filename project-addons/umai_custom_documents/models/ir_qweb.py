@@ -42,7 +42,7 @@ class Contact(models.AbstractModel):
         object = qweb_context['o']
         if object._name=="account.invoice":
             options['vat_in_header'] = True
-
+        options['o'] = qweb_context['o']
         return super(Contact, self).to_html(cr = cr, uid=uid, field_name=field_name, record=record,
                                      options=options, source_element=source_element, t_att=t_att, g_att=g_att,
                                      qweb_context=qweb_context, context=context)
@@ -63,6 +63,17 @@ class Contact(models.AbstractModel):
             return None
         value_rec = value_rec.sudo().with_context(show_address=True)
         value = value_rec.name_get()[0][1]
+
+        vat = value_rec.formated_vat()
+        model = options['o']
+        if model._columns.get('fiscal_position', False):
+            if model.fiscal_position.vat:
+                vat = model.fiscal_position.vat
+        elif model._columns.get('partner_id', False) and \
+                model.partner_id.property_account_position.vat:
+            vat = model.partner_id.property_account_position.vat
+
+
         val = {
             'name': value.split("\n")[0],
             'address': escape("\n".join(value.split("\n")[1:])),
@@ -73,8 +84,8 @@ class Contact(models.AbstractModel):
             'country_id': value_rec.country_id.display_name,
             'website': value_rec.website,
             'email': value_rec.email,
-            'vat': value_rec.vat,
-            'formated_vat': value_rec.formated_vat(),
+            'vat': vat,
+            'formated_vat': vat,
             'fields': opf,
             'object': value_rec,
             'options': options

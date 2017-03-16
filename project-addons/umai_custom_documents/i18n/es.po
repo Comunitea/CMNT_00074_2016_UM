@@ -21,6 +21,11 @@ msgid "Export logistic xlsx"
 msgstr "Exportar albarán logístico(xlsx)"
 
 #. module: umai_custom_documents
+#: field:account.fiscal.position,vat:0
+msgid "Vat"
+msgstr "NIF"
+
+#. module: umai_custom_documents
 #: view:website:account.report_invoice_document
 msgid "Cancelled Invoice"
 msgstr "Factura cancelada"
