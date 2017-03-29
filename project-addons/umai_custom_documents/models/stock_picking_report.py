@@ -33,8 +33,10 @@ class LogisticPickingXlsx(ReportXlsx):
                 life_date = ''
                 if op.lot_id.life_date:
                     life_date = fields.Datetime.from_string(op.lot_id.life_date).strftime('%m/%d/%Y')
-                order_date = fields.Datetime.from_string(pick.sale_id.date_order).strftime('%m/%d/%Y')
-                order_hour = fields.Datetime.from_string(pick.sale_id.date_order).strftime('%H:%M:%S')
+                order_date = order_hour = False
+                if pick.sale_id:
+                    order_date = fields.Datetime.from_string(pick.sale_id.date_order).strftime('%m/%d/%Y')
+                    order_hour = fields.Datetime.from_string(pick.sale_id.date_order).strftime('%H:%M:%S')
                 picking_row = [pick.sale_id.name,
                                order_date, order_hour, order_date, '', '',
                                min_date, '', '', '', pick.partner_id.name,
