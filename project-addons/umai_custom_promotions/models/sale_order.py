@@ -10,16 +10,16 @@ class SaleOrder(models.Model):
 
     promo_discount1 = fields.Many2one('promos.rules',
                                       string='Comercial Discount 1',
-                                      readonly=True, copy=False)
+                                      readonly=False, copy=False)
     promo_discount2 = fields.Many2one('promos.rules',
                                       string='Comercial Discount 2',
-                                      readonly=True, copy=False)
+                                      readonly=False, copy=False)
     promo_discount3 = fields.Many2one('promos.rules',
                                       string='Comercial Discount 3',
-                                      readonly=True, copy=False)
+                                      readonly=False, copy=False)
     promo_discount4 = fields.Many2one('promos.rules',
                                       string='Comercial Discount 4',
-                                      readonly=True, copy=False)
+                                      readonly=False, copy=False)
 
     @api.multi
     def get_free_discount_field(self, promo):
