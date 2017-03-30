@@ -10,16 +10,16 @@ class AccountInvoice(models.Model):
 
     promo_discount1 = fields.Many2one('promos.rules',
                                       string='Comercial Discount 1',
-                                      readonly=False, copy=False)
+                                      readonly=True, copy=False)
     promo_discount2 = fields.Many2one('promos.rules',
                                       string='Comercial Discount 2',
-                                      readonly=False, copy=False)
+                                      readonly=True, copy=False)
     promo_discount3 = fields.Many2one('promos.rules',
                                       string='Comercial Discount 3',
-                                      readonly=False, copy=False)
+                                      readonly=True, copy=False)
     promo_discount4 = fields.Many2one('promos.rules',
                                       string='Comercial Discount 4',
-                                      readonly=False, copy=False)
+                                      readonly=True, copy=False)
 
 
 class AccountInvoiceLine(models.Model):
@@ -36,7 +36,7 @@ class AccountInvoiceLine(models.Model):
                             default=0.0,
                             compute='_compute_discount',
                             store=True)
-    discount1 = fields.Float('Disc. 1')
-    discount2 = fields.Float('Disc. 2')
-    discount3 = fields.Float('Disc. 3')
-    discount4 = fields.Float('Disc. 4')
+    discount1 = fields.Float('Disc. 1', digits=dp.get_precision('Discount'))
+    discount2 = fields.Float('Disc. 2', digits=dp.get_precision('Discount'))
+    discount3 = fields.Float('Disc. 3', digits=dp.get_precision('Discount'))
+    discount4 = fields.Float('Disc. 4', digits=dp.get_precision('Discount'))

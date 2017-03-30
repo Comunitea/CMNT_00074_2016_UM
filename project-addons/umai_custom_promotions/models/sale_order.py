@@ -10,16 +10,16 @@ class SaleOrder(models.Model):
 
     promo_discount1 = fields.Many2one('promos.rules',
                                       string='Comercial Discount 1',
-                                      readonly=False, copy=False)
+                                      readonly=True, copy=False)
     promo_discount2 = fields.Many2one('promos.rules',
                                       string='Comercial Discount 2',
-                                      readonly=False, copy=False)
+                                      readonly=True, copy=False)
     promo_discount3 = fields.Many2one('promos.rules',
                                       string='Comercial Discount 3',
-                                      readonly=False, copy=False)
+                                      readonly=True, copy=False)
     promo_discount4 = fields.Many2one('promos.rules',
                                       string='Comercial Discount 4',
-                                      readonly=False, copy=False)
+                                      readonly=True, copy=False)
 
     @api.multi
     def get_free_discount_field(self, promo):
@@ -83,10 +83,14 @@ class SaleOrderLine(models.Model):
                             default=0.0,
                             compute='_compute_discount',
                             store=True)
-    discount1 = fields.Float('Disc. 1', copy=False)
-    discount2 = fields.Float('Disc. 2', copy=False)
-    discount3 = fields.Float('Disc. 3', copy=False)
-    discount4 = fields.Float('Disc. 4', copy=False)
+    discount1 = fields.Float('Disc. 1', copy=False,
+                             digits=dp.get_precision('Discount'))
+    discount2 = fields.Float('Disc. 2', copy=False,
+                             digits=dp.get_precision('Discount'))
+    discount3 = fields.Float('Disc. 3', copy=False,
+                             digits=dp.get_precision('Discount'))
+    discount4 = fields.Float('Disc. 4', copy=False,
+                             digits=dp.get_precision('Discount'))
 
     @api.model
     def _prepare_order_line_invoice_line(self, line, account_id=False):
