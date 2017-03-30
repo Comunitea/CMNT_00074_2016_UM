@@ -29,15 +29,20 @@ class LogisticPickingXlsx(ReportXlsx):
         sheet.write_row(0, 0, header)
         for pick in pickings:
             for op in pick.pack_operation_ids:
-                min_date = fields.Datetime.from_string(pick.min_date).strftime('%M/%d/%Y')
+                min_date = fields.Datetime.from_string(pick.min_date).strftime('%m/%d/%Y')
                 life_date = ''
                 if op.lot_id.life_date:
-                    life_date = fields.Datetime.from_string(op.lot_id.life_date).strftime('%M/%d/%Y')
-                picking_row = [pick.sale_id.name, '', '', '', '', '',
+                    life_date = fields.Datetime.from_string(op.lot_id.life_date).strftime('%m/%d/%Y')
+                order_date = order_hour = False
+                if pick.sale_id:
+                    order_date = fields.Datetime.from_string(pick.sale_id.date_order).strftime('%m/%d/%Y')
+                    order_hour = fields.Datetime.from_string(pick.sale_id.date_order).strftime('%H:%M:%S')
+                picking_row = [pick.sale_id.name,
+                               order_date, order_hour, order_date, '', '',
                                min_date, '', '', '', pick.partner_id.name,
                                pick.partner_id.ref,
-                               pick.partner_id.street or '' +
-                               pick.partner_id.street2 or '',
+                               (pick.partner_id.street or '') + ' ' +
+                               (pick.partner_id.street2 or ''),
                                pick.partner_id.zip, pick.partner_id.city,
                                pick.partner_id.country_id.name,
                                pick.partner_id.name,
