@@ -31,15 +31,15 @@ class LogisticPickingXlsx(ReportXlsx):
             for op in pick.pack_operation_ids:
                 min_date = fields.Datetime.from_string(pick.min_date).strftime('%m/%d/%Y')
                 life_date = ''
-                if op.lot_id.life_date:
-                    life_date = fields.Datetime.from_string(op.lot_id.life_date).strftime('%m/%d/%Y')
+                if op.lot_id.use_date:
+                    life_date = fields.Datetime.from_string(op.lot_id.use_date).strftime('%m/%d/%Y')
                 order_date = order_hour = False
                 if pick.sale_id:
                     order_date = fields.Datetime.from_string(pick.sale_id.date_order).strftime('%m/%d/%Y')
                     order_hour = fields.Datetime.from_string(pick.sale_id.date_order).strftime('%H:%M:%S')
                 picking_row = [pick.sale_id.name,
                                order_date, order_hour, order_date, '', '',
-                               min_date, '', '', '', pick.partner_id.name,
+                               min_date, '', '', '', pick.partner_id.commercial_partner_id.name,
                                pick.partner_id.ref,
                                (pick.partner_id.street or '') + ' ' +
                                (pick.partner_id.street2 or ''),
