@@ -111,7 +111,7 @@
                     <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount2"/></td>
                 </t>
                 <t t-if="o.promo_discount3">
-                    <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount4"/></td>
+                    <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount3"/></td>
                 </t>
                 <t t-if="o.promo_discount4">
                     <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount4"/></td>
