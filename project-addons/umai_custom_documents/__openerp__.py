@@ -15,7 +15,8 @@
         'website_custom',
         'picking_invoice_rel',
         'umai_custom_promotions',
-        'report_xlsx'
+        'report_xlsx',
+        'sale_order_lot_selection'
     ],
     'contributors': [
         'Comunitea ',
