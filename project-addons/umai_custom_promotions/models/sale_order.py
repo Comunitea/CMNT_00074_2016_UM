@@ -43,6 +43,13 @@ class SaleOrder(models.Model):
                      'promo_discount2': False,
                      'promo_discount3': False,
                      'promo_discount4': False})
+        for line in order.order_line:
+            line.write({
+                'discount1': 0,
+                'discount2': 0,
+                'discount3': 0,
+                'discount4': 0,
+            })
         return res
 
     @api.model
