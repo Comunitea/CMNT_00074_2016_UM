@@ -25,13 +25,13 @@ class SaleOrder(models.Model):
     def get_free_discount_field(self, promo):
         self.ensure_one()
         res = ''
-        if promo.id == self.promo_discount1 or not self.promo_discount1:
+        if promo.id == self.promo_discount1.id or not self.promo_discount1:
             res = 'discount1'
-        elif promo.id == self.promo_discount2 or not self.promo_discount2:
+        elif promo.id == self.promo_discount2.id or not self.promo_discount2:
             res = 'discount2'
-        elif promo.id == self.promo_discount3 or not self.promo_discount3:
+        elif promo.id == self.promo_discount3.id or not self.promo_discount3:
             res = 'discount3'
-        elif promo.id == self.promo_discount4 or not self.promo_discount4:
+        elif promo.id == self.promo_discount4.id or not self.promo_discount4:
             res = 'discount4'
         return res
 
