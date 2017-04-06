@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* umai_custom_promotions
+#   * umai_custom_promotions
 #
 msgid ""
 msgstr ""
@@ -25,7 +25,29 @@ msgstr "Todos los campos descuentos usados, no se puede establecrer descuento pa
 #: code:addons/umai_custom_promotions/models/rules.py:12
 #, python-format
 msgid "Buy X get Y free"
-msgstr "Compra X llevate Y gratis
+msgstr "Compra X llevate Y gratis"
+
+
+#. module: umai_custom_promotions
+#: field:sale.order.available.promos,applied:0
+msgid "Applied"
+msgstr "Aplicada"
+
+#. module: umai_custom_promotions
+#: view:sale.order:umai_custom_promotions.view_order_form_add_discounts
+msgid "Available prommotions"
+msgstr "Promociones disponibles"
+
+
+#. module: umai_custom_promotions
+#: field:sale.order.available.promos,promotion:0
+msgid "Promotion"
+msgstr "Promoción"
+
+#. module: umai_custom_promotions
+#: field:sale.order,available_promos:0
+msgid "Available promos"
+msgstr "Available promos"
 
 #. module: umai_custom_promotions
 #: view:account.invoice:umai_custom_promotions.invoice_form
@@ -213,4 +235,3 @@ msgstr "Línea pedido de venta"
 #: model:ir.model,name:umai_custom_promotions.model_stock_move
 msgid "Stock Move"
 msgstr "Movimiento de existencias"
-

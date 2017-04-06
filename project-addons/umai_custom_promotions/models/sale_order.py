@@ -5,6 +5,39 @@ from openerp import models, fields, api, _
 import openerp.addons.decimal_precision as dp
 
 
+class SaleOrderAvailablePromos(models.Model):
+
+    _name = 'sale.order.available.promos'
+
+    sale_id = fields.Many2one('sale.order')
+    applied = fields.Boolean(compute='_get_is_applied', store=True)
+    promotion = fields.Many2one('promos.rules')
+
+    @api.depends('sale_id.promo_discount1',
+                 'sale_id.promo_discount2',
+                 'sale_id.promo_discount3',
+                 'sale_id.promo_discount4')
+    def _get_is_applied(self):
+        for av_promo in self:
+            applied_promos = [av_promo.sale_id.promo_discount1.id,
+                              av_promo.sale_id.promo_discount2.id,
+                              av_promo.sale_id.promo_discount3.id,
+                              av_promo.sale_id.promo_discount4.id]
+            if av_promo.promotion.id in applied_promos:
+                av_promo.applied = True
+            else:
+                av_promo.applied = False
+
+    @api.multi
+    def force_promotion(self):
+        self.env['promos.rules'].execute_actions(
+            self.promotion, self.sale_id.id)
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'reload',
+        }
+
+
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
@@ -20,6 +53,38 @@ class SaleOrder(models.Model):
     promo_discount4 = fields.Many2one('promos.rules',
                                       string='Comercial Discount 4',
                                       readonly=False, copy=False)
+    available_promos = fields.One2many('sale.order.available.promos', 'sale_id')
+
+    @api.multi
+    def onchange_partner_id(self, part):
+        res = super(SaleOrder, self).onchange_partner_id(part)
+        if 'value' not in res:
+            res['value'] = {}
+        if not part:
+            return res
+
+        partner = self.env['res.partner'].browse(part)
+        domain = self.env['promos.rules']._get_promotions_domain(
+            self, partner, fields.Datetime.now())
+        active_promos = self.env['promos.rules'].search(domain)
+        available_promos = []
+        for promo in active_promos:
+            available_promos.append((0, 0, {'promotion': promo.id}))
+        res['value']['available_promos'] = available_promos
+        return res
+
+    @api.multi
+    def onchange_date_order(self, partner_id, date_order):
+        if not partner_id:
+            return
+        partner = self.env['res.partner'].browse(partner_id)
+        domain = self.env['promos.rules']._get_promotions_domain(
+            self, partner, date_order)
+        active_promos = self.env['promos.rules'].search(domain)
+        available_promos = []
+        for promo in active_promos:
+            available_promos.append((0, 0, {'promotion': promo.id}))
+        return {'value': {'available_promos': available_promos}}
 
     @api.multi
     def get_free_discount_field(self, promo):

@@ -20,6 +20,7 @@
     "data": [
         "views/sale_order_view.xml",
         "views/invoice_view.xml",
+        "security/ir.model.access.csv"
     ],
     "demo": [
     ],

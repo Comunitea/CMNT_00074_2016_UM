@@ -7,6 +7,9 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
+                <field name="date_order" position="attributes">
+                    <attribute name="on_change">onchange_date_order(partner_id, date_order, context)</attribute>
+                </field>
                 <page string="Other Information" position="after">
                     <page string="Comercial Discounts" groups="sale.group_discount_per_so_line">
                         <group>
@@ -15,6 +18,14 @@
                             <field name="promo_discount3"/>
                             <field name="promo_discount4"/>
                         </group>
+                        <separator string="Available prommotions"/>
+                        <field name="available_promos">
+                            <tree editable="top" readonly="True">
+                                <field name="promotion"/>
+                                <field name="applied"/>
+                                <button  name="force_promotion" type="object" icon="terp-camera_test" attrs="{'invisible': [('applied', '=', True)]}"/>
+                            </tree>
+                        </field>
                     </page>
                 </page>
 
