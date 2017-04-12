@@ -17,7 +17,7 @@
         <xpath expr="//span[@itemprop='email']/.." position="after">
             <div t-if="options.get('is_header') and options.get('vat_in_header')" class='css_editable_mode_hidden'>
                 <i t-if="not options.get('no_marker')" class='fa fa-file-text-o'/>
-                <span>NIF: <span itemprop="vatID" t-esc="formated_vat"/></span>
+                <span>VAT: <span itemprop="vatID" t-esc="formated_vat"/></span>
             </div>
         </xpath>
     </template>

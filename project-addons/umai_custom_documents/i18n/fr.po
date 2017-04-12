@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-26 10:51+0000\n"
-"PO-Revision-Date: 2017-01-26 10:51+0000\n"
+"POT-Creation-Date: 2017-04-12 16:21+0000\n"
+"PO-Revision-Date: 2017-04-12 16:21+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,11 @@ msgstr ""
 #: view:website:account.report_invoice_document
 msgid "Cancelled Invoice"
 msgstr "Facture annulée"
+
+#. module: umai_custom_documents
+#: view:website:account.report_invoice_document
+msgid "Comment:"
+msgstr "Notes:"
 
 #. module: umai_custom_documents
 #: view:website:sale.report_saleorder_document
@@ -52,6 +57,26 @@ msgstr "Description:"
 
 #. module: umai_custom_documents
 #: view:website:account.report_invoice_document
+msgid "Disc1"
+msgstr "Rédu1"
+
+#. module: umai_custom_documents
+#: view:website:account.report_invoice_document
+msgid "Disc2"
+msgstr "Rédu2"
+
+#. module: umai_custom_documents
+#: view:website:account.report_invoice_document
+msgid "Disc3"
+msgstr "Rédu3"
+
+#. module: umai_custom_documents
+#: view:website:account.report_invoice_document
+msgid "Disc4"
+msgstr "Rédu4"
+
+#. module: umai_custom_documents
+#: view:website:account.report_invoice_document
 msgid "Draft Invoice"
 msgstr "Facture Brouillon"
 
@@ -59,6 +84,21 @@ msgstr "Facture Brouillon"
 #: view:website:account.report_invoice_document
 msgid "Due:"
 msgstr "Échéance:"
+
+#. module: umai_custom_documents
+#: model:ir.actions.report.xml,name:umai_custom_documents.picking_xlsx
+msgid "Export logistic xlsx"
+msgstr "Logistique Exporter xlsx"
+
+#. module: umai_custom_documents
+#: model:ir.model,name:umai_custom_documents.model_account_fiscal_position
+msgid "Fiscal Position"
+msgstr "Position fiscale"
+
+#. module: umai_custom_documents
+#: model:ir.model,name:umai_custom_documents.model_account_invoice
+msgid "Invoice"
+msgstr "Facture"
 
 #. module: umai_custom_documents
 #: view:website:sale.report_saleorder_document
@@ -77,9 +117,8 @@ msgstr "Facture:"
 
 #. module: umai_custom_documents
 #: view:website:account.report_invoice_document
-#: view:website:base.contact
 msgid "NIF:"
-msgstr "NIF:"
+msgstr "TVA:"
 
 #. module: umai_custom_documents
 #: view:website:sale.report_saleorder_document
@@ -87,9 +126,19 @@ msgid "Order N°"
 msgstr "N° de commande"
 
 #. module: umai_custom_documents
+#: field:account.invoice,order_origin:0
+msgid "Order origin"
+msgstr "Document source"
+
+#. module: umai_custom_documents
 #: view:website:account.report_invoice_document
 msgid "Order:"
 msgstr "Commande:"
+
+#. module: umai_custom_documents
+#: view:account.invoice:umai_custom_documents.invoice_form
+msgid "Origin document"
+msgstr "Document source"
 
 #. module: umai_custom_documents
 #: view:website:account.report_invoice_document
@@ -157,9 +206,15 @@ msgid "Total Invoice"
 msgstr "Facture"
 
 #. module: umai_custom_documents
+#: view:website:base.contact
 #: view:website:sale.report_saleorder_document
 msgid "VAT:"
 msgstr "TVA :"
+
+#. module: umai_custom_documents
+#: field:account.fiscal.position,vat:0
+msgid "Vat"
+msgstr "TVA"
 
 #. module: umai_custom_documents
 #: view:website:account.report_invoice_document
