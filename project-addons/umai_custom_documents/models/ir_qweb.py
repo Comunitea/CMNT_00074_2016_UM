@@ -17,18 +17,10 @@ class ResPartner(models.Model):
         """
         formated_vat = ''
         if self.vat:
-            letter = ''
-            number = ''
             if "ES" in self.vat:
-                if self.vat[-1].isdigit():
-                    letter = self.vat[2]
-                    number = self.vat[3:]
-                else:
-                    letter = self.vat[-1]
-                    number = self.vat[2:10]
-                formated_vat = ("%s-%s") % (letter, number)
+                formated_vat = self.vat.replace('ES', '')
             else:
-                formated_vat = ("%s-%s") % (self.vat[0:2], self.vat[2:])
+                formated_vat = self.vat
         return formated_vat
 
 
