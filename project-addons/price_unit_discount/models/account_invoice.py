@@ -14,7 +14,13 @@ class AccountInvoiceLine(models.Model):
                  'product_id', 'invoice_id.partner_id',
                  'invoice_id.currency_id')
     def _compute_net(self):
-        self.net_price_unit = self.price_unit
+        factor = 1
+        amount = 0
+        for imp in self.invoice_line_tax_id:
+            if imp.price_include:
+                amount += imp.amount
+            factor = 1 + amount
+        self.net_price_unit = self.price_unit / factor
         if self.discount:
             self.net_price_unit = \
                 self.price_unit * (1 - (self.discount or 0.0) / 100.0)
