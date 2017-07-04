@@ -80,18 +80,23 @@
                 </div>
             </xpath>
 
-            <!-- Quito unidad de medida y alineo cantidad a la derecha-->
-            <xpath expr="//table[1]/tbody/tr/td[2]" position="replace">
-                <td class="text-right" >
-                    <!-- Sin decimales en la cantidad -->
-                    <span t-esc="int(round(l.quantity))"/>
+            <!-- Quito colunba impuestos y pongo el precio neto -->
+            <xpath expr="//table[1]/thead/tr/th[5]" position="replace">
+                <th class="text-right">Price net</th>
+            </xpath>
+
+            <xpath expr="//table[1]/tbody/tr/td[5]" position="replace">
+                <td class="text-right">
+                    <span t-field="l.net_price_unit"/>
                 </td>
             </xpath>
 
             <!-- Oculto la columna descuento y añado tanras columans decuento como tenga -->
             <xpath expr="//table[1]/thead/tr/th[4]" position="replace">
-
-                <th class="text-right" groups="sale.group_discount_per_so_line">Disc1</th>
+                <!-- No se muestra si es desde el web -->
+                <t t-if="not o.from_website">  
+                    <th class="text-right" groups="sale.group_discount_per_so_line">Disc1</th>
+                </t>
 
                 <t t-if="o.promo_discount2">
                     <th class="text-right" groups="sale.group_discount_per_so_line">Disc2</th>
@@ -105,8 +110,10 @@
             </xpath>
 
             <xpath expr="//table[1]/tbody/tr/td[4]" position="replace">
-
-                <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount1"/></td>
+                <!-- No se muestra si es desde el web -->
+                <t t-if="not o.from_website">
+                    <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount1"/></td>
+                </t>
                 <t t-if="o.promo_discount2">
                     <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount2"/></td>
                 </t>
@@ -118,16 +125,33 @@
                 </t>
             </xpath>
 
-            <!-- Quito colunba impuestos y pongo el precio neto -->
-            <xpath expr="//table[1]/thead/tr/th[5]" position="replace">
-                <th class="text-right">Price net</th>
+
+             <!-- Quitamos campo precio unidad si es desde la web -->
+            <xpath expr="//table[1]/thead/tr/th[3]" position="replace">
+                <t t-if="not o.from_website">  
+                   <th class="text-right">Unit Price</th>
+                </t>
+
+            </xpath>
+            <xpath expr="//table[1]/tbody/tr/td[3]" position="replace">
+                <t t-if="not o.from_website">  
+                   <td class="text-right">
+                        <span t-field="l.price_unit"/>
+                    </td>
+                </t>
             </xpath>
 
-            <xpath expr="//table[1]/tbody/tr/td[5]" position="replace">
-                <td class="text-right">
-                    <span t-field="l.net_price_unit"/>
+            <!-- Quito unidad de medida y alineo cantidad a la derecha-->
+            <xpath expr="//table[1]/thead/tr/th[2]" position="replace">
+                <th class="text-right">Quantity</th>
+            </xpath>
+            <xpath expr="//table[1]/tbody/tr/td[2]" position="replace">
+                <td class="text-right" >
+                    <!-- Sin decimales en la cantidad -->
+                    <span t-esc="int(round(l.quantity))"/>
                 </td>
             </xpath>
+
 
             <!-- Pongo IVA 10% nen lugar de impuestos -->
             <xpath expr="//div[@class='col-xs-4 pull-right']/table/tr[2]" position="replace">

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-12 16:20+0000\n"
-"PO-Revision-Date: 2017-04-12 16:20+0000\n"
+"POT-Creation-Date: 2017-07-04 15:33+0000\n"
+"PO-Revision-Date: 2017-07-04 15:33+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -96,6 +96,11 @@ msgid "Fiscal Position"
 msgstr "Posición fiscal"
 
 #. module: umai_custom_documents
+#: field:account.invoice,from_website:0
+msgid "From website"
+msgstr "Desde sitio web"
+
+#. module: umai_custom_documents
 #: model:ir.model,name:umai_custom_documents.model_account_invoice
 msgid "Invoice"
 msgstr "Factura"
@@ -156,6 +161,7 @@ msgid "Price net"
 msgstr "Precio neto"
 
 #. module: umai_custom_documents
+#: view:website:account.report_invoice_document
 #: view:website:sale.report_saleorder_document
 msgid "Quantity"
 msgstr "Cantidad"
@@ -204,6 +210,11 @@ msgstr "NIF:"
 #: view:website:account.report_invoice_document
 msgid "Total Invoice"
 msgstr "Total factura"
+
+#. module: umai_custom_documents
+#: view:website:account.report_invoice_document
+msgid "Unit Price"
+msgstr "Precio unidad"
 
 #. module: umai_custom_documents
 #: view:website:base.contact

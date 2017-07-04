@@ -12,6 +12,7 @@
                 </field>
                 <field name="origin" position="after">
                     <field name="order_origin"/>
+                    <field name="from_website"/>
                 </field>
             </field>
         </record>

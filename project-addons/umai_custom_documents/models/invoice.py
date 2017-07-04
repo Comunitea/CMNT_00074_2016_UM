@@ -18,4 +18,11 @@ class AccountInvoice(models.Model):
         if order_names:
             self.order_origin = ','.join(order_names)
 
+    @api.multi
+    def _from_web_site(self):
+        for inv in self:
+            if inv.sale_order_ids and inv.sale_order_ids[0].website_sale:
+                inv.from_website = True
+
     order_origin = fields.Char('Order origin', compute='_get_order_str')
+    from_website = fields.Boolean('From website', compute='_from_web_site')
