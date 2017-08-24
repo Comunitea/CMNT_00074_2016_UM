@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <act_window name="Importar Xls de Sanmy"
+            res_model="wzd.log.ops"
+            view_mode="form"
+            view_type="form"
+            target="new"
+            id="action_wzd_open_xls_log_ops"
+            groups="stock.group_stock_user"/>
+
+       <!--
+        <record model="ir.values" id="values_wzd_open_xls_log_ops">
+            <field name="model_id" ref="model_logistic_operation" />
+            <field name="name">val Importar Xls de Sanmycustom_</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' +str(ref('action_wzd_open_xls_log_ops'))" />
+            <field name="key">action</field>
+            <field name="model">logistic.operation</field>
+        </record>
+        -->
+
+        <record id="wzd_open_xls_log_ops" model="ir.ui.view">
+        <field name="name">wizard.open.xls.log.ops</field>
+        <field name="model">wzd.log.ops</field>
+        <field name="arch" type="xml">
+            <form string="Cargar un archivo">
+                <group>
+                    <group>
+                        <field name="partner_id" />
+                        <field name="delimiter" />
+                    </group>
+                </group>
+                <group>
+                    <p>
+                        <group>
+                           <field name="data" />
+                        </group>
+                    </p>
+                </group>
+                <footer>
+                    <button name="import_file" string="Import" type="object"  class="oe_highlight" />
+                    <button string="_Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="tree_log_ops_action" model="ir.actions.server">
+            <field name="name">Confirmar Importacion</field>
+            <field name="model_id" ref="model_logistic_operation"/>
+            <field name="state">code</field>
+            <field name="code">self.import_selected(cr, uid, context.get('active_ids', []), context=context)</field>
+         </record>
+        <record id="tree_log_ops_values" model="ir.values">
+            <field name="name">tree_log_ops.values</field>
+            <field name="model">logistic.operation</field>
+            <field name="key" >action</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.server,%d'%tree_log_ops_action"/>
+        </record>
+
+
+
+        <record id="tree_log_ops_tree_view" model="ir.ui.view">
+            <field name="name">log.ops.tree.view</field>
+            <field name="model">logistic.operation</field>
+            <field name="arch" type="xml">
+                <tree colors="green:ack == True;red:ack == False" create="true">
+
+                    <field name="nombre_cliente" />
+                    <field name="nombre_envio"/>
+                    <field name="product_id"/>
+                    <field name="cod_articulo"/>
+                    <field name="ref_articulo_cliente"/>
+                    <field name="articulo"/>
+                    <field name="num_ped_sanmy"/>
+                    <field name="num_pedido"/>
+                    <field name="albaran"/>
+                    <field name="fecha_albaran"/>
+                    <field name="factura"/>
+                    <field name="lote"/>
+                    <field name="caducidad"/>
+                    <field name="cantidad"/>
+                    <field name="ack"/>
+                </tree>
+            </field>
+        </record>
+        <record id="model_log_ops_view" model="ir.actions.act_window">
+            <field name="name">Importacion de Sanmy</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">logistic.operation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    No hay ficheros
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_sanmy_ops" parent="base.menu_sales"
+			action="model_log_ops_view" name="Movimientos Sanmy" sequence="10"/>
+        <menuitem id="menu_import_csv_sanmy_ops" parent="base.menu_sales"
+			action="action_wzd_open_xls_log_ops" name="Importar CSV Sanmy" sequence="11"/>
+
+    </data>
+</openerp>
