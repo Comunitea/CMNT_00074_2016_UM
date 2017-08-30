@@ -4,7 +4,8 @@
 
 from openerp import models, fields, api, exceptions, _
 
-
+AUTO_SALE_CONFIRM = True
+AUTO_PICK_CONFIRM = True
 
 class LogisticOperation(models.Model):
 
@@ -15,6 +16,9 @@ class LogisticOperation(models.Model):
     nombre_cliente = fields.Char('Nombre Cliente')
     product_id = fields.Many2one('product.product')
     nombre_envio = fields.Char("Dirección envío")
+    cp_envio = fields.Char("Cp envío")
+    provincia_envio = fields.Char("Provincia envío")
+    poblacion_envio = fields.Char("Poblacion envío")
     cod_articulo = fields.Char('Codigo Sanmy')
     ref_articulo_cliente = fields.Char("Codigo UMAI")
     articulo = fields.Char("Descripción artículo")
@@ -40,19 +44,25 @@ class LogisticOperation(models.Model):
                 if not sale_order:
                     vals = self.get_sale_order_values(op)
                     sale_order = self.env['sale.order'].create(vals)
-                    print sale_order.name
                     ret_sale_order_ids.append(sale_order.id)
                 if sale_order:
                     vals = self.get_sale_order_line_values(op, sale_order.id)
                     sale_order_line = self.env['sale.order.line'].create(vals)
-                    print sale_order_line.id
                     if sale_order_line:
                         op.ack = True
 
-        #view_id = self.env.ref('sale.view_order_tree')
-        view_id = self.env.ref('sale.view_quotation_tree')
-        #print view_id, ret_sale_order_ids
+        if AUTO_SALE_CONFIRM:
+            for order_to_confirm in self.env['sale.order'].browse(ret_sale_order_ids):
+                order_to_confirm.action_button_confirm()
+        if AUTO_PICK_CONFIRM:
+            for order_to_confirm in self.env['sale.order'].browse(ret_sale_order_ids):
+                for pick in order_to_confirm.picking_ids:
+                    if pick.state == 'confirmed':
+                        pick.action_assign()
+                    if pick.state == 'confirmed':
+                        pick.force_assign()
 
+        view_id = self.env.ref('sale.view_quotation_tree')
         return {'type': 'ir.actions.act_window',
                 'name': _('Sale Order'),
                 'view_mode': 'tree,form',
@@ -82,16 +92,21 @@ class LogisticOperation(models.Model):
 
     @api.model
     def get_sale_order_values(self, op):
-        #cliente
+
         partner_shipping_id = op.partner_id.child_ids.filtered(lambda x: x.partner_type_id.name == 'Delivery')
         logistic_partner_id = self.env['partner.logistic'].search([('name', '=', op.nombre_cliente),
                                                                  ('delivery_name', '=', op.nombre_envio),
                                                                  ('partner_id', '=', op.partner_id.id)])
 
         if not logistic_partner_id:
-            vals = {'name': op.nombre_cliente,
+            vals = {
+                   'name': op.nombre_cliente,
                    'delivery_name': op.nombre_envio,
-                   'partner_id': op.partner_id.id}
+                   'cp': op.cp_envio,
+                   'state': op.provincia_envio,
+                   'city': op.poblacion_envio,
+                   'partner_id': op.partner_id.id
+            }
 
             logistic_partner_id = self.env['partner.logistic'].create(vals)
 
@@ -155,4 +170,4 @@ class LogisticOperation(models.Model):
                     'lot_id': lot_id and lot_id.id or False,
                     'date': pick.date_done
                 }
-                new_op = self.env['stock.pack.operation'].create(val_op)
+                self.env['stock.pack.operation'].create(val_op)

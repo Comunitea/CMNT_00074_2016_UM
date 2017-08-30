@@ -16,6 +16,9 @@ class PartnerLogistic(models.Model):
 
     name = fields.Char("Name")
     delivery_name = fields.Char("Delivery Name")
+    cp = fields.Char("Zip Code")
+    state = fields.Char("State")
+    city = fields.Char("City")
     display_name = fields.Char(compute=_get_display_name)
     partner_id = fields.Many2one('res.partner')
 
@@ -25,5 +28,5 @@ class SaleOrder(models.Model):
 
     _inherit = 'sale.order'
 
-    logistic_partner_id= fields.Many2one('partner.logistic', "Cliente final")
+    logistic_partner_id = fields.Many2one('partner.logistic', "Cliente final")
     shipping_partner_id_type = fields.Char(related='partner_shipping_id.partner_type_id.name', readonly=1)

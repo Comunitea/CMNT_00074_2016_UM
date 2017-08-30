@@ -28,8 +28,8 @@
             <form string="Cargar un archivo">
                 <group>
                     <group>
-                        <field name="partner_id" />
-                        <field name="delimiter" />
+                        <field name="partner_id" readonly="1"/>
+                        <field name="delimiter" tradonly="1"/>
                     </group>
                 </group>
                 <group>

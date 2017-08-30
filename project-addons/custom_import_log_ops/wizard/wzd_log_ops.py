@@ -9,6 +9,8 @@ import base64
 import csv
 
 
+
+
 class WzdLogOps(models.TransientModel):
 
     _name = 'wzd.log.ops'
@@ -19,7 +21,6 @@ class WzdLogOps(models.TransientModel):
         domain = [('partner_type_id', '=', 'Delivery')]
         partner_ids = self.env['res.partner'].search(domain)
         res = [('id', 'in', [x.parent_id.id for x in partner_ids])]
-        print res
         return res
 
 
@@ -40,10 +41,9 @@ class WzdLogOps(models.TransientModel):
     def import_file(self):
 
         def dec_row(value):
-            value = value.strip()
-            value = value.decode("UTF-8")#.encode("latin_1")
-            value = u'%s'%value
-            return value
+
+            res = value.decode("UTF-8").encode("latin_1").strip()
+            return res
 
         with tempfile.TemporaryFile('w+b') as src:
 
@@ -58,43 +58,67 @@ class WzdLogOps(models.TransientModel):
                 head, values = self._prepare_csv_data(decoded, delimiter)
 
         header = False
-        ops= []
+        ops = []
+        row_number = 0
         for row in values:
+
+            row_number +=1
             product_id = False
-            nombre_cliente = dec_row(row[0])
-            product_code = dec_row(row[3])
+            product_code = dec_row(row[6])[4:].strip()
             if product_code:
-
-                domain = [('default_code', '=', product_code[4:])]
+                domain = [('default_code', '=', product_code)]
                 product_id = self.env['product.product'].search(domain, limit = 1)
+            if not product_id:
+                continue
 
-            sale_order = dec_row(row[6]).strip()
+            #envío
+            nombre_cliente = dec_row(row[0])
+            nombre_envio = dec_row(row[1])
+            cp_envio = dec_row(row[2])
+            provincia_envio = dec_row(row[3])
+            poblacion_envio = dec_row(row[4])
+            #arituclo
+            ref_cliente = dec_row(row[5])
+            articulo = dec_row(row[7])
+            #pedido/alabran
+            num_ped_sanmy =  dec_row(row[8])
+            num_pedido =  dec_row(row[9])
+            albaran = dec_row(row[10])
+            fecha_albaran = dec_row(row[11])
+            factura = dec_row(row[12])
+            lote =  dec_row(row[13])
+            caducidad = dec_row(row[14])
+            cantidad = float(dec_row(row[15]).replace(',', '.')) / 12
+
+            sale_order = dec_row(row[9]).strip()
             if sale_order:
                 domain = [('name', '=', sale_order)]
                 sale_order = self.env['sale.order'].search(domain)
+
                 if sale_order:
                     continue
-
             if product_id:
                 vals = {
                     'partner_id': self.partner_id.id,
                     'nombre_cliente': nombre_cliente,
-                    'nombre_envio': dec_row(row[1]),
+                    'nombre_envio': nombre_envio,
+                    'cp_envio': cp_envio,
+                    'provincia_envio': provincia_envio,
+                    'poblacion_envio': poblacion_envio,
                     'product_id': product_id.id,
-                    'ref_cliente':  dec_row(row[2]),
-                    'articulo':  dec_row(row[4]),
-                    'num_ped_sanmy':  dec_row(row[5]),
-                    'num_pedido':  dec_row(row[6]),
-                    'albaran':  dec_row(row[7]),
-                    'fecha_albaran':  dec_row(row[8]),
-                    'factura': dec_row(row[9]),
-                    'lote':  dec_row(row[10]),
-                    'caducidad':  dec_row(row[11]),
-                    'cantidad':  float(dec_row(row[12]).replace(',', '.')) / 12,}
+                    'ref_articulo_cliente':  ref_cliente,
+                    'cod_articulo': articulo,
+                    'num_ped_sanmy': num_ped_sanmy,
+                    'num_pedido':  num_pedido,
+                    'albaran': albaran,
+                    'fecha_albaran': fecha_albaran,
+                    'factura': factura,
+                    'lote': lote,
+                    'caducidad':  caducidad,
+                    'cantidad':  cantidad}
+
                 new_op = self.env['logistic.operation'].create(vals)
                 ops.append(new_op.id)
-
-        #view_id = self.env.ref('tree_log_ops_tree_view')
 
         return {'type': 'ir.actions.act_window',
                 'name': _('Operations Order'),

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_logistic.operation,access.logistic.operation manager,model_logistic_operation,stock.group_stock_user,1,1,1,1
+access_partner_logistic,access.partner.logistic manager,model_partner_logistic,stock.group_stock_user,1,1,1,1

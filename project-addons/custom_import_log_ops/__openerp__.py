@@ -18,8 +18,8 @@
     "data": [
         'wizard/wzd_log_ops.xml',
         'views/logistic_operation.xml',
-        #'views/stock_picking.xml',
         'data/stock_picking_type.xml',
         'views/sale_view.xml',
+        'security/ir.model.access.csv'
     ],
 }
