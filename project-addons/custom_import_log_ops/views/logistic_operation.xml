@@ -15,7 +15,37 @@
             <field name="key2">client_action_multi</field>
             <field name="value" eval="'ir.actions.server,%d'%tree_log_ops_action"/>
         </record>
+        <record model="ir.ui.view" id="log_ops_search">
+            <field name="name">log.ops.search</field>
+            <field name="model">logistic.operation</field>
+            <field name="arch" type="xml">
+                <search name="Logistic Operation">
+                    <field name="ack"/>
+                    <field name="num_ped_sanmy"/>
+                    <field name="product_id"/>
+                    <field name="fecha_albaran"/>
 
+                    <filter string="Pendientes" domain="[('ack','=',False]"/>
+                    <filter string="this_month" name="month"
+                            domain="[('fecha_albaran','&lt;=', time.strftime('%Y-%m-%d')),('fecha_albaran','&gt;=',time.strftime('%Y-%m-01'))]" help="This month"/>
+
+                    <filter name="this_week" string="this_week"
+                        domain="[('fecha_albaran', '>=', (datetime.date.today() - relativedelta(days=6)).strftime('%Y-%m-%d'))]" help="This week"/>>
+                    <group expand="0" string="Group By...">
+                            <filter string="Pedido Sanmy"
+                            name="groupby_num_pedido"
+                            domain="[]" context="{'group_by': 'num_ped_sanmy'}"/>
+                            <filter string="Artículo"
+                            name="groupby_articulo"
+                            domain="[]" context="{'group_by': 'product_id'}"/>
+                         <filter string="Day"
+                            name="groupby_day"
+                            domain="[]" context="{'group_by': 'fecha_albaran:day'}"/>
+                    </group>
+
+                </search>
+            </field>
+        </record>
         <record id="tree_log_ops_tree_view" model="ir.ui.view">
             <field name="name">log.ops.tree.view</field>
             <field name="model">logistic.operation</field>

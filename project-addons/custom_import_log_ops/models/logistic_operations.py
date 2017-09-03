@@ -6,6 +6,10 @@ from openerp import models, fields, api, exceptions, _
 
 AUTO_SALE_CONFIRM = True
 AUTO_PICK_CONFIRM = True
+GREEN_POINT = True
+GREEN_POINT_ID = 25
+FORCE_LOT_ID = True
+
 
 class LogisticOperation(models.Model):
 
@@ -34,12 +38,14 @@ class LogisticOperation(models.Model):
 
     @api.multi
     def import_selected(self):
+        #HARDCODEADO POR QUE HAY 2 GREEN POINT
 
         sale_order_sanmy = [x.num_ped_sanmy for x in self]
         sale_order_ids = list(set(sale_order_sanmy))
         ret_sale_order_ids =[]
         for num_ped_sanmy in sale_order_ids:
-            sale_order = False
+            domain = [('client_order_ref', '=', num_ped_sanmy), ('state', '!=', 'cancel')]
+            sale_order = self.env['sale.order'].search(domain)
             for op in self.filtered(lambda x: x.ack == False and x.num_ped_sanmy == num_ped_sanmy):
                 if not sale_order:
                     vals = self.get_sale_order_values(op)
@@ -53,15 +59,32 @@ class LogisticOperation(models.Model):
 
         if AUTO_SALE_CONFIRM:
             for order_to_confirm in self.env['sale.order'].browse(ret_sale_order_ids):
+                if GREEN_POINT:
+                    qtys = sum(line.product_uom_qty for line in order_to_confirm.order_line)
+                    vals = {
+                        'product_id': GREEN_POINT_ID,
+                        'product_uom_qty': qtys,
+                        'order_id': order_to_confirm.id
+                    }
+                    self.env['sale.order.line'].create(vals)
                 order_to_confirm.action_button_confirm()
         if AUTO_PICK_CONFIRM:
             for order_to_confirm in self.env['sale.order'].browse(ret_sale_order_ids):
                 for pick in order_to_confirm.picking_ids:
-                    if pick.state == 'confirmed':
-                        pick.action_assign()
-                    if pick.state == 'confirmed':
-                        pick.force_assign()
-
+                    pick.action_assign()
+                    pick.force_assign()
+                    pick.do_prepare_partial()
+                    if FORCE_LOT_ID:
+                        transfer = True
+                        for pack_operation in pick.pack_operation_ids:
+                            order_line = order_to_confirm.order_line.filtered(lambda x:x.product_id == pack_operation.product_id)
+                            if order_line.product_id.id != GREEN_POINT_ID:
+                                if order_line.lot_id:
+                                    pack_operation.lot_id = order_line.lot_id
+                                else:
+                                    transfer = False
+                        if transfer:
+                            pick.do_transfer()
         view_id = self.env.ref('sale.view_quotation_tree')
         return {'type': 'ir.actions.act_window',
                 'name': _('Sale Order'),
@@ -74,8 +97,8 @@ class LogisticOperation(models.Model):
 
     @api.model
     def get_sale_order_line_values(self, op, order_id):
-
-        domain = [('name', '=', op.lote), ('product_id', '=', op.product_id.id)]
+        domain = [('name', '=', op.lote), ('product_id', '=', op.product_id.id),
+                  ('life_date','>=', op.caducidad +" 00:00:01"), ('life_date','<=', op.caducidad +" 23:59:59")]
         lot_id = self.env['stock.production.lot'].search(domain, limit=1) or False
         product_id = op.product_id
         product_uom_qty = op.cantidad

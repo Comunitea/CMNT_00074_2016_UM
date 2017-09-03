@@ -75,22 +75,23 @@ class WzdLogOps(models.TransientModel):
             nombre_cliente = dec_row(row[0])
             nombre_envio = dec_row(row[1])
             cp_envio = dec_row(row[2])
-            provincia_envio = dec_row(row[3])
-            poblacion_envio = dec_row(row[4])
+            poblacion_envio = dec_row(row[3])
+            provincia_envio = dec_row(row[4])
             #arituclo
             ref_cliente = dec_row(row[5])
             articulo = dec_row(row[7])
             #pedido/alabran
-            num_ped_sanmy =  dec_row(row[8])
-            num_pedido =  dec_row(row[9])
+            num_ped_sanmy = dec_row(row[8])
+            num_pedido = dec_row(row[9])
             albaran = dec_row(row[10])
             fecha_albaran = dec_row(row[11])
-            factura = dec_row(row[12])
-            lote =  dec_row(row[13])
-            caducidad = dec_row(row[14])
-            cantidad = float(dec_row(row[15]).replace(',', '.')) / 12
+            mes = dec_row(row[12])
+            factura = dec_row(row[13])
+            lote =  dec_row(row[14])
+            caducidad = dec_row(row[15])
+            cantidad = float(dec_row(row[17]).replace(',', '.'))
 
-            sale_order = dec_row(row[9]).strip()
+            sale_order = num_pedido.strip()
             if sale_order:
                 domain = [('name', '=', sale_order)]
                 sale_order = self.env['sale.order'].search(domain)
