@@ -20,6 +20,7 @@
         'views/logistic_operation.xml',
         'data/stock_picking_type.xml',
         'views/sale_view.xml',
+        'views/logistic_operations_config.xml',
         'security/ir.model.access.csv'
     ],
 }

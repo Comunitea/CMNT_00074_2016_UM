@@ -4,3 +4,4 @@
 
 from . import sale_order
 from . import logistic_operations
+from . import logistic_operations_config

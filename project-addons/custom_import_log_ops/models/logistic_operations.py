@@ -29,11 +29,13 @@ class LogisticOperation(models.Model):
     num_ped_sanmy = fields.Char("Numero pedido Sanmy")
     num_pedido = fields.Char("Numero pedido UMAI")
     albaran = fields.Char("Fecha albarçan Sanmy ")
-    fecha_albaran= fields.Char("Fecha albaránn Sanmy ")
+    fecha_albaran = fields.Date("Fecha albaránn Sanmy ")
     factura = fields.Char("Factura (0)")
     lote = fields.Char("Lote")
-    caducidad = fields.Char("Fecha de caducidad")
+    caducidad = fields.Date("Fecha de caducidad")
     cantidad = fields.Float("Cantidad (uds)")
+
+
 
 
     @api.multi
@@ -77,11 +79,13 @@ class LogisticOperation(models.Model):
                     if FORCE_LOT_ID:
                         transfer = True
                         for pack_operation in pick.pack_operation_ids:
+                            print pack_operation.product_id, pack_operation.lot_id.name
                             order_line = order_to_confirm.order_line.filtered(lambda x:x.product_id == pack_operation.product_id)
                             if order_line.product_id.id != GREEN_POINT_ID:
                                 if order_line.lot_id:
                                     pack_operation.lot_id = order_line.lot_id
                                 else:
+                                    pack_operation.lot_id = False
                                     transfer = False
                         if transfer:
                             pick.do_transfer()
@@ -98,8 +102,13 @@ class LogisticOperation(models.Model):
     @api.model
     def get_sale_order_line_values(self, op, order_id):
         domain = [('name', '=', op.lote), ('product_id', '=', op.product_id.id),
-                  ('life_date','>=', op.caducidad +" 00:00:01"), ('life_date','<=', op.caducidad +" 23:59:59")]
-        lot_id = self.env['stock.production.lot'].search(domain, limit=1) or False
+                  ('life_date', '>=', op.caducidad +" 00:00:01"), ('life_date','<=', op.caducidad +" 23:59:59")]
+        lot_id = self.env['stock.production.lot'].search(domain) or False
+        print "Busco lote para %s"%lot_id
+        for lot in lot_id:
+            print lot.name, lot.life_date
+        if len(lot_id) != 1:
+            lot_id = False
         product_id = op.product_id
         product_uom_qty = op.cantidad
         vals = {
@@ -135,7 +144,6 @@ class LogisticOperation(models.Model):
 
         client_order_ref = op.num_ped_sanmy
         origin = "SANMY: %s (%s)" %(op.num_pedido, op.albaran)
-
         vals = {
             'partner_id': op.partner_id.id,
             'partner_invoice_id': op.partner_id.id,

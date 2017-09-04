@@ -112,10 +112,10 @@ class WzdLogOps(models.TransientModel):
                     'num_ped_sanmy': num_ped_sanmy,
                     'num_pedido':  num_pedido,
                     'albaran': albaran,
-                    'fecha_albaran': fecha_albaran,
+                    'fecha_albaran': self.fdate(fecha_albaran),
                     'factura': factura,
                     'lote': lote,
-                    'caducidad':  caducidad,
+                    'caducidad':  self.fdate(caducidad),
                     'cantidad':  cantidad}
 
                 new_op = self.env['logistic.operation'].create(vals)
@@ -128,6 +128,13 @@ class WzdLogOps(models.TransientModel):
                 'res_model': 'logistic.operation',
                 'domain': [('id', 'in', ops)]
                 }
+    def fdate(self, string):
+        string = string.replace('/','-')
+        if string[2:3] == "-":
+            string = string [6:10]+ '-' + string[3:5] + "-" +string[0:2]
+        formated_date = fields.Date.from_string(string)
+        return formated_date
+
 
     @api.model
     def _prepare_csv_data(self, csv_file, delimiter=","):
