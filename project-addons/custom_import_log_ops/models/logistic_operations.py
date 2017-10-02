@@ -80,13 +80,14 @@ class LogisticOperation(models.Model):
                         transfer = True
                         for pack_operation in pick.pack_operation_ids:
                             print pack_operation.product_id, pack_operation.lot_id.name
-                            order_line = order_to_confirm.order_line.filtered(lambda x:x.product_id == pack_operation.product_id)
-                            if order_line.product_id.id != GREEN_POINT_ID:
-                                if order_line.lot_id:
-                                    pack_operation.lot_id = order_line.lot_id
-                                else:
-                                    pack_operation.lot_id = False
-                                    transfer = False
+                            order_lines = order_to_confirm.order_line.filtered(lambda x:x.product_id == pack_operation.product_id)
+                            for order_line in order_lines:
+                                if order_line.product_id.id != GREEN_POINT_ID:
+                                    if order_line.lot_id:
+                                        pack_operation.lot_id = order_line.lot_id
+                                    else:
+                                        pack_operation.lot_id = False
+                                        transfer = False
                         if transfer:
                             pick.do_transfer()
         view_id = self.env.ref('sale.view_quotation_tree')
