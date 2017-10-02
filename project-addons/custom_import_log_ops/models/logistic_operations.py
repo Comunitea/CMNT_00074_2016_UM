@@ -104,9 +104,9 @@ class LogisticOperation(models.Model):
         domain = [('name', '=', op.lote), ('product_id', '=', op.product_id.id),
                   ('life_date', '>=', op.caducidad +" 00:00:01"), ('life_date','<=', op.caducidad +" 23:59:59")]
         lot_id = self.env['stock.production.lot'].search(domain) or False
-        print "Busco lote para %s"%lot_id
-        for lot in lot_id:
-            print lot.name, lot.life_date
+        # print "Busco lote para %s"%lot_id
+        # for lot in lot_id:
+        #     print lot.name, lot.life_date
         if len(lot_id) != 1:
             lot_id = False
         product_id = op.product_id
