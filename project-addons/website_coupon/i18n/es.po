@@ -1,0 +1,397 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * website_coupon
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-16 15:26+0000\n"
+"PO-Revision-Date: 2017-10-16 17:44+0200\n"
+"Last-Translator: Jesús Ventosinos Mayor <jesus@comunitea.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "&nbsp;"
+msgstr "&nbsp;"
+
+#. module: website_coupon
+#: view:website:website_sale.cart
+msgid "/shop/coupon"
+msgstr "/shop/coupon"
+
+#. module: website_coupon
+#: view:website:website_sale.cart
+msgid "/web/login?redirect=/shop/coupon"
+msgstr "/web/login?redirect=/shop/coupon"
+
+#. module: website_coupon
+#: view:website:website_sale.cart
+msgid "/web/signup?redirect=/shop/coupon"
+msgstr "/web/signup?redirect=/shop/coupon"
+
+#. module: website_coupon
+#: selection:gift.voucher,voucher_type:0
+msgid "All Products"
+msgstr "Todos los productos"
+
+#. module: website_coupon
+#: field:gift.voucher,voucher_type:0
+msgid "Applicable on "
+msgstr "Aplicable en "
+
+#. module: website_coupon
+#: view:res.partner:website_coupon.applied_coupons_view
+msgid "Applied Coupons"
+msgstr "Cupones aplicados"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "Apply"
+msgstr "Aplicar"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+#: view:website:website_sale.cart
+#: view:website:website_sale.checkout
+#: view:website:website_sale.confirmation
+#: view:website:website_sale.payment
+msgid "Apply coupon"
+msgstr "Applicar cupón"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "Checkout"
+msgstr "Procesar"
+
+#. module: website_coupon
+#: field:gift.coupon,code:0
+msgid "Code"
+msgstr "Código"
+
+#. module: website_coupon
+#: sql_constraint:gift.coupon:0
+msgid "Code already exists !"
+msgstr "El código ya existe !"
+
+#. module: website_coupon
+#: view:gift.coupon:website_coupon.gift_coupon_form
+msgid "Conditions"
+msgstr "Condiciones"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "Confirmation"
+msgstr "Confirmación"
+
+#. module: website_coupon
+#: field:partner.coupon,coupon:0
+msgid "Coupon Applied"
+msgstr "Cupón aplicado"
+
+#. module: website_coupon
+#: model:ir.ui.menu,name:website_coupon.gift_coupon_history
+msgid "Coupon History"
+msgstr "Historial de usos"
+
+#. module: website_coupon
+#: field:sale.order.line,coupon_discount_line:0
+msgid "Coupon discount line"
+msgstr "Coupon discount line"
+
+#. module: website_coupon
+#: field:res.partner,applied_coupon:0
+msgid "Coupons Applied"
+msgstr "Cupones aplicados"
+
+#. module: website_coupon
+#: field:gift.coupon,create_uid:0
+#: field:gift.voucher,create_uid:0
+#: field:partner.coupon,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: website_coupon
+#: field:gift.coupon,create_date:0
+#: field:gift.voucher,create_date:0
+#: field:partner.coupon,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: website_coupon
+#: field:gift.coupon,display_name:0
+#: field:gift.voucher,display_name:0
+#: field:partner.coupon,display_name:0
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: website_coupon
+#: field:gift.coupon,end_date:0
+msgid "End Date"
+msgstr "Fecha fin"
+
+#. module: website_coupon
+#: field:gift.voucher,expiry_date:0
+msgid "Expiry Date"
+msgstr "Fecha fin"
+
+#. module: website_coupon
+#: selection:gift.coupon,type:0
+msgid "Fixed Amount"
+msgstr "Cantidad fija"
+
+#. module: website_coupon
+#: model:ir.actions.act_window,name:website_coupon.action_gift_coupon
+msgid "Generate Gift Coupons"
+msgstr "Generar cupones de descuento"
+
+#. module: website_coupon
+#: model:ir.ui.menu,name:website_coupon.gift_coupon
+#: model:product.template,name:website_coupon.discount_product_product_template
+msgid "Gift Coupon"
+msgstr "Cupón descuento"
+
+#. module: website_coupon
+#: model:ir.ui.menu,name:website_coupon.gift_coupon_main
+msgid "Gift Coupons"
+msgstr "Gift Coupons"
+
+#. module: website_coupon
+#: model:ir.actions.act_window,name:website_coupon.action_gift_coupon_history
+msgid "Gift Coupons History"
+msgstr "Gift Coupons History"
+
+#. module: website_coupon
+#: model:ir.ui.menu,name:website_coupon.gift_voucher
+msgid "Gift Voucher"
+msgstr "Gift Voucher"
+
+#. module: website_coupon
+#: model:ir.actions.act_window,name:website_coupon.action_gift_voucher
+msgid "Gift Vouchers"
+msgstr "Gift Vouchers"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "Have a voucher code? Fill this field and apply."
+msgstr "¿Tiene un código de descuento? Rellénelo en este campo y aplíquelo."
+
+#. module: website_coupon
+#: field:gift.coupon,id:0
+#: field:gift.voucher,id:0
+#: field:partner.coupon,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: website_coupon
+#: field:gift.coupon,__last_update:0
+#: field:gift.voucher,__last_update:0
+#: field:partner.coupon,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: website_coupon
+#: field:gift.coupon,write_uid:0
+#: field:gift.voucher,write_uid:0
+#: field:partner.coupon,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: website_coupon
+#: field:gift.coupon,write_date:0
+#: field:gift.voucher,write_date:0
+#: field:partner.coupon,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: website_coupon
+#: field:gift.coupon,partner_id:0
+msgid "Limit to a Single Partner"
+msgstr "Limitar a un único cliente"
+
+#. module: website_coupon
+#: model:res.groups,name:website_coupon.group_website_coupon
+msgid "Manage website coupons"
+msgstr "Manage website coupons"
+
+#. module: website_coupon
+#: field:gift.voucher,max_value:0
+msgid "Maximum Voucher Value"
+msgstr "Valor máximo de descuento"
+
+#. module: website_coupon
+#: field:gift.voucher,min_value:0
+msgid "Minimum Voucher Value"
+msgstr "Valor mínimo de descuento"
+
+#. module: website_coupon
+#: view:gift.coupon:website_coupon.gift_coupon_form
+#: field:gift.coupon,name:0
+#: field:gift.voucher,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: website_coupon
+#: field:partner.coupon,number:0
+msgid "Number of Times Used"
+msgstr "Number of Times Used"
+
+#. module: website_coupon
+#: model:ir.model,name:website_coupon.model_res_partner
+#: field:partner.coupon,partner_id:0
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "Payment"
+msgstr "Pago"
+
+#. module: website_coupon
+#: selection:gift.coupon,type:0
+msgid "Percentage"
+msgstr "Percentage"
+
+#. module: website_coupon
+#: code:addons/website_coupon/models/gift_voucher.py:77
+#, python-format
+msgid "Please check the voucher value"
+msgstr "Please check the voucher value"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "Policies"
+msgstr "Políticas"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "Price"
+msgstr "Precio"
+
+#. module: website_coupon
+#: view:gift.coupon:website_coupon.gift_coupon_form
+msgid "Pricing"
+msgstr "Descuento"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "Process Checkout"
+msgstr "Procesar compra"
+
+#. module: website_coupon
+#: field:gift.voucher,product_id:0
+#: selection:gift.voucher,voucher_type:0
+#: view:website:website_coupon.cart_coupons
+msgid "Product"
+msgstr "Producto"
+
+#. module: website_coupon
+#: field:gift.voucher,product_categ:0
+#: selection:gift.voucher,voucher_type:0
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "Review Order"
+msgstr "Revisar pedido"
+
+#. module: website_coupon
+#: model:ir.model,name:website_coupon.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: website_coupon
+#: model:ir.model,name:website_coupon.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "Secure Payment"
+msgstr "Pago seguro"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "Shipping & Billing"
+msgstr "Envío y facturación"
+
+#. module: website_coupon
+#: field:gift.coupon,start_date:0
+msgid "Start Date"
+msgstr "Fecha inicio"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "The discount amount is too large"
+msgstr "The discount amount is too large"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "This gift code is not available"
+msgstr "This gift code is not available"
+
+#. module: website_coupon
+#: field:gift.coupon,total_avail:0
+msgid "Total Available"
+msgstr "Total disponible"
+
+#. module: website_coupon
+#: field:gift.coupon,limit:0
+msgid "Total Available For Each User"
+msgstr "Total disponible para cada cliente"
+
+#. module: website_coupon
+#: field:gift.coupon,type:0
+msgid "Type"
+msgstr "Tipo"
+
+#. module: website_coupon
+#: field:gift.coupon,voucher:0
+msgid "Voucher"
+msgstr "Voucher"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "Voucher Code"
+msgstr "Código de descuento"
+
+#. module: website_coupon
+#: field:gift.coupon,voucher_val:0
+msgid "Voucher Value"
+msgstr "Valor descuento"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "Your cart is empty!"
+msgstr "¡Su carro está vacío!"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "code..."
+msgstr "código..."
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "☑ 256 bit encryption"
+msgstr "☑ Con encriptación de 256 bit"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "☑ Garantía de devolución de 14 días"
+msgstr "☑ Garantía de devolución de 14 días"
+
+#. module: website_coupon
+#: view:website:website_coupon.cart_coupons
+msgid "☑ Invoice sent by e-Mail"
+msgstr "☑ Factura enviada por correo electrónico"

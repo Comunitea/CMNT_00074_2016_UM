@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+
+        <template id="cart_lines_coupon" inherit_id="website_sale.cart">
+            <xpath expr="//table[@id='cart_products']/tbody/t/tr/td[last()]" position="replace">
+                <td class="text-center" t-if="not line.coupon_discount_line">
+                    <div class="input-group oe_website_spinner">
+                        <span class="input-group-addon">
+                            <a t-attf-href="#" class="mb8 js_add_cart_json" data-no-instant="">
+                                <i class="fa fa-minus"></i>
+                            </a>
+                        </span>
+                        <input type="text" class="js_quantity form-control"
+                            t-att-data-line-id="line.id"
+                            t-att-data-product-id="line.product_id.id"
+                            t-att-value="int(line.product_uom_qty)"/>
+                        <span class="input-group-addon">
+                            <a t-attf-href="#" class="mb8 float_left js_add_cart_json" data-no-instant="">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </span>
+                    </div>
+                </td>
+                <td class="text-center" t-if="line.coupon_discount_line">
+                    <div class="input-group oe_website_spinner" style="pointer-events: none;">
+                        <span class="input-group-addon">
+                            <a t-attf-href="#" class="mb8 js_add_cart_json" data-no-instant="">
+                                <i class="fa fa-minus"></i>
+                            </a>
+                        </span>
+                        <input type="text" class="js_quantity form-control"
+                            t-att-data-line-id="line.id"
+                            t-att-data-product-id="line.product_id.id"
+                            t-att-value="int(line.product_uom_qty)"/>
+                        <span class="input-group-addon">
+                            <a t-attf-href="#" class="mb8 float_left js_add_cart_json" data-no-instant="">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </span>
+                    </div>
+                </td>
+            </xpath>
+        </template>
+
+        <template id="create_account_redirect_coupon" inherit_id="website_custom.fix_suggest_create_account">
+            <xpath expr="//a[@href='/web/login?redirect=/shop/checkout']" position="attributes">
+                <attribute name="href">/web/login?redirect=/shop/coupon</attribute>
+            </xpath>
+
+            <xpath expr="//a[@href='/web/signup?redirect=/shop/checkout']" position="attributes">
+                <attribute name="href">/web/signup?redirect=/shop/coupon</attribute>
+            </xpath>
+        </template>
+
+        <template id="cart_require_login_coupon" inherit_id="website_sale_require_login.cart">
+            <xpath expr="//a[@href='/shop/checkout']" position="attributes">
+                <attribute name="href">/shop/coupon</attribute>
+            </xpath>
+        </template>
+
+        <template id="cart_add_coupon_step" inherit_id="website_sale.cart">
+            <xpath expr="//ul[1]/li[1]" position="after">
+                <li class="text-muted">Apply coupon<span class="chevron"/></li>
+            </xpath>
+        </template>
+
+        <template id="checkout_add_coupon_step" inherit_id="website_sale.checkout">
+            <xpath expr="//ul[1]/li[1]" position="after">
+                <li>
+                    <a href="/shop/coupon" class="text-success">Apply coupon<span class="chevron"/></a>
+                </li>
+            </xpath>
+        </template>
+
+        <template id="payment_add_coupon_step" inherit_id="website_sale.payment">
+            <xpath expr="//ul[1]/li[1]" position="after">
+                <li>
+                    <a href="/shop/coupon" class="text-success">Apply coupon<span class="chevron"/></a>
+                </li>
+            </xpath>
+        </template>
+
+        <template id="confirmation_add_coupon_step" inherit_id="website_sale.confirmation">
+            <xpath expr="//ul[1]/li[1]" position="after">
+                <li class="text-muted">Apply coupon<span class="chevron"/></li>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>

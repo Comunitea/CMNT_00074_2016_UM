@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gift_voucher,access_gift_voucher,model_gift_voucher,base.group_user,1,0,0,0
+access_gift_coupon,access_gift_coupon,model_gift_coupon,base.group_user,1,0,0,0
+access_partner_coupon,access_partner_coupon,model_partner_coupon,base.group_user,1,0,0,0
+access_gift_voucher,access_gift_voucher,model_gift_voucher,website_coupon.group_website_coupon,1,1,1,1
+access_gift_coupon,access_gift_coupon,model_gift_coupon,website_coupon.group_website_coupon,1,1,1,1
+access_partner_coupon,access_partner_coupon,model_partner_coupon,website_coupon.group_website_coupon,1,1,1,1
