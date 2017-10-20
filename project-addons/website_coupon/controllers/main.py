@@ -135,8 +135,7 @@ class WebsiteCoupon(openerp.addons.website_sale.controllers.main.website_sale):
         if 'error' in res.qcontext:
             return res
         order = request.website.sale_get_order()
-        coupon_history = request.env['coupon.history'].sudo().search([('sale_id', '=', order.id)])
-        used_coupon = coupon_history.coupon_id
+        used_coupon = order.coupons
         if not used_coupon:
             return res
         number_of_uses = 0
@@ -154,5 +153,5 @@ class WebsiteCoupon(openerp.addons.website_sale.controllers.main.website_sale):
             return res
         used_coupon.total_avail += 1
         order.order_line.filtered(lambda x: x.coupon_discount_line).unlink()
-        coupon_history.unlink()
+        order.write({'coupons': [(3, used_coupon.id)]})
         return request.redirect("/shop/cart?coupon_not_available=1")
