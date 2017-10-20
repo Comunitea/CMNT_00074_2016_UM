@@ -106,7 +106,7 @@ class CouponPartner(models.Model):
         tools.drop_view_if_exists(cr, self._table)
         cr.execute("""CREATE or REPLACE VIEW %s as (
             SELECT ROW_NUMBER() OVER () AS id, rp.id AS partner_id,
-                   gc.code AS coupon, count(ch.id) AS number
+                   gc.code AS coupon, count(*) AS number
             FROM coupon_history ch JOIN
                  gift_coupon gc ON ch.coupon_id=gc.id JOIN
                  sale_order so ON ch.sale_id=so.id JOIN
