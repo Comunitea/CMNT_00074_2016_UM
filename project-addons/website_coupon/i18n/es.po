@@ -6,34 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-16 15:26+0000\n"
-"PO-Revision-Date: 2017-10-17 12:52+0200\n"
+"POT-Creation-Date: 2017-10-20 08:35+0000\n"
+"PO-Revision-Date: 2017-10-20 10:41+0200\n"
 "Last-Translator: Jesús Ventosinos Mayor <jesus@comunitea.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-
-#. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "&nbsp;"
-msgstr "&nbsp;"
-
-#. module: website_coupon
-#: view:website:website_sale.cart
-msgid "/shop/coupon"
-msgstr "/shop/coupon"
-
-#. module: website_coupon
-#: view:website:website_sale.cart
-msgid "/web/login?redirect=/shop/coupon"
-msgstr "/web/login?redirect=/shop/coupon"
-
-#. module: website_coupon
-#: view:website:website_sale.cart
-msgid "/web/signup?redirect=/shop/coupon"
-msgstr "/web/signup?redirect=/shop/coupon"
 
 #. module: website_coupon
 #: selection:gift.voucher,voucher_type:0
@@ -51,23 +31,9 @@ msgid "Applied Coupons"
 msgstr "Cupones aplicados"
 
 #. module: website_coupon
-#: view:website:website_coupon.cart_coupons
+#: view:website:website_sale.cart
 msgid "Apply"
 msgstr "Aplicar"
-
-#. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-#: view:website:website_sale.cart
-#: view:website:website_sale.checkout
-#: view:website:website_sale.confirmation
-#: view:website:website_sale.payment
-msgid "Apply coupon"
-msgstr "Aplicar cupón"
-
-#. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "Checkout"
-msgstr "Procesar"
 
 #. module: website_coupon
 #: field:gift.coupon,code:0
@@ -85,11 +51,6 @@ msgid "Conditions"
 msgstr "Condiciones"
 
 #. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "Confirmation"
-msgstr "Confirmación"
-
-#. module: website_coupon
 #: field:partner.coupon,coupon:0
 msgid "Coupon Applied"
 msgstr "Cupón aplicado"
@@ -105,25 +66,36 @@ msgid "Coupon discount line"
 msgstr "Coupon discount line"
 
 #. module: website_coupon
+#: field:coupon.history,coupon_id:0
+msgid "Coupon id"
+msgstr "Coupon id"
+
+#. module: website_coupon
 #: field:res.partner,applied_coupon:0
 msgid "Coupons Applied"
 msgstr "Cupones aplicados"
 
 #. module: website_coupon
+#: field:sale.order,coupons:0
+msgid "Coupons used"
+msgstr "Coupons used"
+
+#. module: website_coupon
+#: field:coupon.history,create_uid:0
 #: field:gift.coupon,create_uid:0
 #: field:gift.voucher,create_uid:0
-#: field:partner.coupon,create_uid:0
 msgid "Created by"
 msgstr "Created by"
 
 #. module: website_coupon
+#: field:coupon.history,create_date:0
 #: field:gift.coupon,create_date:0
 #: field:gift.voucher,create_date:0
-#: field:partner.coupon,create_date:0
 msgid "Created on"
 msgstr "Created on"
 
 #. module: website_coupon
+#: field:coupon.history,display_name:0
 #: field:gift.coupon,display_name:0
 #: field:gift.voucher,display_name:0
 #: field:partner.coupon,display_name:0
@@ -148,7 +120,7 @@ msgstr "Cantidad fija"
 #. module: website_coupon
 #: model:ir.actions.act_window,name:website_coupon.action_gift_coupon
 msgid "Generate Gift Coupons"
-msgstr "Generar cupones de descuento"
+msgstr "Generate Gift Coupons"
 
 #. module: website_coupon
 #: model:ir.ui.menu,name:website_coupon.gift_coupon
@@ -177,11 +149,12 @@ msgid "Gift Vouchers"
 msgstr "Gift Vouchers"
 
 #. module: website_coupon
-#: view:website:website_coupon.cart_coupons
+#: view:website:website_sale.cart
 msgid "Have a voucher code? Fill this field and apply."
 msgstr "¿Tiene un código de descuento? Rellénelo en este campo y aplíquelo."
 
 #. module: website_coupon
+#: field:coupon.history,id:0
 #: field:gift.coupon,id:0
 #: field:gift.voucher,id:0
 #: field:partner.coupon,id:0
@@ -189,6 +162,7 @@ msgid "ID"
 msgstr "ID"
 
 #. module: website_coupon
+#: field:coupon.history,__last_update:0
 #: field:gift.coupon,__last_update:0
 #: field:gift.voucher,__last_update:0
 #: field:partner.coupon,__last_update:0
@@ -196,16 +170,16 @@ msgid "Last Modified on"
 msgstr "Last Modified on"
 
 #. module: website_coupon
+#: field:coupon.history,write_uid:0
 #: field:gift.coupon,write_uid:0
 #: field:gift.voucher,write_uid:0
-#: field:partner.coupon,write_uid:0
 msgid "Last Updated by"
 msgstr "Last Updated by"
 
 #. module: website_coupon
+#: field:coupon.history,write_date:0
 #: field:gift.coupon,write_date:0
 #: field:gift.voucher,write_date:0
-#: field:partner.coupon,write_date:0
 msgid "Last Updated on"
 msgstr "Last Updated on"
 
@@ -243,14 +217,13 @@ msgstr "Number of Times Used"
 
 #. module: website_coupon
 #: model:ir.model,name:website_coupon.model_res_partner
-#: field:partner.coupon,partner_id:0
 msgid "Partner"
 msgstr "Empresa"
 
 #. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "Payment"
-msgstr "Pago"
+#: field:partner.coupon,partner_id:0
+msgid "Partner id"
+msgstr "Partner id"
 
 #. module: website_coupon
 #: selection:gift.coupon,type:0
@@ -258,20 +231,10 @@ msgid "Percentage"
 msgstr "Percentage"
 
 #. module: website_coupon
-#: code:addons/website_coupon/models/gift_voucher.py:77
+#: code:addons/website_coupon/models/gift_voucher.py:87
 #, python-format
 msgid "Please check the voucher value"
 msgstr "Please check the voucher value"
-
-#. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "Policies"
-msgstr "Políticas"
-
-#. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "Price"
-msgstr "Precio"
 
 #. module: website_coupon
 #: view:gift.coupon:website_coupon.gift_coupon_form
@@ -279,14 +242,8 @@ msgid "Pricing"
 msgstr "Descuento"
 
 #. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "Process Checkout"
-msgstr "Procesar compra"
-
-#. module: website_coupon
 #: field:gift.voucher,product_id:0
 #: selection:gift.voucher,voucher_type:0
-#: view:website:website_coupon.cart_coupons
 msgid "Product"
 msgstr "Producto"
 
@@ -297,14 +254,19 @@ msgid "Product Category"
 msgstr "Categoría de producto"
 
 #. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "Quantity"
-msgstr "Cantidad"
+#: field:coupon.history,sale_id:0
+msgid "Sale id"
+msgstr "Sale id"
 
 #. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "Review Order"
-msgstr "Revisar pedido"
+#: view:gift.coupon:website_coupon.gift_coupon_form
+msgid "Sale uses"
+msgstr "Sale uses"
+
+#. module: website_coupon
+#: field:gift.coupon,sale_ids:0
+msgid "Sales"
+msgstr "Ventas"
 
 #. module: website_coupon
 #: model:ir.model,name:website_coupon.model_sale_order
@@ -317,29 +279,19 @@ msgid "Sales Order Line"
 msgstr "Línea pedido de venta"
 
 #. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "Secure Payment"
-msgstr "Pago seguro"
-
-#. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "Shipping & Billing"
-msgstr "Envío y facturación"
-
-#. module: website_coupon
 #: field:gift.coupon,start_date:0
 msgid "Start Date"
 msgstr "Fecha inicio"
 
 #. module: website_coupon
-#: view:website:website_coupon.cart_coupons
+#: view:website:website_sale.cart
 msgid "The discount amount is too large"
-msgstr "The discount amount is too large"
+msgstr "El importe de descuento es demasiado grande"
 
 #. module: website_coupon
-#: view:website:website_coupon.cart_coupons
+#: view:website:website_sale.cart
 msgid "This gift code is not available"
-msgstr "This gift code is not available"
+msgstr "El código de descuento no está disponible"
 
 #. module: website_coupon
 #: field:gift.coupon,total_avail:0
@@ -362,7 +314,7 @@ msgid "Voucher"
 msgstr "Voucher"
 
 #. module: website_coupon
-#: view:website:website_coupon.cart_coupons
+#: view:website:website_sale.cart
 msgid "Voucher Code"
 msgstr "Código de descuento"
 
@@ -372,26 +324,6 @@ msgid "Voucher Value"
 msgstr "Valor descuento"
 
 #. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "Your cart is empty!"
-msgstr "¡Su carro está vacío!"
-
-#. module: website_coupon
-#: view:website:website_coupon.cart_coupons
+#: view:website:website_sale.cart
 msgid "code..."
 msgstr "código..."
-
-#. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "☑ 256 bit encryption"
-msgstr "☑ Con encriptación de 256 bit"
-
-#. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "☑ Garantía de devolución de 14 días"
-msgstr "☑ Garantía de devolución de 14 días"
-
-#. module: website_coupon
-#: view:website:website_coupon.cart_coupons
-msgid "☑ Invoice sent by e-Mail"
-msgstr "☑ Factura enviada por correo electrónico"

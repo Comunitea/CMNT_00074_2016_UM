@@ -78,6 +78,11 @@
                                <field name="type" />
                            </group>
                        </group>
+                        <notebook>
+                            <page string="Sale uses">
+                                <field name="sale_ids" nolabel="1" colspan="4"/>
+                            </page>
+                        </notebook>
                    </sheet>
                </form>
             </field>

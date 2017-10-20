@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    Cybrosys Technologies Pvt. Ltd.
-#    Copyright (C) 2017-TODAY Cybrosys Technologies(<https://www.cybrosys.com>).
+#    Copyright (C) 2017-TODAY Cybrosys Technologies(<https://www.cybrosys.com>)
 #    Author: LINTO C T(<https://www.cybrosys.com>)
 #    you can modify it under the terms of the GNU LESSER
 #    GENERAL PUBLIC LICENSE (LGPL v3), Version 3.
@@ -22,8 +22,9 @@
 ##############################################################################
 import string
 import random
+from openerp import tools
 from openerp import models, fields, api, _
-from openerp.exceptions import Warning
+from openerp.exceptions import Warning as UserError
 
 
 class GiftVoucher(models.Model):
@@ -38,7 +39,8 @@ class GiftVoucher(models.Model):
         ], string="Applicable on ", default='product'
     )
     product_id = fields.Many2one('product.product', string="Product")
-    product_categ = fields.Many2one('product.category', string="Product Category")
+    product_categ = fields.Many2one('product.category',
+                                    string="Product Category")
     min_value = fields.Integer(string="Minimum Voucher Value", required=True)
     max_value = fields.Integer(string="Maximum Voucher Value", required=True)
     expiry_date = fields.Date(string="Expiry Date", required=True)
@@ -61,9 +63,16 @@ class GiftCoupon(models.Model):
     voucher = fields.Many2one('gift.voucher', string="Voucher", required=True)
     start_date = fields.Date(string="Start Date")
     end_date = fields.Date(string="End Date")
-    partner_id = fields.Many2one('res.partner', string="Limit to a Single Partner")
+    partner_id = fields.Many2one('res.partner',
+                                 string="Limit to a Single Partner")
     limit = fields.Integer(string="Total Available For Each User", default=1)
     total_avail = fields.Integer(string="Total Available", default=1)
+    sale_ids = fields.Many2many(
+        'sale.order',
+        'coupon_history',
+        'coupon_id',
+        'sale_id',
+        'Sales')
 
     voucher_val = fields.Float(string="Voucher Value")
     type = fields.Selection([
@@ -73,18 +82,34 @@ class GiftCoupon(models.Model):
 
     @api.onchange('voucher_val')
     def check_val(self):
-        if self.voucher_val > self.voucher.max_value or self.voucher_val < self.voucher.min_value:
-            raise Warning(_("Please check the voucher value"))
+        if self.voucher_val > self.voucher.max_value or \
+                self.voucher_val < self.voucher.min_value:
+            raise UserError(_("Please check the voucher value"))
+
+
+class CouponHistory(models.Model):
+    _name = 'coupon.history'
+
+    sale_id = fields.Many2one('sale.order')
+    coupon_id = fields.Many2one('gift.coupon')
+
 
 class CouponPartner(models.Model):
     _name = 'partner.coupon'
+    _auto = False
 
-    partner_id = fields.Many2one('res.partner', string="Partner")
+    partner_id = fields.Many2one('res.partner')
     coupon = fields.Char(string="Coupon Applied")
     number = fields.Integer(string="Number of Times Used")
 
-
-class PartnerExtended(models.Model):
-    _inherit = 'res.partner'
-
-    applied_coupon = fields.One2many('partner.coupon', 'partner_id', string="Coupons Applied")
+    def init(self, cr):
+        tools.drop_view_if_exists(cr, self._table)
+        cr.execute("""CREATE or REPLACE VIEW %s as (
+            SELECT ROW_NUMBER() OVER () AS id, rp.id AS partner_id,
+                   gc.code AS coupon, count(ch.id) AS number
+            FROM coupon_history ch JOIN
+                 gift_coupon gc ON ch.coupon_id=gc.id JOIN
+                 sale_order so ON ch.sale_id=so.id JOIN
+                 res_partner rp ON so.partner_id=rp.id
+            GROUP BY rp.id, gc.code
+            )""" % self._table)

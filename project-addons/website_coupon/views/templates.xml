@@ -2,6 +2,37 @@
 <openerp>
     <data>
 
+        <template id="voucher_code" inherit_id="website_sale.cart" active="False" customize_show="True" name="Voucher Code">
+            <xpath expr="//table[@id='cart_products']" position="after">
+                <div class="pull-left">
+                    <h4>Voucher Code</h4>
+                    <p>
+                                Have a voucher code? Fill this field and apply.
+                              </p>
+                    <t t-if="coupon_not_available">
+                        <t t-if="coupon_not_available=='1'">
+                            <p class="bg-warning">This gift code is not available</p>
+                        </t>
+                        <t t-if="coupon_not_available=='2'">
+                            <p class="bg-warning">This gift code is not available</p>
+                        </t>
+                        <t t-if="coupon_not_available=='3'">
+                            <p class="bg-warning">The discount amount is too large</p>
+                        </t>
+                    </t>
+                    <form t-if="website_sale_order and website_sale_order.website_order_line" action="/shop/gift_coupon" method="post" class="mb32">
+                        <div class="input-group">
+                            <input name="promo_voucher" class="form-control" type="text" placeholder="code..." t-att-value="website_sale_order.pricelist_id.code or None" />
+                            <div class="input-group-btn">
+                                <a class="btn btn-default a-submit">Apply</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </xpath>
+        </template>
+
+
         <template id="cart_lines_coupon" inherit_id="website_sale.cart">
             <xpath expr="//table[@id='cart_products']/tbody/t/tr/td[last()]" position="replace">
                 <td class="text-center" t-if="not line.coupon_discount_line">
@@ -40,50 +71,6 @@
                         </span>
                     </div>
                 </td>
-            </xpath>
-        </template>
-
-        <template id="create_account_redirect_coupon" inherit_id="website_custom.fix_suggest_create_account">
-            <xpath expr="//a[@href='/web/login?redirect=/shop/checkout']" position="attributes">
-                <attribute name="href">/web/login?redirect=/shop/coupon</attribute>
-            </xpath>
-
-            <xpath expr="//a[@href='/web/signup?redirect=/shop/checkout']" position="attributes">
-                <attribute name="href">/web/signup?redirect=/shop/coupon</attribute>
-            </xpath>
-        </template>
-
-        <template id="cart_require_login_coupon" inherit_id="website_sale_require_login.cart">
-            <xpath expr="//a[@href='/shop/checkout']" position="attributes">
-                <attribute name="href">/shop/coupon</attribute>
-            </xpath>
-        </template>
-
-        <template id="cart_add_coupon_step" inherit_id="website_sale.cart">
-            <xpath expr="//ul[1]/li[1]" position="after">
-                <li class="text-muted">Apply coupon<span class="chevron"/></li>
-            </xpath>
-        </template>
-
-        <template id="checkout_add_coupon_step" inherit_id="website_sale.checkout">
-            <xpath expr="//ul[1]/li[1]" position="after">
-                <li>
-                    <a href="/shop/coupon" class="text-success">Apply coupon<span class="chevron"/></a>
-                </li>
-            </xpath>
-        </template>
-
-        <template id="payment_add_coupon_step" inherit_id="website_sale.payment">
-            <xpath expr="//ul[1]/li[1]" position="after">
-                <li>
-                    <a href="/shop/coupon" class="text-success">Apply coupon<span class="chevron"/></a>
-                </li>
-            </xpath>
-        </template>
-
-        <template id="confirmation_add_coupon_step" inherit_id="website_sale.confirmation">
-            <xpath expr="//ul[1]/li[1]" position="after">
-                <li class="text-muted">Apply coupon<span class="chevron"/></li>
             </xpath>
         </template>
 

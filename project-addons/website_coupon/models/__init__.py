@@ -22,3 +22,4 @@
 ##############################################################################
 from . import gift_voucher
 from . import sale
+from . import res_partner

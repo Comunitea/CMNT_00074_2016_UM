@@ -25,7 +25,7 @@
 
         <template id="total_modify_taxes" inherit_id="website_sale.total">
             <xpath expr="//tr[@id='order_total_taxes']//abbr" position="replace">
-                <abbr title="Taxes may be updated after providing shipping address">VAT:</abbr>
+                <abbr title="Taxes may be updated after providing shipping address">VAT (included):</abbr>
             </xpath>
         </template>
 

@@ -16,7 +16,8 @@ class WebsiteCoupon(openerp.addons.website_sale.controllers.main.website_sale):
         the voucher code in the website. It will verify the validity and
         availability of that coupon. If it can be applied, the coupon
         will be applied and coupon balance will also be updated"""
-        curr_partner = request.env.user.partner_id
+        order = request.website.sale_get_order(force_create=1)
+        curr_partner = order.partner_id
         coupon = request.env['gift.coupon'].sudo().search([('code', '=', promo_voucher)], limit=1)
         apply_discount = True
         if coupon and coupon.total_avail > 0:
@@ -26,10 +27,12 @@ class WebsiteCoupon(openerp.addons.website_sale.controllers.main.website_sale):
 
         # checking voucher date and limit for each user for this coupon
             if coupon.partner_id:
-                if curr_partner.id != coupon.partner_id.id:
+                # no comprobamos el partner cuando el pedido es de public user
+                if curr_partner != request.website.partner_id and curr_partner.id != coupon.partner_id.id:
                     apply_discount = False
             today = datetime.now().date()
-            if apply_discount and applied_coupons.number < coupon.limit and \
+            # No comprobamos limite de usos cuando el cliente del pedido es public user
+            if apply_discount and (curr_partner == request.website.partner_id or applied_coupons.number < coupon.limit) and \
                     today <= parser.parse(coupon.voucher.expiry_date).date():
                 # checking coupon validity
                 #    checking date of coupon
@@ -53,7 +56,6 @@ class WebsiteCoupon(openerp.addons.website_sale.controllers.main.website_sale):
             type = coupon.type
             coupon_product = request.env.ref('website_coupon.discount_product')
             if coupon_product:
-                order = request.website.sale_get_order(force_create=1)
                 applicable_discount = False
                 for line in order.order_line:
                     if line.product_id.id == coupon_product.id:
@@ -82,7 +84,7 @@ class WebsiteCoupon(openerp.addons.website_sale.controllers.main.website_sale):
                             if voucher_val < order.amount_total:
                                 discount_amount = -voucher_val
                             else:
-                                return request.redirect("/shop/coupon?coupon_not_available=3")
+                                return request.redirect("/shop/cart?coupon_not_available=3")
                         elif type == 'percentage':
                             # coupon type is percentage
                             amount_final = (voucher_val/100) * order.amount_total
@@ -93,31 +95,64 @@ class WebsiteCoupon(openerp.addons.website_sale.controllers.main.website_sale):
 
                         # updating coupon balance
                         total = coupon.total_avail - 1
-                        coupon.write({'total_avail': total})
-
-                        if not applied_coupons:
-                            curr_partner.write(
-                                {'applied_coupon':
-                                 [(0, 0, {'partner_id': curr_partner.id,
-                                          'coupon': coupon.code,
-                                          'number': 1})]})
-                        else:
-                            applied_coupons.write(
-                                {'number': applied_coupons.number + 1})
+                        coupon.write({'total_avail': total,
+                                      'sale_ids': [(4, order.id)]})
                     else:
                         return request.redirect(
-                            "/shop/coupon?coupon_not_available=1")
+                            "/shop/cart?coupon_not_available=1")
                 else:
                     return request.redirect(
-                        "/shop/coupon?coupon_not_available=2")
+                        "/shop/cart?coupon_not_available=2")
         else:
-            return request.redirect("/shop/coupon?coupon_not_available=1")
+            return request.redirect("/shop/cart?coupon_not_available=1")
 
-        return request.redirect("/shop/coupon")
+        return request.redirect("/shop/cart")
 
-    @http.route(['/shop/coupon'], type='http', auth="user", website=True)
-    def coupon(self, **post):
-        values = {}
+    @http.route(['/shop/cart'], type='http', auth="public", website=True)
+    def cart(self, **post):
+        '''values = {}
         if post.get('coupon_not_available'):
             values['coupon_not_available'] = post.get('coupon_not_available')
-        return request.website.render("website_coupon.cart_coupons", values)
+        return request.website.render("website_coupon.cart_coupons", values)'''
+        res = super(WebsiteCoupon,self).cart(**post)
+        values = res.qcontext
+        if post.get('coupon_not_available'):
+            values['coupon_not_available'] = post.get('coupon_not_available')
+        return request.website.render("website_sale.cart", values)
+
+
+    @http.route(['/shop/confirm_order'], type='http', auth="public", website=True)
+    def confirm_order(self, **post):
+        """
+            Al confirmar el pedido, antes de la pantalla de pago se vuelve a
+            comprobar que el cliente podia usar el cupón, esto se hace porque
+            en los pasos anteriores la venta podía estar asociada a public user.
+            En caso de que no se pudiera usar el cupon se elimina la linea de
+            descuento y se vuelve al paso del carrito mostrando un mensaje de
+            error.
+        """
+        res = super(WebsiteCoupon, self).confirm_order(**post)
+        if 'error' in res.qcontext:
+            return res
+        order = request.website.sale_get_order()
+        coupon_history = request.env['coupon.history'].sudo().search([('sale_id', '=', order.id)])
+        used_coupon = coupon_history.coupon_id
+        if not used_coupon:
+            return res
+        number_of_uses = 0
+        partner_count = request.env['partner.coupon'].sudo().search(
+            [('coupon', '=', used_coupon.code),
+             ('partner_id', '=', order.partner_id.id)], limit=1)
+        if partner_count:
+            number_of_uses = partner_count.number - 1
+        correct_coupon = True
+        if number_of_uses >= used_coupon.limit:
+            correct_coupon = False
+        if used_coupon.partner_id and used_coupon.partner_id != order.partner_id:
+            correct_coupon = False
+        if correct_coupon:
+            return res
+        used_coupon.total_avail += 1
+        order.order_line.filtered(lambda x: x.coupon_discount_line).unlink()
+        coupon_history.unlink()
+        return request.redirect("/shop/cart?coupon_not_available=1")

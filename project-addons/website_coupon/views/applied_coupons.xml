@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <!--record id="applied_coupons_view" model="ir.ui.view">
+        <record id="applied_coupons_view" model="ir.ui.view">
             <field name="name">applied_coupons_form</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
@@ -18,7 +18,7 @@
                     </page>
                 </xpath>
               </field>
-        </record-->
+        </record>
 
         <record id="gift_coupon_history_tree" model="ir.ui.view">
             <field name="name">Gift Coupon History</field>

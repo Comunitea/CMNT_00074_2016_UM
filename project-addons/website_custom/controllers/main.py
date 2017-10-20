@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from openerp.addons.website_sale.controllers.main import website_sale
-
+from openerp.http import request
 
 class website_sale_custom_fields(website_sale):
 
@@ -40,3 +40,15 @@ class website_sale_custom_fields(website_sale):
         return super(
             website_sale_custom_fields,
             self)._get_optional_shipping_fields() + ["phone", "mobile"]
+
+    def checkout_parse(self, address_type, data, remove_prefix=False):
+        res = super(website_sale_custom_fields,self).checkout_parse(address_type, data, remove_prefix=remove_prefix)
+        template_user_id = request.env['ir.config_parameter'].get_param('auth_signup.template_user_id')
+        template_user = request.env['res.users'].browse(int(template_user_id)).sudo()
+        if template_user:
+            res['property_product_pricelist'] = template_user.property_product_pricelist.id
+            res['property_account_position'] = template_user.property_account_position.id
+            res['website_partner'] = True
+            res['user_id'] = template_user.user_id.id
+            res['category_id'] = [(6, 0, [x.id for x in template_user.category_id])]
+        return res
