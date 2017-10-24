@@ -51,4 +51,6 @@ class website_sale_custom_fields(website_sale):
             res['website_partner'] = True
             res['user_id'] = template_user.user_id.id
             res['category_id'] = [(6, 0, [x.id for x in template_user.category_id])]
+            order = request.website.sale_get_order(force_create=1)
+            order.write({'user_id': res['user_id']})
         return res
