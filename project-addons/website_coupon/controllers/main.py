@@ -155,3 +155,19 @@ class WebsiteCoupon(openerp.addons.website_sale.controllers.main.website_sale):
         order.order_line.filtered(lambda x: x.coupon_discount_line).unlink()
         order.write({'coupons': [(3, used_coupon.id)]})
         return request.redirect("/shop/cart?coupon_not_available=1")
+
+    @http.route(['/shop/cart/update'], type='http', auth="public", methods=['POST'], website=True)
+    def cart_update(self, product_id, add_qty=1, set_qty=0, **kw):
+        res = super(WebsiteCoupon, self).cart_update(product_id, add_qty, set_qty, **kw)
+        order = request.website.sale_get_order()
+        if order.order_line and all(order.mapped('order_line.coupon_discount_line')):
+            request.website.sale_reset()
+        return res
+
+    @http.route(['/shop/cart/update_json'], type='json', auth="public", methods=['POST'], website=True)
+    def cart_update_json(self, product_id, line_id, add_qty=None, set_qty=None, display=True):
+        res = super(WebsiteCoupon, self).cart_update_json(product_id, line_id, add_qty, set_qty, display)
+        order = request.website.sale_get_order()
+        if order.order_line and all(order.mapped('order_line.coupon_discount_line')):
+            request.website.sale_reset()
+        return res
