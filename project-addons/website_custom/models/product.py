@@ -9,6 +9,6 @@ class ProductTemplate(models.Model):
 
     _inherit = 'product.template'
 
-    description_website = fields.Html()
-    feature_website = fields.Html()
+    description_website = fields.Html(translate=True)
+    feature_website = fields.Html(translate=True)
     image_list = fields.Binary()
