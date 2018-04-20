@@ -146,7 +146,7 @@
             </xpath>
         </template>
 
-        <delete id="theme_louma.custom_website_sale_reduction_code" model="ir.ui.view"/>
+        <!--<delete id="theme_louma.custom_website_sale_reduction_code" model="ir.ui.view"/>-->
         <delete id="website_sale.reduction_code" model="ir.ui.view"/>
 
         <template id="reduction_code" inherit_id="website_sale.cart" active="False" customize_show="True" name="Coupon Code">
