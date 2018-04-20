@@ -43,7 +43,7 @@
                 <span>IVA incl.</span>
             </xpath>
             <xpath expr="//a[@class='add_to_cart a-submit']" position="attributes">
-                <attribute name="t-att-onclick">'fbq(&quot;track&quot;, &quot;AddToCart&quot;, {value: %s, currency: &quot;%s&quot;,});' % (product.price, website.currency_id.name)</attribute>
+                <attribute name="t-att-onclick">'fbq(\'track\', \'AddToCart\', {value: %s, currency: \'%s\',});' % (product.price, website.currency_id.name)</attribute>
             </xpath>
         </template>
 
@@ -119,7 +119,7 @@
                             </t>
                         </t>
                         <p t-if="len(product.product_variant_ids) > 1" class="css_not_available_msg bg-danger" style="padding: 15px;">Product not available</p>
-                        <a id="add_to_cart" class="btn btn-default mt8 js_check_product a-submit" t-att-onclick="'fbq(&quot;track&quot;, &quot;AddToCart&quot;, {value: %s, currency: &quot;%s&quot;,});' % (product.price, website.currency_id.name)" href="#"><i class="fa fa-cart-plus"></i> Add to Cart</a>
+                        <a id="add_to_cart" class="btn btn-default mt8 js_check_product a-submit" t-att-onclick="'fbq(\'track\', \'AddToCart\', {value: %s, currency: \'%s\',});' % (product.price, website.currency_id.name)" href="#"><i class="fa fa-cart-plus"></i> Add to Cart</a>
                     </div>
                 </form>
                 <div class="clearfix"/>
