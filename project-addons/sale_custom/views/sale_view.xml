@@ -11,6 +11,22 @@
             <xpath expr="//field[@name='order_line']/tree" position="attributes">
                 <attribute name="editable">top</attribute>
             </xpath>
+
+            <field name="date_order" position="after">
+                <field name="expedition_date"/>
+            </field>
+        </field>
+    </record>
+
+        <!-- Make editable lines in sale order -->
+    <record id="view_order_tree_date_extended" model="ir.ui.view">
+        <field name="name">sale.order.tree.date.extend</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="date_order" position="after">
+                <field name="expedition_date"/>
+            </field>
         </field>
     </record>
 

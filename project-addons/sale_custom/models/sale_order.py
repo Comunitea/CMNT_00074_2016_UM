@@ -9,6 +9,8 @@ class SaleOrder(models.Model):
 
     _inherit = 'sale.order'
 
+    expedition_date = fields.Date('Expedition Date')
+
     @api.multi
     def fix_sale_lines_price(self):
         # Correcciones en pedidos 11/05/17
