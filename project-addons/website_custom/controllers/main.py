@@ -8,6 +8,8 @@ from openerp.http import request
 class website_sale_custom_fields(website_sale):
 
     def checkout_form_validate(self, data):
+        if 'vat' in data:
+            data['vat'] = data['vat'].replace('-', '').upper()
         res = super(website_sale_custom_fields, self).checkout_form_validate(data)
         if not data.get('phone') and not data.get('mobile'):
             res['phone'] = 'missing'
