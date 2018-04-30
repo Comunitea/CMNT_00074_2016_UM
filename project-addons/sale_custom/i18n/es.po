@@ -1,13 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
+#	* sale_order_dates
 #	* sale_custom
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-25 15:23+0000\n"
-"PO-Revision-Date: 2018-04-25 15:23+0000\n"
+"POT-Creation-Date: 2018-04-30 09:02+0000\n"
+"PO-Revision-Date: 2018-04-30 09:02+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,15 +16,67 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#. module: sale_order_dates
+#: field:sale.order,commitment_date:0
+msgid "Commitment Date"
+msgstr "Fecha estimada entrega"
+
+#. module: sale_order_dates
+#: help:sale.order,requested_date:0
+msgid "Date by which the customer has requested the items to be delivered.\n"
+"When this Order gets confirmed, the Delivery Order's expected date will be computed based on this date and the Company's Security Delay.\n"
+"Leave this field empty if you want the Delivery Order to be processed as soon as possible. In that case the expected date will be computed using the default method: based on the Product Lead Times and the Company's Security Delay."
+msgstr "Fecha en la que el cliente a solicitado el envío de los productos.\n"
+"Cuando un pedido se confirma, la fecha estimada del envío se calculará en base a los días de seguridad configurados en la compañía.\n"
+"Deja este campo vacío si quieres que se procese el envío lo antes posible. En este caso la fecha estimada se calculara utilizando el método por defecto, basado en el tiempo de entrega del producto y los días de seguridad configurados en la compañía."
+
+#. module: sale_order_dates
+#: help:sale.order,commitment_date:0
+msgid "Date by which the products are sure to be delivered. This is a date that you can promise to the customer, based on the Product Lead Times."
+msgstr "Fecha en la que se asegura que los productos estarán enviados. Esta es la fecha de compromiso con el cliente, basada en el tiempo de entrega."
+
+#. module: sale_order_dates
+#: help:sale.order,effective_date:0
+msgid "Date on which the first Delivery Order was created."
+msgstr "Fecha en la que se ha creado el primer envío."
+
+#. module: sale_order_dates
+#: view:sale.order:sale_order_dates.view_sale_orderfor
+msgid "Dates"
+msgstr "Fechas"
+
+#. module: sale_order_dates
+#: field:sale.order,effective_date:0
+msgid "Effective Date"
+msgstr "Fecha real entrega"
+
 #. module: sale_custom
 #: field:sale.order,expedition_date:0
 msgid "Expedition Date"
 msgstr "Fecha expedición"
 
-#. module: sale_custom
+#. module: sale_order_dates
+#: field:sale.order,requested_date:0
+msgid "Requested Date"
+msgstr "Fecha de entrega"
+
+#. module: sale_order_dates
+#: code:addons/sale_order_dates/sale_order_dates.py:78
+#, python-format
+msgid "Requested date is too soon!"
+msgstr "¡ La fecha requerida es demasiado pronto !"
+
+#. modules: sale_order_dates, sale_custom
 #: model:ir.model,name:sale_custom.model_sale_order
+#: model:ir.model,name:sale_order_dates.model_sale_order
 msgid "Sales Order"
 msgstr "Pedido de venta"
+
+#. module: sale_order_dates
+#: code:addons/sale_order_dates/sale_order_dates.py:79
+#, python-format
+msgid "The date requested by the customer is sooner than the commitment date. You may be unable to honor the customer's request."
+msgstr "Fecha de pedido de venta"
 
 #. module: sale_custom
 #: view:sale.order:sale_custom.view_order_form_editable_list_extended

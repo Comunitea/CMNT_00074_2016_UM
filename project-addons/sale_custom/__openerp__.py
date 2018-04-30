@@ -11,6 +11,7 @@
     'depends': [
         'base',
         'product',
+        'sale_order_dates',
         'sale',
     ],
     'contributors': [
