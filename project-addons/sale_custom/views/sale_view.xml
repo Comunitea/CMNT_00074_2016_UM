@@ -30,5 +30,17 @@
         </field>
     </record>
 
+    <!-- Make editable lines in sale order -->
+    <record id="view_order_product_search_expedition_date" model="ir.ui.view">
+        <field name="name">view_order_product_search_expedition_date</field>
+        <field name="model">sale.report</field>
+        <field name="inherit_id" ref="sale.view_order_product_search"/>
+        <field name="arch" type="xml">
+            <field name="date" position="after">
+                <field name="expedition_date"/>
+            </field>
+        </field>
+    </record>
+
     </data>
 </openerp>

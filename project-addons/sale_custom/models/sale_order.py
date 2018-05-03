@@ -67,3 +67,61 @@ class SaleOrderDatesOldApi(osv.osv):
             store=True, string='Effective Date',
             help="Date on which the first Delivery Order was created.")
     }
+
+
+class SaleReport(models.Model):
+
+    _inherit = 'sale.report'
+
+    expedition_date = fields.Date('Expedition Date', readonly=True)
+
+    def _select(self):
+        select_str = """
+        WITH currency_rate (currency_id, rate, date_start, date_end) AS (
+                SELECT r.currency_id, r.rate, r.name AS date_start,
+                    (SELECT name FROM res_currency_rate r2
+                    WHERE r2.name > r.name AND
+                        r2.currency_id = r.currency_id
+                     ORDER BY r2.name ASC
+                     LIMIT 1) AS date_end
+                FROM res_currency_rate r
+            )
+         SELECT min(l.id) as id,
+                l.product_id as product_id,
+                t.uom_id as product_uom,
+                sum(l.product_uom_qty / u.factor * u2.factor) as product_uom_qty,
+                sum(l.product_uom_qty * l.price_unit / cr.rate * (100.0-l.discount) / 100.0) as price_total,
+                count(*) as nbr,
+                s.date_order as date,
+                s.date_confirm as date_confirm,
+                s.expedition_date as expedition_date,
+                s.partner_id as partner_id,
+                s.user_id as user_id,
+                s.company_id as company_id,
+                extract(epoch from avg(date_trunc('day',s.date_confirm)-date_trunc('day',s.create_date)))/(24*60*60)::decimal(16,2) as delay,
+                l.state,
+                t.categ_id as categ_id,
+                s.pricelist_id as pricelist_id,
+                s.project_id as analytic_account_id,
+                s.section_id as section_id
+        """
+        return select_str
+
+    def _group_by(self):
+        group_by_str = """
+            GROUP BY l.product_id,
+                    l.order_id,
+                    t.uom_id,
+                    t.categ_id,
+                    s.date_order,
+                    s.date_confirm,
+                    s.partner_id,
+                    s.user_id,
+                    s.company_id,
+                    l.state,
+                    s.pricelist_id,
+                    s.project_id,
+                    s.section_id,
+                    s.expedition_date
+        """
+        return group_by_str
