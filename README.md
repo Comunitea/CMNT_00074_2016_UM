@@ -33,6 +33,10 @@ $ sudo apt-get install libreadline-dev
 $ sudo easy_install virtualenv
 $ virtualenv sandbox --no-setuptools
 ```
+FORZAR VERSION DE PYTHON
+$ virtualenv --python=/usr/bin/python2.7 sandbox --no-setuptools 
+
+
 - Ahora procedemos a ejecutar el buildout en nuestro entorno virtual
 ```
 $ sandbox/bin/python bootstrap.py -c [archivo_buildout]
