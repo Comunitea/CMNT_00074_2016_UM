@@ -1,0 +1,55 @@
+From f5aad3aef0af8cc3cf5dc889a3503bcbc2c9d560 Mon Sep 17 00:00:00 2001
+From: javierjcf <javierjcf@gmail.com>
+Date: Thu, 4 Oct 2018 13:17:37 +0200
+Subject: [PATCH] =?UTF-8?q?correci=C3=B3n=20an=C3=A1lisis=20factura?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ addons/account/report/account_invoice_report.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/addons/account/report/account_invoice_report.py b/addons/account/report/account_invoice_report.py
+index 8be9e876f78..69e94340858 100644
+--- a/addons/account/report/account_invoice_report.py
++++ b/addons/account/report/account_invoice_report.py
+@@ -145,30 +145,30 @@ class account_invoice_report(osv.osv):
+                     ai.type, ai.state, pt.categ_id, ai.date_due, ai.account_id, ail.account_id AS account_line_id,
+                     ai.partner_bank_id,
+                     SUM(CASE
+-                         WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
++                         WHEN ai.type::text = ANY (ARRAY['in_refund'::character varying::text, 'in_invoice'::character varying::text])
+                             THEN (- ail.quantity) / u.factor * u2.factor
+                             ELSE ail.quantity / u.factor * u2.factor
+                         END) AS product_qty,
+                     SUM(CASE
+-                         WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
++                         WHEN ai.type::text = ANY (ARRAY['in_refund'::character varying::text, 'in_invoice'::character varying::text])
+                             THEN - ail.price_subtotal
+                             ELSE ail.price_subtotal
+                         END) AS price_total,
+                     CASE
+-                     WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
++                     WHEN ai.type::text = ANY (ARRAY['in_refund'::character varying::text, 'in_invoice'::character varying::text])
+                         THEN SUM(- ail.price_subtotal)
+                         ELSE SUM(ail.price_subtotal)
+                     END / CASE
+                            WHEN SUM(ail.quantity / u.factor * u2.factor) <> 0::numeric
+                                THEN CASE
+-                                     WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
++                                     WHEN ai.type::text = ANY (ARRAY['in_refund'::character varying::text, 'in_invoice'::character varying::text])
+                                         THEN SUM((- ail.quantity) / u.factor * u2.factor)
+                                         ELSE SUM(ail.quantity / u.factor * u2.factor)
+                                     END
+                                ELSE 1::numeric
+                           END AS price_average,
+                     CASE
+-                     WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
++                     WHEN ai.type::text = ANY (ARRAY['in_refund'::character varying::text, 'in_invoice'::character varying::text])
+                         THEN - ai.residual
+                         ELSE ai.residual
+                     END / (SELECT count(*) FROM account_invoice_line l where invoice_id = ai.id) *
+-- 
+2.17.1
+
