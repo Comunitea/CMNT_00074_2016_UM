@@ -22,7 +22,7 @@
             </xpath>
 
 
-            <!-- SNombre pedido y fecha al lado -->
+            <!-- Nombre pedido y fecha al lado -->
             <xpath expr="//h2" position="replace">
                 <div class="row mt32 mb32" style="padding:0px">
                     <div class="col-xs-6">
@@ -62,6 +62,7 @@
                 <thead>
                     <tr>
                         <th>Description</th>
+                        <th>Lot</th>
                         <th class="text-right">Quantity</th>
                     </tr>
                </thead>
@@ -69,6 +70,12 @@
                     <tr t-foreach="o.order_line" t-as="l">
                         <td>
                            <span t-field="l.name"/>
+                        </td>
+                        <td>
+                            <t t-if="l.lot_id">
+                                <span t-field="l.lot_id.name"/>
+                                <span t-field="l.lot_id.life_date"/>
+                            </t>
                         </td>
                         <td class="text-right">
                             <span t-field="l.product_uom_qty"/>
