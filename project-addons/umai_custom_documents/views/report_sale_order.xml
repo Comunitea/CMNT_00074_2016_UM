@@ -74,7 +74,7 @@
                         <td>
                             <t t-if="l.lot_id">
                                 <span t-field="l.lot_id.name"/>
-                                <span t-field="l.lot_id.life_date"/>
+                                <span t-field="l.lot_id.life_date" t-field-options='{"widget": "date"}'/>
                             </t>
                         </td>
                         <td class="text-right">
