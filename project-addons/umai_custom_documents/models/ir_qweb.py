@@ -15,12 +15,13 @@ class ResPartner(models.Model):
         Pero si no es ES, se poner FR-númeroLetra.
         si es españa de L-NNNNNNN, sino FR-NNNNNNNL
         """
-        formated_vat = ''
-        if self.vat:
-            if "ES" in self.vat:
-                formated_vat = self.vat.replace('ES', '')
-            else:
-                formated_vat = self.vat
+        # formated_vat = ''
+        # if self.vat:
+        #     if "ES" in self.vat:
+        #         formated_vat = self.vat.replace('ES', '')
+        #     else:
+        #         formated_vat = self.vat
+        formated_vat = self.vat
         return formated_vat
 
 
